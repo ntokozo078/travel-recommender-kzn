@@ -1,0 +1,802 @@
+[
+    {
+        "name": "Nomads",
+        "category": "Hostel",
+        "latitude": -29.8499561,
+        "longitude": 30.9978291,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Caravan Park",
+        "category": "Caravan_site",
+        "latitude": -29.9299895,
+        "longitude": 31.00287,
+        "address": "Grays Inn Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Tourism Beachfront Office",
+        "category": "Information",
+        "latitude": -29.8487237,
+        "longitude": 31.0363001,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Natal Maritime Museum",
+        "category": "Museum",
+        "latitude": -29.8615919,
+        "longitude": 31.0287017,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Queen Victoria",
+        "category": "Artwork",
+        "latitude": -29.8587272,
+        "longitude": 31.0250492,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Suncoast Towers",
+        "category": "Hotel",
+        "latitude": -29.8369313,
+        "longitude": 31.0349907,
+        "address": "Battery Beach Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Harry Escombe",
+        "category": "Artwork",
+        "latitude": -29.8587828,
+        "longitude": 31.0254583,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Butterworth",
+        "category": "Hotel",
+        "latitude": -29.8543914,
+        "longitude": 31.0205811,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Sir John Robinson",
+        "category": "Artwork",
+        "latitude": -29.8586721,
+        "longitude": 31.025393,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Jan Smuts",
+        "category": "Artwork",
+        "latitude": -29.8588737,
+        "longitude": 31.0250932,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Oceanic",
+        "category": "Hotel",
+        "latitude": -29.8435318,
+        "longitude": 31.0335404,
+        "address": "John Mcintyre Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Protea Umhlanga",
+        "category": "Hotel",
+        "latitude": -29.7242513,
+        "longitude": 31.0683354,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Royal Palm",
+        "category": "Hotel",
+        "latitude": -29.7249803,
+        "longitude": 31.0680127,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "KZN Tourism",
+        "category": "Information",
+        "latitude": -29.7258977,
+        "longitude": 31.0660972,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Holiday Inn Express",
+        "category": "Hotel",
+        "latitude": -29.7280621,
+        "longitude": 31.0713909,
+        "address": "Ncondo Place",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Concord Christian Guesthouse",
+        "category": "Guest_house",
+        "latitude": -29.8356333,
+        "longitude": 31.0192575,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Krafts4U",
+        "category": "Artwork",
+        "latitude": -29.9320215,
+        "longitude": 30.9974689,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "International Police Association",
+        "category": "Guest_house",
+        "latitude": -29.9032955,
+        "longitude": 30.9753611,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Rocket Hut Beach",
+        "category": "Viewpoint",
+        "latitude": -29.7926422,
+        "longitude": 31.0477719,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Saint James on Venice",
+        "category": "Hotel",
+        "latitude": -29.8246975,
+        "longitude": 31.0190285,
+        "address": "Venice Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Splash",
+        "category": "Picnic_site",
+        "latitude": -29.747293,
+        "longitude": 30.8488633,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Tudor",
+        "category": "Hotel",
+        "latitude": -29.857671,
+        "longitude": 31.0292079,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Centre Court",
+        "category": "Guest_house",
+        "latitude": -29.8013853,
+        "longitude": 31.0313218,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Honeycomb",
+        "category": "Guest_house",
+        "latitude": -29.8003818,
+        "longitude": 31.0312035,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Marmalade",
+        "category": "Hotel",
+        "latitude": -29.7853141,
+        "longitude": 31.0354861,
+        "address": "Kenneth Kaunda Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Cathy's Place",
+        "category": "Guest_house",
+        "latitude": -29.7289546,
+        "longitude": 31.0819208,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Villa Calla",
+        "category": "Guest_house",
+        "latitude": -29.7305243,
+        "longitude": 31.0808974,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Mini Town",
+        "category": "Theme_park",
+        "latitude": -29.8445623,
+        "longitude": 31.0355736,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Kwazulu-Natal Sharks Board",
+        "category": "Attraction",
+        "latitude": -29.7247871,
+        "longitude": 31.0722953,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Mythai Guesthouse",
+        "category": "Hotel",
+        "latitude": -29.8284802,
+        "longitude": 31.0124955,
+        "address": "Innes Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "On The Beach",
+        "category": "Hostel",
+        "latitude": -29.7624505,
+        "longitude": 31.0641587,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Old House Museum",
+        "category": "Museum",
+        "latitude": -29.8630648,
+        "longitude": 31.0175077,
+        "address": "Diakonia Avenue",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Kwa Muhle museum",
+        "category": "Attraction",
+        "latitude": -29.8528596,
+        "longitude": 31.023869,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Fish and meat market",
+        "category": "Attraction",
+        "latitude": -29.8564991,
+        "longitude": 31.015339,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Victoria Street Market",
+        "category": "Attraction",
+        "latitude": -29.856595,
+        "longitude": 31.0148621,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Kwesami",
+        "category": "Apartment",
+        "latitude": -29.8597454,
+        "longitude": 30.8806476,
+        "address": "Natalia Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "umgeni park",
+        "category": "Apartment",
+        "latitude": -29.8053559,
+        "longitude": 31.0189902,
+        "address": "Wedgwood Crescent",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "WildWeb",
+        "category": "Information",
+        "latitude": -29.7860741,
+        "longitude": 31.0395411,
+        "address": "Adelaide Tambo Drive",
+        "opening_hours": "Mo-Fr 09:00-17:00"
+    },
+    {
+        "name": "Whalebone Pier",
+        "category": "Attraction",
+        "latitude": -29.7264261,
+        "longitude": 31.0884995,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Golf Cart Tours",
+        "category": "Yes",
+        "latitude": -29.8477995,
+        "longitude": 31.0082828,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "John Medley Wood Statue",
+        "category": "Artwork",
+        "latitude": -29.8492272,
+        "longitude": 31.006858,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Greatest Shoal On Earth",
+        "category": "Artwork",
+        "latitude": -29.8464919,
+        "longitude": 31.0079605,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Standing Parker 1",
+        "category": "Artwork",
+        "latitude": -29.8473749,
+        "longitude": 31.0079707,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "SA Flag",
+        "category": "Artwork",
+        "latitude": -29.8462469,
+        "longitude": 31.0080628,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Earth Mother",
+        "category": "Artwork",
+        "latitude": -29.8483309,
+        "longitude": 31.0071682,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Family",
+        "category": "Artwork",
+        "latitude": -29.8484885,
+        "longitude": 31.0068124,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Captive of the Beginning",
+        "category": "Artwork",
+        "latitude": -29.8456907,
+        "longitude": 31.0059117,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Stone Dagger",
+        "category": "Artwork",
+        "latitude": -29.8466333,
+        "longitude": 31.0071184,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Hanging Signs",
+        "category": "Artwork",
+        "latitude": -29.8476229,
+        "longitude": 31.007752,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Wired Elephant",
+        "category": "Artwork",
+        "latitude": -29.84839,
+        "longitude": 31.0073378,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Metal Cows",
+        "category": "Artwork",
+        "latitude": -29.8477729,
+        "longitude": 31.0084318,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Smith's Cottage",
+        "category": "Hostel",
+        "latitude": -29.8054142,
+        "longitude": 31.0161394,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Circle of Friends",
+        "category": "Artwork",
+        "latitude": -29.8473766,
+        "longitude": 31.0068638,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Coastlands Musgrave",
+        "category": "Hotel",
+        "latitude": -29.8405956,
+        "longitude": 30.9958084,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Skycar",
+        "category": "Attraction",
+        "latitude": -29.8273214,
+        "longitude": 31.0310677,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Moses Mabhida Bust",
+        "category": "Artwork",
+        "latitude": -29.8277354,
+        "longitude": 31.0316062,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Faith 47 Murals on pillars",
+        "category": "Artwork",
+        "latitude": -29.8556747,
+        "longitude": 31.0105563,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Musgrave Avenue Guesthouse",
+        "category": "Guest_house",
+        "latitude": -29.8509199,
+        "longitude": 31.0002128,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Student Village",
+        "category": "Apartment",
+        "latitude": -29.8533437,
+        "longitude": 31.008976,
+        "address": "Steve Biko Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Stratford Residence",
+        "category": "Apartment",
+        "latitude": -29.8529479,
+        "longitude": 31.0091109,
+        "address": "Steve Biko Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Hilton Garden Inn Umhlanga Arch",
+        "category": "Hotel",
+        "latitude": -29.727913,
+        "longitude": 31.0722458,
+        "address": "Ncondo Place",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "John Medley Wood Statue",
+        "category": "Artwork",
+        "latitude": -29.8475021,
+        "longitude": 31.0062262,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Elephants Art",
+        "category": "Attraction",
+        "latitude": -29.8542023,
+        "longitude": 31.0333764,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "FIFA Graffiti",
+        "category": "Attraction",
+        "latitude": -29.8544434,
+        "longitude": 31.0330034,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Kiss the City",
+        "category": "Attraction",
+        "latitude": -29.8531229,
+        "longitude": 31.0338078,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Anton Lembede Graffiti",
+        "category": "Attraction",
+        "latitude": -29.8596664,
+        "longitude": 31.0239753,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "SFC Boys Hostel",
+        "category": "Hostel",
+        "latitude": -29.8446583,
+        "longitude": 30.8256237,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "uMhlanga Sands Resort",
+        "category": "Hotel",
+        "latitude": -29.7205519,
+        "longitude": 31.089945,
+        "address": "Lagoon Drive",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "East View Point Winston Park",
+        "category": "Attraction",
+        "latitude": -29.8178289,
+        "longitude": 30.8017663,
+        "address": "Jan Smuts Avenue",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Bryan's Getaway",
+        "category": "Apartment",
+        "latitude": -29.7738602,
+        "longitude": 31.0104087,
+        "address": "Bhoola Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Heaton Cottage",
+        "category": "Guest_house",
+        "latitude": -29.833265,
+        "longitude": 30.8991852,
+        "address": "Ernest Whitcutt Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "MiniTown",
+        "category": "Attraction",
+        "latitude": -29.8448341,
+        "longitude": 31.0359135,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Burman Bush",
+        "category": "Yes",
+        "latitude": -29.8158803,
+        "longitude": 31.0150033,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Spa",
+        "category": "Hotel",
+        "latitude": -29.8579853,
+        "longitude": 31.0390405,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Balmoral",
+        "category": "Hotel",
+        "latitude": -29.8551137,
+        "longitude": 31.0386461,
+        "address": "O.R. Tambo Parade",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Garden Court Marine Parade",
+        "category": "Hotel",
+        "latitude": -29.8537737,
+        "longitude": 31.0381936,
+        "address": "O.R. Tambo Parade",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Palace",
+        "category": "Hotel",
+        "latitude": -29.8518099,
+        "longitude": 31.0375039,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "The Edward",
+        "category": "Hotel",
+        "latitude": -29.8544383,
+        "longitude": 31.0384149,
+        "address": "OR Tambo Parade",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Belmont",
+        "category": "Hotel",
+        "latitude": -29.8563567,
+        "longitude": 31.0384155,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Moses Mabhida Arch",
+        "category": "Attraction",
+        "latitude": -29.8290034,
+        "longitude": 31.0302484,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Garden Court uMhlanga",
+        "category": "Hotel",
+        "latitude": -29.7239756,
+        "longitude": 31.070109,
+        "address": "Corner of Aurora Drive and Centenary Boulevard",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Queensburgh Caravan Resort",
+        "category": "Caravan_site",
+        "latitude": -29.8619671,
+        "longitude": 30.9059139,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "KZNSA Gallery and Cafe",
+        "category": "Gallery",
+        "latitude": -29.8599504,
+        "longitude": 30.9968831,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Dolphin Stadium Stands",
+        "category": "Attraction",
+        "latitude": -29.8672847,
+        "longitude": 31.0445859,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Seal Stadium Stands",
+        "category": "Attraction",
+        "latitude": -29.8669202,
+        "longitude": 31.0452692,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Mitchell Park Zoo",
+        "category": "Zoo",
+        "latitude": -29.8252818,
+        "longitude": 31.0120318,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "KwaZulu-Natal Sharks Board",
+        "category": "Yes",
+        "latitude": -29.7245,
+        "longitude": 31.0718775,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Cabana Beach Resort",
+        "category": "Hotel",
+        "latitude": -29.7239083,
+        "longitude": 31.0882883,
+        "address": "Lagoon Drive",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "uMhlanga Sands Resort",
+        "category": "Hotel",
+        "latitude": -29.7207094,
+        "longitude": 31.0899669,
+        "address": "Lagoon Drive",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Beverly Hills",
+        "category": "Hotel",
+        "latitude": -29.7275536,
+        "longitude": 31.0876529,
+        "address": "Lighthouse Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Garden Court South Beach",
+        "category": "Hotel",
+        "latitude": -29.857395,
+        "longitude": 31.0390611,
+        "address": "OR Tambo Parade",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Holocaust & Genocide Centre",
+        "category": "Museum",
+        "latitude": -29.8492911,
+        "longitude": 31.0339745,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Durban Funworld",
+        "category": "Theme_park",
+        "latitude": -29.854101,
+        "longitude": 31.0390444,
+        "address": "OR Tambo Parade",
+        "opening_hours": "Fr-Su 11:00-17:00"
+    },
+    {
+        "name": "SUN1 Durban",
+        "category": "Hotel",
+        "latitude": -29.8462796,
+        "longitude": 31.0248951,
+        "address": "Masabalala Yengwa Ave, Stamford Hill",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Hilton Durban",
+        "category": "Hotel",
+        "latitude": -29.852799,
+        "longitude": 31.0286959,
+        "address": "Walnut Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Old Court House Museum",
+        "category": "Museum",
+        "latitude": -29.8583431,
+        "longitude": 31.0275835,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Gordon Gardens",
+        "category": "Hotel",
+        "latitude": -29.8292925,
+        "longitude": 31.0190409,
+        "address": "Gordon Road",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Umkhumbane Museum",
+        "category": "Museum",
+        "latitude": -29.8631762,
+        "longitude": 30.9670268,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Moses Mabhida Stadium",
+        "category": "Attraction",
+        "latitude": -29.8289952,
+        "longitude": 31.0303661,
+        "address": "Durban, KZN",
+        "opening_hours": "09:00 - 17:00"
+    },
+    {
+        "name": "Southern Sun Elangeni & Maharani",
+        "category": "Hotel",
+        "latitude": -29.8462231,
+        "longitude": 31.0346121,
+        "address": "Snell Parade",
+        "opening_hours": "09:00 - 17:00"
+    }
+]
