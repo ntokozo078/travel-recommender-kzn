@@ -513,3 +513,10 @@ button { font: inherit; color: inherit; }
 /* card buttons: never break "＋ Trip" over two lines; wrap the row instead of squeezing */
 .card-foot .btn { white-space: nowrap; }
 .card-foot > span:last-child { flex-wrap: wrap; justify-content: flex-end; }
+
+/* area awareness: a quiet, collapsed note; plain numbers only */
+.area-note { margin: .4rem 0; font-size: .85rem; color: var(--muted, #5b5b5b); }
+.area-note summary { cursor: pointer; font-weight: 600; }
+.area-note ul { list-style: none; margin: .3rem 0; padding: 0; }
+.area-note li { display: flex; justify-content: space-between; gap: .75rem; border-bottom: 1px dotted rgba(128,128,128,.35); padding: .15rem 0; }
+.area-note p { margin: .3rem 0; }

@@ -6,7 +6,7 @@ Unknown always stays None; we never fill a gap with a guess.
 import re
 
 # Priority order when an element carries several of these keys.
-KEY_PRIORITY = ("amenity", "leisure", "sport", "tourism")
+KEY_PRIORITY = ("amenity", "leisure", "sport", "tourism", "shop")
 
 # (key, value) -> (category, subcategory slug or None, indoor?)
 # is_indoor is a heuristic from the venue type (it feeds the weather rules), not a surveyed fact.
@@ -33,6 +33,19 @@ RULES = {
     ("tourism", "zoo"): ("Nature", None, False),
     ("tourism", "aquarium"): ("Entertainment", None, True),
     ("tourism", "attraction"): ("Entertainment", None, False),
+    # Food and shopping. Indoor is a heuristic from the venue type, like the others.
+    ("amenity", "restaurant"): ("Food", "restaurant", True),
+    ("amenity", "cafe"): ("Food", "cafe", True),
+    ("amenity", "fast_food"): ("Food", "fast_food", True),
+    ("amenity", "food_court"): ("Food", "food_court", True),
+    ("amenity", "marketplace"): ("Food", "market", False),
+    ("amenity", "ice_cream"): ("Food", "ice_cream", True),
+    ("shop", "mall"): ("Shopping", "mall", True),
+    ("shop", "department_store"): ("Shopping", "department_store", True),
+    ("shop", "supermarket"): ("Shopping", "supermarket", True),
+    ("shop", "craft"): ("Shopping", "craft", True),
+    ("shop", "gift"): ("Shopping", "gift", True),
+    ("shop", "souvenir"): ("Shopping", "souvenir", True),
     # Places to sleep (their own category, region-grouped in the app):
     ("tourism", "hotel"): ("Stay", "hotel", True),
     ("tourism", "guest_house"): ("Stay", "guest_house", True),

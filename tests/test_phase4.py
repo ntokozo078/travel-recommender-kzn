@@ -333,14 +333,14 @@ def test_api_tourist_mode_caps_each_category(app, client, fake_weather):
         db.session.commit()
     plain = client.get("/api/recommend?limit=12&at=20:00&loadshedding=on").get_json()          # generators win during an outage
     assert sum(r["category"] == "Shopping" for r in plain["results"]) > 3             # without the mode malls take over
-    assert plain["tourist_mode"] == {"enabled": False, "cap_per_category": None}
+    assert plain["tourist_mode"] == {"enabled": False, "cap_per_category": None, "cap_per_subcategory": None}
 
     mixed = client.get("/api/recommend?limit=12&at=20:00&loadshedding=on&tourist=1").get_json()
     counts = {}
     for r in mixed["results"]:
         counts[r["category"]] = counts.get(r["category"], 0) + 1
     assert len(mixed["results"]) == 12 and max(counts.values()) <= 3 and len(counts) >= 4
-    assert mixed["tourist_mode"] == {"enabled": True, "cap_per_category": 3}
+    assert mixed["tourist_mode"] == {"enabled": True, "cap_per_category": 3, "cap_per_subcategory": 2}
 
 
 def test_tourist_mode_is_ignored_when_a_category_is_chosen(client, fake_weather):

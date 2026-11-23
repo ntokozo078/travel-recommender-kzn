@@ -183,7 +183,7 @@ flowchart TD
     A --> Q
     V --> Q
     Q --> O["sort best first"]
-    O --> K["tourist mode: at most a quarter of the list per category"]
+    O --> K["tourist mode: at most a quarter of the list per category, 2 per subcategory"]
     K --> R["results with reasons"]
 ```
 
@@ -202,7 +202,7 @@ flowchart TD
 | Distance from you (only when you share a location) | up to -6 |
 | `vibe=`: matching category or subcategory, price for `budget`, "often 18+" for `family` | see `ml_engine/recommender.py` |
 
-`tourist=1` (with category "All") keeps one category from filling the top results: at most a quarter of the list (3 of 12, 1 of 3) per category. `at=21:30` previews another time of day and `date=` another day. Places to stay are kept out of the "All" ranking because a hotel is not a thing to do.
+`tourist=1` (with category "All") keeps one category from filling the top results: at most a quarter of the list (3 of 12, 1 of 3) per category, and at most 2 places of one subcategory (so malls or cafes cannot fill a category's share). Food and Shopping places loaded from OpenStreetMap are capped at 150 per region and subcategory when they are imported. `at=21:30` previews another time of day and `date=` another day. Places to stay are kept out of the "All" ranking because a hotel is not a thing to do.
 
 ### Where places come from: the ETL
 
@@ -428,10 +428,26 @@ python main.py --from-file FILE             # a saved cache file, or the old dur
 ```
 
 - **Source:** OpenStreetMap through the public Overpass API (no key). The province is covered by querying each district boundary in turn (`etl_pipeline/regions.py`, which also maps districts to your regions, so edit it there). One request at a time, a User-Agent, retries with backoff, and a pause between requests. Raw results are cached in `instance/cache/` (git-ignored), so re-runs make no requests while the cache is fresh. Cached results made by an older query are detected and refetched automatically.
-- **What it pulls:** amenity nightclub, bar, pub, cinema, theatre, casino, arts_centre, events_venue, biergarten; leisure bowling_alley, ice_rink, amusement_arcade, miniature_golf, water_park, trampoline_park, escape_game, dance; tourism theme_park, zoo, aquarium, attraction, museum, gallery, and the places to stay hotel, guest_house, hostel, chalet, camp_site; sport=karting. Unnamed features are skipped, and so are apartments, motels and caravan sites.
+- **What it pulls:** food and shopping (amenity restaurant, cafe, fast_food, food_court, ice_cream, marketplace; shop mall, department_store, supermarket, craft, gift, souvenir, with at most 150 places per region and subcategory, keeping the best-described), amenity nightclub, bar, pub, cinema, theatre, casino, arts_centre, events_venue, biergarten; leisure bowling_alley, ice_rink, amusement_arcade, miniature_golf, water_park, trampoline_park, escape_game, dance; tourism theme_park, zoo, aquarium, attraction, museum, gallery, and the places to stay hotel, guest_house, hostel, chalet, camp_site; sport=karting. Unnamed features are skipped, and so are apartments, motels and caravan sites.
 - **What it stores:** category and subcategory from the tags (`etl_pipeline/osm_mapping.py`), the original opening-hours text, website, phone and `min_age` when tagged, and `open_evening` / `open_late` only when the hours text proves them (otherwise unknown). Safety and price are never set.
 - **Safe to repeat:** places are matched by OSM id, then by name within 150 m. Re-running never duplicates, and curated places are never changed. It prints a summary by region and category so you can see coverage gaps.
 - **Deployed copy:** hosts with a throw-away disk start empty, so a complete run is saved with `--write-snapshot` as `data/osm_places.json` and loaded at start-up (`LOAD_OSM_SNAPSHOT=0` turns that off). It is only written from a full run of every chunk.
+
+### Area notes (optional SAPS context)
+
+An optional, neutral "About this area" note can appear on place cards. It needs a file **you** download from the South African Police Service (station crime statistics). Nothing is scraped and nothing is bundled.
+
+```
+# 1. save the SAPS file as CSV in data/raw/ (git-ignored)
+# 2. build the context file (one polite Overpass request for police station positions, cached)
+python scripts/build_safety_context.py
+python scripts/build_safety_context.py --input data/raw/saps.csv --categories robbery,burglary
+```
+
+- **CSV layout:** a station column, a category column and either a count column (long format) or one column per period such as `2023/2024` (wide format; the latest is used). See `etl_pipeline/safety.py`. Rows without a numeric count are skipped, never turned into zero.
+- **Matching:** a SAPS station is attached to a map position only when its name matches an OpenStreetMap police station exactly (after removing words like "police station"). Names that match nothing, or two OSM stations, are listed and left out. Coordinates are never guessed.
+- **Output:** `data/safety_context.json` (raw counts per station, source and period). When the file is absent the app simply shows no area notes.
+- **In the app:** places within 15 km of a matched station get an optional `area_awareness` object in the API and a collapsed note on the card, with the source and period in the footer. It never changes a score or `safety_score`, and it is not a safety rating: the counts are not adjusted for population or visitors and say nothing about a venue.
 
 ## Tests and CI
 
@@ -475,6 +491,7 @@ python run.py
 | Load-shedding | **Simulated** (a made-up evening schedule), labelled wherever it is shown | No live Eskom feed is connected. |
 | Travel info | `data/info.json` | General facts only, no prices or other phone numbers; anything that can vary says "check locally". Not official advice. |
 | Distances in "My trip" | Straight-line (great circle) | Approximate and labelled so: not driving distances or times. |
+| Area notes (optional) | A SAPS crime-statistics file you download yourself, matched to OpenStreetMap police stations | Only present when you build `data/safety_context.json`. Raw counts per police station, not per venue, not adjusted for population or visitors; stations whose names do not match exactly are left out. Source and period are shown in the footer. |
 | Region grouping | `etl_pipeline/regions.py` | A district-level approximation (e.g. "Drakensberg" is two whole districts). Edit it to change the grouping. |
 
 The app shows tips and ratings, never a verdict that a venue or area is safe or unsafe.
@@ -497,6 +514,7 @@ The app shows tips and ratings, never a verdict that a venue or area is safe or 
 ## Credits and attribution
 
 - Place data: [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, available under the [Open Database Licence](https://opendatacommons.org/licenses/odbl/).
+- Area notes (when enabled): South African Police Service (SAPS) crime statistics, with police station positions from OpenStreetMap.
 - Weather, forecast and marine data: [Open-Meteo.com](https://open-meteo.com/) (CC BY 4.0).
 - Maps: [Leaflet](https://leafletjs.com/) and [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster), with OpenStreetMap tiles.
 - Fonts: Fraunces and Inter from Google Fonts (SIL Open Font License).

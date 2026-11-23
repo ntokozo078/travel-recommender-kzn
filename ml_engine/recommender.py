@@ -230,18 +230,22 @@ def category_cap(limit):
     return max(1, ceil(limit / 4))
 
 
-def diversify(ranked, limit, cap=None):
-    """Top `limit` of an already ranked list with at most `cap` per category.
+def diversify(ranked, limit, cap=None, sub_cap=None):
+    """Top `limit` of an already ranked list with at most `cap` per category and, when `sub_cap` is given,
+    at most `sub_cap` per (category, subcategory), so e.g. malls or cafes cannot fill a category's share.
 
     Best-first order is kept. If there are too few categories to fill the list, the best leftovers
     are appended so the caller still gets `limit` results."""
     cap = cap or category_cap(limit)
-    picked, leftovers, used = [], [], {}
+    picked, leftovers, used, used_sub = [], [], {}, {}
     for item in ranked:
         key = item.get("category")
-        if used.get(key, 0) < cap and len(picked) < limit:
+        sub_key = (key, item.get("subcategory")) if sub_cap and item.get("subcategory") else None
+        if used.get(key, 0) < cap and len(picked) < limit and (sub_key is None or used_sub.get(sub_key, 0) < sub_cap):
             picked.append(item)
             used[key] = used.get(key, 0) + 1
+            if sub_key:
+                used_sub[sub_key] = used_sub.get(sub_key, 0) + 1
         else:
             leftovers.append(item)
     picked.extend(leftovers[: max(0, limit - len(picked))])

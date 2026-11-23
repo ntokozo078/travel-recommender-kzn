@@ -32,7 +32,7 @@ def test_requested_subcategories_exist():
         "Cinema", "Theatre", "Casino", "Bowling", "Ice skating", "Arcade", "Comedy", "Mini golf",
         "Go-karting", "Water park", "Amusement park", "Stadium / events venue", "Music venue"}
     assert set(SUBCATEGORIES["Stay"].values()) == {"Hotel", "Guest house", "Hostel", "Chalet", "Camp site"}
-    assert len(SUBCATEGORY_LABELS) == 25                     # slugs are unique across categories
+    assert len(SUBCATEGORY_LABELS) == 37                     # slugs are unique across categories
     assert is_valid_subcategory("nightclub") and not is_valid_subcategory("strip_club")
 
 

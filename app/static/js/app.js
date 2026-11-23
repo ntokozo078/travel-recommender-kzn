@@ -892,6 +892,19 @@
     const VIBE_OPTIONS = [["", "Any"], ["nightlife", "Nightlife"], ["family", "Family"], ["nature", "Nature"],
         ["culture", "Culture"], ["food", "Food"], ["budget", "Budget"]];
 
+    /** Neutral, collapsible area note from SAPS counts. Raw numbers only: no rating, no verdict. */
+    function areaBlock(a) {
+        if (!a || !Array.isArray(a.categories) || !a.categories.length) return "";
+        const rows = a.categories.map((c) => `<li><span>${esc(c.category)}</span> <b>${esc(Number(c.count).toLocaleString("en-ZA"))}</b></li>`).join("");
+        return `<details class="area-note">
+              <summary>About this area</summary>
+              <p>Nearest police station in our data: <b>${esc(a.station)}</b> (about ${esc(a.distance_km)} km away).
+                 Incidents reported to it${a.period ? ` in ${esc(a.period)}` : ""}:</p>
+              <ul>${rows}</ul>
+              <p class="muted">${esc(a.note)} Source: ${esc(a.source)}.</p>
+            </details>`;
+    }
+
     function tripCard(p, i, opts = {}) {
         const reasons = p.reasons.map((r) => `<span class="pill ${esc(r.tone)}">${esc(r.text)}${r.points ? ` <b class="pts" title="Points added to or taken from the ranking">${r.points > 0 ? "+" : "−"}${Math.abs(r.points)}</b>` : ""}</span>`).join("");
 
@@ -934,6 +947,7 @@
             <p class="card-desc clamp">${esc(p.description)}</p>
             ${reasons ? `<div class="reasons">${reasons}</div>` : ""}
             ${p.safety_rated ? "" : `<p class="unrated" title="No safety rating is available for this place. This is not a judgement either way.">ⓘ Not safety-rated</p>`}
+            ${areaBlock(p.area_awareness)}
             ${opts.stay ? "" : `<p class="stays-link"><a href="${esc(staysUrl)}" target="_blank" rel="noopener noreferrer">🛏️ Find stays near here</a></p>`}
             <div class="card-foot">
               <span>${p.is_indoor ? "🏠 Indoor" : "🌳 Outdoor"}${p.has_generator ? " · 🔌 Generator" : ""}${p.price_tier ? ` · <span class="price-tag" title="Price level">${esc(p.price_tier)}</span>` : ""}</span>

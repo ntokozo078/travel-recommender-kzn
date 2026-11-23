@@ -17,11 +17,13 @@ from sqlalchemy.exc import SQLAlchemyError
 from app import db
 from app.models import ClanCorrection, Place
 from app.services import FORECAST_DAYS, ContextEngine
+from etl_pipeline.safety import area_awareness, load_context
 from app.taxonomy import CATEGORIES, REGIONS, STAY, SUBCATEGORY_LABELS, is_valid_subcategory
 from ml_engine import VIBES, category_cap, diversify, is_open_now, open_late_flag, recommend_places
 from ml_engine.recommender import haversine_km
 
 main = Blueprint("main", __name__)
+SUBCATEGORY_CAP = 2          # tourist mix: at most this many of one subcategory (e.g. malls) in the results
 _context = {}          # created lazily so it picks up app config
 _heritage_cache = {}
 
@@ -92,9 +94,39 @@ def _float_arg(name, default, low, high):
 
 
 # ------------------------------------------------------------------ pages
+def _safety_context():
+    """SAPS area context (data/safety_context.json), re-read only when the file changes. None when absent."""
+    path = current_app.config["DATA_DIR"] / "safety_context.json"
+    try:
+        stamp = path.stat().st_mtime_ns
+    except OSError:
+        return None
+    key = ("safety", str(path))
+    if _heritage_cache.get(key, (None,))[0] != stamp:
+        _heritage_cache[key] = (stamp, load_context(path))
+    return _heritage_cache[key][1]
+
+
+def _attach_area(places):
+    """Add an optional `area_awareness` object to each place dict. Never changes a score, never removes a place."""
+    context = _safety_context()
+    if not context:
+        return places
+    for place in places:
+        info = area_awareness(context, place.get("latitude"), place.get("longitude"))
+        if info:
+            place["area_awareness"] = info
+    return places
+
+
 def _page_context():
     """Facts for the server-rendered <noscript> summary. A missing table or file must never break the page."""
-    context = {"heritage": HERITAGE_SECTIONS, "categories": [], "place_total": 0, "emergency": [], "info_note": ""}
+    context = {"heritage": HERITAGE_SECTIONS, "categories": [], "place_total": 0, "emergency": [], "info_note": "",
+               "safety_credit": None}
+    area = _safety_context()
+    if area:
+        context["safety_credit"] = {"source": area.get("source"), "period": area.get("period"),
+                                    "generated": area.get("generated")}
     try:
         rows = dict(db.session.query(Place.category, func.count(Place.id)).group_by(Place.category).all())
         context["categories"] = [{"name": c, "count": rows[c], "is_stay": c == STAY} for c in CATEGORIES if c in rows]
@@ -261,9 +293,9 @@ def places_near():
         ((haversine_km(lat, lon, p.latitude, p.longitude), p) for p in query.all()),
         key=lambda pair: pair[0],
     )[:limit]
-    return jsonify(results=[
+    return jsonify(results=_attach_area([
         {**p.to_dict(), "distance_km": round(d, 1)} for d, p in ranked
-    ])
+    ]))
 
 
 # ------------------------------------------------------------------ recommender API
@@ -397,14 +429,15 @@ def recommend_api():
     ranked = recommend_places(places, prefs, ctx)
     # Tourist mode: no single category may fill the top results (only meaningful across all categories).
     mix = tourist and category in (None, "", "All")
-    results = diversify(ranked, limit) if mix else ranked[:limit]
+    results = diversify(ranked, limit, sub_cap=SUBCATEGORY_CAP) if mix else ranked[:limit]
     return jsonify(
         context=ctx,
         category=category,
         vibes=vibes,
-        tourist_mode={"enabled": bool(mix), "cap_per_category": category_cap(limit) if mix else None},
+        tourist_mode={"enabled": bool(mix), "cap_per_category": category_cap(limit) if mix else None,
+                      "cap_per_subcategory": SUBCATEGORY_CAP if mix else None},
         total=len(ranked),
-        results=results,
+        results=_attach_area(results),
         # every matching place, for the map (clusters) even when the list only shows the first page
         points=[{"id": r["id"], "name": r["name"], "category": r["category"],
                  "latitude": r["latitude"], "longitude": r["longitude"]} for r in ranked] if want_points else None,

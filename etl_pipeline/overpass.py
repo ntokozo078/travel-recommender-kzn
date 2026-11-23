@@ -51,7 +51,12 @@ def _backoff(attempt, retry_after):
 
 def fetch_elements(chunk, *, post=requests.post, sleep=time.sleep, urls=OVERPASS_URLS, log=print):
     """Return the raw Overpass elements for one chunk. Raises OverpassError after the last failure."""
-    query = build_query(chunk.area_id, keys=chunk.keys)
+    return fetch_query(build_query(chunk.area_id, keys=chunk.keys), chunk.name,
+                       post=post, sleep=sleep, urls=urls, log=log)
+
+
+def fetch_query(query, label, *, post=requests.post, sleep=time.sleep, urls=OVERPASS_URLS, log=print):
+    """POST any Overpass query politely (retries with backoff on both endpoints) and return its elements."""
     last = None
     for url in urls:
         for attempt in range(ATTEMPTS_PER_ENDPOINT):
@@ -68,13 +73,13 @@ def fetch_elements(chunk, *, post=requests.post, sleep=time.sleep, urls=OVERPASS
                 elif resp.status_code in RETRYABLE_STATUS:
                     last, retry_after = f"HTTP {resp.status_code}", resp.headers.get("Retry-After")
                 else:
-                    raise OverpassError(f"{chunk.name}: HTTP {resp.status_code} (query rejected)")
+                    raise OverpassError(f"{label}: HTTP {resp.status_code} (query rejected)")
             if attempt + 1 < ATTEMPTS_PER_ENDPOINT:
                 wait = _backoff(attempt, retry_after)
                 log(f"    {last} from {url}; waiting {wait}s before one retry")
                 sleep(wait)
         log(f"    giving up on {url}: {last}")
-    raise OverpassError(f"{chunk.name}: all endpoints failed ({last})")
+    raise OverpassError(f"{label}: all endpoints failed ({last})")
 
 
 # ---------------------------------------------------------------- cache (instance/cache/, git-ignored)

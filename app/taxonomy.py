@@ -14,6 +14,22 @@ SUBCATEGORIES = {
         "chalet": "Chalet",
         "camp_site": "Camp site",
     },
+    "Food": {
+        "restaurant": "Restaurant",
+        "cafe": "Cafe",
+        "fast_food": "Fast food",
+        "food_court": "Food court",
+        "market": "Market",
+        "ice_cream": "Ice cream",
+    },
+    "Shopping": {
+        "mall": "Mall",
+        "department_store": "Department store",
+        "supermarket": "Supermarket",
+        "craft": "Crafts",
+        "gift": "Gifts",
+        "souvenir": "Souvenirs",
+    },
     "Nightlife": {
         "nightclub": "Nightclub",
         "bar": "Bar",

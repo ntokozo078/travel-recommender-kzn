@@ -14,6 +14,11 @@ from app.taxonomy import CATEGORIES, REGIONS
 from etl_pipeline import osm_mapping as om
 from ml_engine.recommender import haversine_km
 
+# Food and shopping are far more common than the other categories (thousands of cafes), so they are capped:
+# per region and subcategory, keep the best-described places. This stops one subcategory (or one big city)
+# from drowning the rest. Other categories are never capped.
+CAPPED_CATEGORIES = ("Food", "Shopping")
+MAX_PER_REGION_SUBCATEGORY = 150
 ATTRIBUTION = "Contains data from OpenStreetMap contributors, available under the Open Database Licence (ODbL)."
 DUPLICATE_RADIUS_M = 150
 
@@ -121,14 +126,35 @@ def transform(elements):
             "price_tier": None,            # OSM has no prices: unknown
             "source": "osm",
         })
+    rows = cap_rows(rows)
     rows.sort(key=lambda r: (r["region"] or "~", r["category"], r["name"].lower()))
     return rows
+
+
+def _richness(row):
+    """How much real information a row carries: used only to choose which places survive the cap."""
+    return sum(1 for key in ("opening_hours_raw", "website", "phone", "address") if row.get(key))         + (1 if "live_music" in (row.get("tags") or "") or "wheelchair" in (row.get("tags") or "") else 0)
+
+
+def cap_rows(rows, limit=MAX_PER_REGION_SUBCATEGORY):
+    """Keep at most `limit` Food/Shopping rows per (region, subcategory), best-described first
+    (ties broken by name so the result is stable). Everything else passes through untouched."""
+    groups, out = defaultdict(list), []
+    for row in rows:
+        if row["category"] in CAPPED_CATEGORIES:
+            groups[(row["region"], row["subcategory"])].append(row)
+        else:
+            out.append(row)
+    for group in groups.values():
+        group.sort(key=lambda r: (-_richness(r), r["name"].lower(), r["osm_id"] or ""))
+        out.extend(group[:limit])
+    return out
 
 
 # ---------------------------------------------------------------- reporting + snapshot
 def summarize(rows):
     """Text table of rows per region and category, plus the gaps worth looking at."""
-    focus = ("Nightlife", "Entertainment")
+    focus = ("Nightlife", "Entertainment", "Food", "Shopping")
     counts = defaultdict(int)
     for r in rows:
         counts[(r["region"] or "Unassigned", r["category"])] += 1

@@ -7,3 +7,6 @@ __pycache__/
 instance/
 *.db
 .pytest_cache/
+
+# Raw downloads (e.g. SAPS crime statistics) are inputs only; never commit them
+data/raw/
