@@ -119,6 +119,16 @@ def test_github_actions_runs_pytest_on_push():
     assert "pip install -r requirements.txt pytest" in workflow and "python -m pytest" in workflow
 
 
+def test_github_actions_workflow_is_valid_yaml_with_the_expected_shape():
+    yaml = pytest.importorskip("yaml")          # PyYAML is not an app dependency; CI image and most machines have it
+    workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8"))
+    triggers = workflow.get("on", workflow.get(True))            # YAML 1.1 reads a bare `on` as True
+    assert "push" in triggers and "pull_request" in triggers
+    job = workflow["jobs"]["pytest"]
+    assert job["runs-on"] == "ubuntu-latest" and job["strategy"]["matrix"]["python-version"]
+    assert [step.get("uses") or step.get("run") for step in job["steps"]][-1].endswith("pytest -q")
+
+
 # ---- ETL mapping from a fixture file (offline) --------------------------------------------------------------------
 @pytest.fixture(scope="module")
 def fixture_rows():
