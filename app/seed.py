@@ -386,9 +386,6 @@ def build_places():
             latitude=-28.8333, longitude=31.7167, is_indoor=False, has_generator=False, safety_score=3.8
         )
     ]
-    for p in places:
-        if not p.price_tier:
-            p.price_tier = "$$"
     return places
 
 

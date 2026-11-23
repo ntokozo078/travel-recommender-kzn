@@ -1,0 +1,3 @@
+{
+  "_format": "Optional hand-maintained facts for places, keyed by exact place name. Allowed fields: price_tier ($, $$ or $$$), safety_score (0-5), opening_hours (text). Only add values you can source; omit a field or use null when unknown. Applied at every app start. Entries whose key starts with an underscore are ignored."
+}

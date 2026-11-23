@@ -27,6 +27,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     DATA_DIR = BASE_DIR / "data"
+    # Load data/osm_places.json (the ETL snapshot) at start-up. Set LOAD_OSM_SNAPSHOT=0 to skip.
+    LOAD_OSM_SNAPSHOT = os.environ.get("LOAD_OSM_SNAPSHOT", "1") == "1"
     DEFAULT_LAT = -29.8587      # Durban
     DEFAULT_LON = 31.0218
     WEATHER_TIMEOUT = 4         # seconds

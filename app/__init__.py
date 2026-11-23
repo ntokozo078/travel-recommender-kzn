@@ -33,7 +33,16 @@ def create_app(config_class=Config):
     app.register_blueprint(main)
 
     with app.app_context():
+        from app.migrations import run_migrations
+        from app.overrides import apply_overrides
         from app.seed import seed_if_empty
+
+        db.create_all()              # only creates missing tables, never drops anything
+        run_migrations()
         seed_if_empty()
+        if app.config.get("LOAD_OSM_SNAPSHOT"):
+            from app.osm_snapshot import load_snapshot
+            load_snapshot(app.config["DATA_DIR"] / "osm_places.json")
+        apply_overrides(app.config["DATA_DIR"] / "place_overrides.json")
 
     return app

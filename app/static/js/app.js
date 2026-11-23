@@ -15,7 +15,7 @@
     ];
     const CATEGORY_EMOJI = {
         All: "🗺️", Beach: "🏖️", Nature: "🌿", Adventure: "🧗", Culture: "🏛️",
-        Food: "🥘", Shopping: "🛍️", Entertainment: "🎉",
+        Food: "🥘", Shopping: "🛍️", Entertainment: "🎉", Nightlife: "🌙", Stay: "🛏️",
     };
     const PAGE = 12;
     const FALLBACK_IMG = "data:image/svg+xml;utf8," + encodeURIComponent(
@@ -28,8 +28,10 @@
     const state = {
         cache: {},                                   // heritage json by section
         categories: null,
-        trip: { category: "All", loadshedding: "auto", indoor: false, limit: PAGE, loc: null },
-        map: null, clanMap: null, markers: [],
+        filters: null,
+        trip: { category: "All", loadshedding: "auto", indoor: false, price: "", subcategory: "", region: "",
+                openNow: false, openLate: false, vibe: "", mix: false, at: "", date: "", limit: PAGE, loc: null },
+        map: null, clanMap: null, layer: null, markers: [], stayLimits: {}, places: new Map(),
         token: 0,                                    // guards against stale async renders
     };
 
@@ -37,6 +39,30 @@
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
     const view = $("#view");
+
+    // ---- page title and description, kept in step with the hash route (tabs, history, link previews)
+    const SITE = "iKhaya KZN";
+    const DEFAULT_TITLE = `${SITE} · Zulu heritage & KwaZulu-Natal trip planner`;
+    const DEFAULT_DESCRIPTION = "Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather, time of day and load-shedding.";
+    function setMeta(title, description = DEFAULT_DESCRIPTION) {
+        const full = title ? `${title} · ${SITE}` : DEFAULT_TITLE;
+        document.title = full;
+        const set = (selector, value) => { const el = document.querySelector(selector); if (el) el.setAttribute("content", value); };
+        set('meta[name="description"]', description);
+        set('meta[property="og:title"]', full);
+        set('meta[property="og:description"]', description);
+        set('meta[property="og:url"]', location.href);
+        set('meta[name="twitter:title"]', full);
+        set('meta[name="twitter:description"]', description);
+    }
+    const TRIP_META = {
+        All: ["Plan a trip in KwaZulu-Natal", "Places across KwaZulu-Natal ranked for the weather, time of day and load-shedding on the day you choose."],
+        Nightlife: ["Nightlife in KwaZulu-Natal", "Bars, pubs, clubs and more across KwaZulu-Natal, ranked for the time of day, with opening hours where they are known."],
+        Entertainment: ["Entertainment in KwaZulu-Natal", "Cinemas, theatres, casinos, water parks and more across KwaZulu-Natal, ranked for the weather and time of day."],
+        Stay: ["Places to stay in KwaZulu-Natal", "Hotels, guest houses, hostels, chalets and camp sites across KwaZulu-Natal, grouped by region."],
+    };
+    const tripMeta = (category) => TRIP_META[category]
+        || [`Plan a trip: ${category}`, `${category} places across KwaZulu-Natal, ranked for the weather, time of day and load-shedding.`];
 
     const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) =>
         ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -98,7 +124,17 @@
             if (parts[0] === "heritage") {
                 const id = HERITAGE.some((s) => s.id === parts[1]) ? parts[1] : "clans";
                 highlightNav("heritage", id);
+                const sec = HERITAGE.find((x) => x.id === id);
+                setMeta(id === "clans" ? "Surname & clan explorer" : `${sec.label}: Zulu heritage`, `${sec.blurb}.`);
                 await renderHeritage(id, token, query.get("q"));
+            } else if (parts[0] === "itinerary") {
+                highlightNav("itinerary");
+                setMeta("My trip", "Your saved places grouped by day, with approximate straight-line distances. Saved in this browser only.");
+                renderItinerary(token);
+            } else if (parts[0] === "info") {
+                highlightNav("info");
+                setMeta("Travel info for KwaZulu-Natal", "Emergency numbers, getting around, money and tipping, SIM cards, etiquette, and load-shedding and water-outage tips for visitors.");
+                await renderInfo(token);
             } else if (parts[0] === "trip") {
                 highlightNav("trip");
                 if (query.get("category")) state.trip.category = query.get("category");
@@ -108,16 +144,17 @@
                     state.trip.loc = { lat, lon, label: (query.get("from") || "").slice(0, 80) || null };
                     state.trip.category = query.get("category") || "All";
                 }
+                setMeta(...tripMeta(state.trip.category));
                 await renderTrip(token);
             } else {
                 highlightNav("home");
+                setMeta("");
                 await renderHome(token);
             }
         } catch (err) {
             console.error(err);
             if (token === state.token) setView(failure("We couldn't load that page. Is the server running?"));
         }
-        document.title = "iKhaya KZN · Heritage & Trip Planner";
     }
 
     // ------------------------------------------------------------------ home
@@ -182,7 +219,7 @@
         </section>`);
 
         // live context + picks load independently so the page appears instantly
-        api("/api/recommend?limit=3").then((data) => {
+        api("/api/recommend?limit=3&tourist=1").then((data) => {   // tourist mode: three different kinds of place
             if (token !== state.token) return;
             $("#home-live").innerHTML = contextRows(data.context);
             $("#home-picks").innerHTML = data.results.map((p, i) => tripCard(p, i)).join("") ||
@@ -201,8 +238,8 @@
           <div><strong>${esc(w.condition)} · ${Math.round(w.temp_c)}°C</strong>
           <span>${esc(w.advice)}${w.source === "fallback" ? " (offline estimate)" : ""}</span></div></div>
         <div class="live-row"><div class="live-icon">${ctx.loadshedding ? "⚡" : "💡"}</div>
-          <div><strong>${ctx.loadshedding ? "Load-shedding likely" : "Power looks stable"}</strong>
-          <span>Simulated schedule, evenings 18:00–21:00</span></div></div>`;
+          <div><strong>${ctx.loadshedding ? "Load-shedding likely" : "Power looks stable"}<span class="sim-tag" title="No live Eskom feed: this follows a made-up evening schedule">Simulated</span></strong>
+          <span>Made-up schedule: evenings 18:00–21:00 South African time</span></div></div>`;
     }
 
     // ------------------------------------------------------------------ heritage
@@ -216,7 +253,6 @@
         const data = await loadSection(id);
         if (token !== state.token) return;
         const meta = HERITAGE.find((s) => s.id === id);
-        document.title = `${meta.label} · iKhaya KZN`;
         if (id === "clans") return renderClans(data.clans, q);
 
         setView(`
@@ -263,6 +299,264 @@
             <div class="card-foot">${visit}<span>📖 ${esc(it.attribution)}</span></div>
           </div>
         </article>`;
+    }
+
+    // ------------------------------------------------------------------ itinerary (kept in this browser only)
+    const TRIP_KEY = "ikhaya.itinerary.v1";
+    const MAX_TRIP_ITEMS = 60;
+    const MAX_TRIP_DAYS = 14;
+    let tripData = { start: "", days: [[]] };            // days: arrays of saved places
+
+    const clip = (v, n) => String(v ?? "").slice(0, n);
+    const fmtDay = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString("en-ZA", { weekday: "short", day: "numeric", month: "short" });
+    const addDays = (iso, n) => { const d = new Date(`${iso}T12:00:00`); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+
+    /** Rebuild a saved place from untrusted storage: right types, sane ranges, clipped text. */
+    function cleanItem(raw) {
+        if (!raw || typeof raw !== "object") return null;
+        const id = Number(raw.id), lat = Number(raw.lat), lon = Number(raw.lon);
+        if (![id, lat, lon].every(Number.isFinite) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return null;
+        const name = clip(raw.name, 150).trim();
+        if (!name) return null;
+        return {
+            id, name, lat, lon, category: clip(raw.category, 40), sub: clip(raw.sub, 60), region: clip(raw.region, 40),
+            address: clip(raw.address, 200), hours: clip(raw.hours, 255),
+            phone: /^[0-9+()\-. /]{5,40}$/.test(String(raw.phone || "")) ? String(raw.phone) : "",
+        };
+    }
+
+    function tripLoad() {
+        try {
+            const raw = JSON.parse(localStorage.getItem(TRIP_KEY) || "null");
+            if (raw && Array.isArray(raw.days)) {
+                const seen = new Set();
+                const days = raw.days.slice(0, MAX_TRIP_DAYS).map((d) => (Array.isArray(d) ? d : []).map(cleanItem)
+                    .filter((i) => i && !seen.has(i.id) && seen.add(i.id)).slice(0, MAX_TRIP_ITEMS));
+                tripData = { start: /^\d{4}-\d{2}-\d{2}$/.test(String(raw.start || "")) ? raw.start : "", days: days.length ? days : [[]] };
+            }
+        } catch { /* storage unavailable or corrupt: start with an empty trip */ }
+    }
+    function tripSave() {
+        try { localStorage.setItem(TRIP_KEY, JSON.stringify(tripData)); } catch { /* private mode: the trip lasts for this visit only */ }
+        updateTripBadge();
+    }
+    const tripItems = () => tripData.days.flat();
+    const tripHas = (id) => tripItems().some((i) => i.id === id);
+
+    function tripAdd(p) {
+        if (tripHas(p.id)) return false;
+        if (tripItems().length >= MAX_TRIP_ITEMS) { showToast(`Your trip is full (${MAX_TRIP_ITEMS} places).`); return false; }
+        const item = cleanItem({
+            id: p.id, name: p.name, lat: p.latitude, lon: p.longitude, category: p.category, sub: p.subcategory_label,
+            region: p.region, address: p.address, hours: p.opening_hours_raw || p.opening_hours, phone: p.phone,
+        });
+        if (!item) return false;
+        tripData.days[tripData.days.length - 1].push(item);
+        tripSave();
+        return true;
+    }
+    function tripRemove(id) {
+        tripData.days = tripData.days.map((d) => d.filter((i) => i.id !== id));
+        tripSave();
+    }
+    function tripMove(id, toDay) {
+        const item = tripItems().find((i) => i.id === id);
+        if (!item || !tripData.days[toDay]) return;
+        tripData.days = tripData.days.map((d) => d.filter((i) => i.id !== id));
+        tripData.days[toDay].push(item);
+        tripSave();
+    }
+    function tripShift(id, step) {
+        for (const day of tripData.days) {
+            const i = day.findIndex((x) => x.id === id), j = i + step;
+            if (i >= 0 && j >= 0 && j < day.length) { [day[i], day[j]] = [day[j], day[i]]; tripSave(); return; }
+        }
+    }
+    function tripAddDay() {
+        if (tripData.days.length < MAX_TRIP_DAYS) { tripData.days.push([]); tripSave(); }
+    }
+
+    function updateTripBadge() {
+        const badge = $("#trip-badge");
+        if (!badge) return;
+        const n = tripItems().length;
+        badge.hidden = n === 0;
+        badge.textContent = String(n);
+    }
+
+    let toastTimer = null;
+    function showToast(message) {
+        const el = $("#toast");
+        if (!el) return;
+        el.textContent = message;
+        el.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { el.hidden = true; }, 2600);
+    }
+
+    function syncTripButton(btn, id) {
+        const inTrip = tripHas(id);
+        btn.textContent = inTrip ? "✓ In trip" : "＋ Trip";
+        btn.classList.toggle("btn-in", inTrip);
+        btn.classList.toggle("btn-dark", !inTrip);
+        btn.setAttribute("aria-pressed", String(inTrip));
+    }
+
+    // one handler for every "+ Trip" button, wherever the card is shown
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-trip]");
+        if (!btn) return;
+        const id = Number(btn.dataset.trip);
+        if (tripHas(id)) {
+            tripRemove(id);
+            showToast("Removed from your trip");
+        } else {
+            const place = state.places.get(id);
+            if (place && tripAdd(place)) showToast(`Added to Day ${tripData.days.length}. Open My trip to plan it.`);
+        }
+        $$(`[data-trip="${id}"]`).forEach((b) => syncTripButton(b, id));
+    });
+
+    /** Straight-line distance between two points (great circle). It is NOT a driving distance. */
+    function straightKm(a, b) {
+        const rad = (d) => (d * Math.PI) / 180;
+        const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
+        const x = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
+        return 2 * 6371 * Math.asin(Math.sqrt(x));
+    }
+    const fmtKm = (km) => (km < 10 ? km.toFixed(1) : String(Math.round(km)));
+
+    const forecastCache = new Map();
+    function forecastFor(lat, lon) {
+        const key = `${lat.toFixed(1)},${lon.toFixed(1)}`;
+        if (!forecastCache.has(key)) {
+            forecastCache.set(key, api(`/api/forecast?lat=${lat}&lon=${lon}`).catch(() => ({ days: [] })));
+        }
+        return forecastCache.get(key);
+    }
+
+    function renderItinerary(token) {
+        const items = tripItems();
+        const rerender = () => renderItinerary(token);
+
+        const actions = h("div", { class: "it-actions no-print" },
+            h("label", { class: "field" }, "First day of your trip",
+                h("input", {
+                    type: "date", id: "trip-start", value: tripData.start || "",
+                    onchange: (e) => { tripData.start = /^\d{4}-\d{2}-\d{2}$/.test(e.target.value) ? e.target.value : ""; tripSave(); rerender(); },
+                })),
+            h("button", { class: "btn btn-dark btn-sm", type: "button", text: "＋ Add a day", onclick: () => { tripAddDay(); rerender(); } }),
+            h("button", { class: "btn btn-dark btn-sm", type: "button", text: "🖨️ Print", onclick: () => window.print() }),
+            items.length ? h("button", {
+                class: "link-btn", type: "button", text: "Clear trip",
+                onclick: () => { if (confirm("Remove every place from your trip?")) { tripData = { start: tripData.start, days: [[]] }; tripSave(); rerender(); } },
+            }) : null);
+
+        const days = tripData.days.map((day, di) => {
+            const iso = tripData.start ? addDays(tripData.start, di) : "";
+            let total = 0;
+            const rows = day.map((it, ii) => {
+                const prev = ii > 0 ? day[ii - 1] : null;
+                let leg = null;
+                if (prev) {
+                    const km = straightKm(prev, it);
+                    total += km;
+                    leg = h("li", { class: "it-leg", "aria-label": "Approximate straight-line distance" },
+                        `↓ about ${fmtKm(km)} km in a straight line (approximate)`);
+                }
+                const meta = [it.sub || it.category, it.region, it.address].filter(Boolean).join(" · ");
+                const row = h("li", { class: "it-item" },
+                    h("span", { class: "it-num", text: String(ii + 1) }),
+                    h("div", { class: "it-body" },
+                        h("strong", { text: it.name }),
+                        meta ? h("span", { class: "muted", text: meta }) : null,
+                        it.hours ? h("span", { class: "muted", text: `🕒 ${it.hours}` }) : null,
+                        it.phone ? h("a", { href: `tel:${it.phone.replace(/[^0-9+]/g, "")}`, text: `📞 ${it.phone}` }) : null),
+                    h("div", { class: "it-controls no-print" },
+                        h("button", { class: "icon-btn", type: "button", title: "Move up", "aria-label": `Move ${it.name} up`, disabled: ii === 0, text: "↑", onclick: () => { tripShift(it.id, -1); rerender(); } }),
+                        h("button", { class: "icon-btn", type: "button", title: "Move down", "aria-label": `Move ${it.name} down`, disabled: ii === day.length - 1, text: "↓", onclick: () => { tripShift(it.id, 1); rerender(); } }),
+                        h("select", {
+                            "aria-label": `Move ${it.name} to another day`,
+                            onchange: (e) => { tripMove(it.id, Number(e.target.value)); rerender(); },
+                        }, tripData.days.map((_, k) => h("option", { value: String(k), selected: k === di, text: `Day ${k + 1}` }))),
+                        h("button", { class: "icon-btn", type: "button", title: "Remove", "aria-label": `Remove ${it.name}`, text: "✕", onclick: () => { tripRemove(it.id); rerender(); } })));
+                return [leg, row];
+            });
+            const forecastSlot = h("span", { class: "it-forecast muted" });
+            if (iso && day.length) {
+                forecastFor(day[0].lat, day[0].lon).then((data) => {
+                    const f = (data.days || []).find((x) => x.date === iso);
+                    if (f && token === state.token) {
+                        forecastSlot.textContent = `${weatherEmoji[f.icon] || "🌤️"} ${f.condition}, ${Math.round(f.temp_c)}°C${f.rain_chance_pct != null ? `, ${f.rain_chance_pct}% chance of rain` : ""} (forecast)`;
+                    }
+                });
+            }
+            return h("section", { class: "it-day" },
+                h("header", { class: "it-day-head" },
+                    h("h2", { class: "h-display", text: iso ? `Day ${di + 1} · ${fmtDay(iso)}` : `Day ${di + 1}` }),
+                    day.length > 1 ? h("span", { class: "pill", title: "Sum of the straight-line distances between stops: not a driving distance", text: `≈ ${fmtKm(total)} km between stops (approximate)` }) : null,
+                    forecastSlot),
+                day.length ? h("ol", { class: "it-list" }, rows.flat()) : h("p", { class: "muted it-empty", text: "Nothing planned for this day yet." }));
+        });
+
+        view.replaceChildren(h("div", { class: "wrap" },
+            h("div", { class: "page-head" },
+                h("p", { class: "eyebrow", text: "🧳 Itinerary" }),
+                h("h1", { class: "h-display", text: "My trip" }),
+                h("p", { class: "no-print", text: "Add places from the planner with the ＋ Trip button, then arrange them by day. Your trip is saved in this browser only." })),
+            h("p", { class: "print-only", text: "Printed from iKhaya KZN. Details can be out of date: check opening hours before you go." }),
+            items.length ? actions : null,
+            items.length ? days : h("div", { class: "empty" },
+                h("p", { text: "Your trip is empty." }),
+                h("p", { style: "margin-top:1rem" }, h("a", { class: "btn btn-dark btn-sm", href: "#/trip", text: "Find places to add" }))),
+            items.length ? h("p", { class: "notice it-note" },
+                "Distances are straight-line estimates between places, not driving distances or travel times. ",
+                "Opening hours and other details come from the places' listings and may be out of date, so check before you go.") : null));
+        window.scrollTo({ top: 0 });
+    }
+
+    // ------------------------------------------------------------------ travel info
+    async function renderInfo(token) {
+        setView(loading());
+        const data = await api("/api/info");
+        if (token !== state.token) return;
+        const checkPill = () => h("span", { class: "pill warn", title: "This can change or vary by place: confirm it with your host, the venue or the local authority", text: "Check locally" });
+
+        const sections = data.sections.map((sec) => {
+            const numbers = (sec.numbers || []).filter((n) => /^\d{3,6}$/.test(String(n.number))).map((n) =>
+                h("a", { class: "call-card", href: `tel:${n.number}` },
+                    h("strong", { class: "call-num", text: n.number }),
+                    h("span", { text: n.label }),
+                    n.note ? h("small", { class: "muted", text: n.note }) : null));
+            const items = (sec.items || []).map((it) =>
+                h("article", { class: "info-card" },
+                    h("h3", { text: it.title }),
+                    h("p", { text: it.text }),
+                    it.check ? checkPill() : null));
+            const link = sec.link && /^#\//.test(sec.link.href)
+                ? h("p", { class: "info-link" }, h("a", { class: "btn btn-dark btn-sm", href: sec.link.href, text: sec.link.text })) : null;
+            return h("section", { class: "info-section", id: `info-${sec.id}` },
+                h("h2", { class: "h-display", text: `${sec.icon} ${sec.title}` }),
+                sec.intro ? h("p", { class: "muted", text: sec.intro }) : null,
+                numbers.length ? h("div", { class: "call-grid" }, numbers) : null,
+                items.length ? h("div", { class: "info-grid" }, items) : null,
+                link);
+        });
+
+        const toc = data.sections.map((sec) => h("button", {
+            class: "chip chip-sm", type: "button", text: `${sec.icon} ${sec.title}`,
+            onclick: () => { const el = document.getElementById(`info-${sec.id}`); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); },
+        }));
+
+        view.replaceChildren(h("div", { class: "wrap" },
+            h("div", { class: "page-head" },
+                h("p", { class: "eyebrow", text: "ℹ️ Before and during your trip" }),
+                h("h1", { class: "h-display", text: data.title }),
+                h("p", { text: data.subtitle })),
+            h("p", { class: "notice", text: data.disclaimer }),
+            h("div", { class: "chips info-toc", role: "navigation", "aria-label": "Sections" }, toc),
+            sections));
+        window.scrollTo({ top: 0 });
     }
 
     // ------------------------------------------------------------------ clans
@@ -377,6 +671,7 @@
 
                 box.replaceChildren(...nodes);
                 if (mount) mount();
+                if (record) setMeta(`${record.surname} clan`, `Izithakazelo (praise names) and origins for the ${record.surname} surname.`);
                 if (location.hash.startsWith("#/heritage/clans")) {
                     history.replaceState(null, "", `#/heritage/clans?q=${encodeURIComponent(q)}`);
                 }
@@ -594,26 +889,57 @@
     }
 
     // ------------------------------------------------------------------ trip planner
-    function tripCard(p, i) {
-        const reasons = p.reasons.map((r) => `<span class="pill ${esc(r.tone)}">${esc(r.text)}</span>`).join("");
-        const dist = p.distance_km != null ? ` · ${p.distance_km} km away` : "";
+    const VIBE_OPTIONS = [["", "Any"], ["nightlife", "Nightlife"], ["family", "Family"], ["nature", "Nature"],
+        ["culture", "Culture"], ["food", "Food"], ["budget", "Budget"]];
+
+    function tripCard(p, i, opts = {}) {
+        const reasons = p.reasons.map((r) => `<span class="pill ${esc(r.tone)}">${esc(r.text)}${r.points ? ` <b class="pts" title="Points added to or taken from the ranking">${r.points > 0 ? "+" : "−"}${Math.abs(r.points)}</b>` : ""}</span>`).join("");
+
+        // Only show what we actually know: unknown fields are left out, never filled in.
+        const where = [p.address || p.region, p.distance_km != null ? `${p.distance_km} km away` : null].filter(Boolean).join(" · ");
+        const hours = p.opening_hours_raw || p.opening_hours;
+        // A plain Google Maps search link: no scraping, no affiliate links.
+        const staysUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`accommodation near ${p.latitude},${p.longitude}`)}`;
+        const phoneOk = typeof p.phone === "string" && /^[0-9+()\-. \/]{5,40}$/.test(p.phone);   // same rule as the server
+        const phoneDigits = phoneOk ? p.phone.replace(/[^0-9+]/g, "") : "";
+        const links = [
+            p.website && /^https?:\/\//i.test(p.website)
+                ? `<a href="${esc(p.website)}" target="_blank" rel="noopener noreferrer nofollow">🌐 Website</a>` : "",
+            phoneDigits ? `<a href="tel:${esc(phoneDigits)}">📞 ${esc(p.phone)}</a>` : "",
+        ].filter(Boolean).join("");
+        const tags = [
+            p.subcategory_label ? `<span class="pill">${esc(p.subcategory_label)}</span>` : "",
+            p.min_age ? `<span class="pill warn" title="Minimum age listed for this venue">Age ${esc(p.min_age)}+</span>` : "",
+        ].join("");
+
+        state.places.set(p.id, p);                      // lets the "+ Trip" button find the full place
+        const inTrip = tripHas(p.id);
         return `
         <article class="card" data-id="${p.id}" style="animation-delay:${Math.min(i, 8) * 40}ms">
           <div class="card-media">
             ${img(p.image_url, p.name)}
-            <span class="rank">#${i + 1}</span>
-            <span class="score ${p.score < 0 ? "neg" : ""}">${p.score > 0 ? "+" : ""}${p.score} pts</span>
+            ${opts.stay ? "" : `<span class="rank">#${i + 1}</span>
+            <span class="score ${p.score < 0 ? "neg" : ""}">${p.score > 0 ? "+" : ""}${p.score} pts</span>`}
             <span class="cat-tag">${esc(CATEGORY_EMOJI[p.category] || "📍")} ${esc(p.category)}</span>
           </div>
           <div class="card-body">
             <h3 class="card-title">${esc(p.name)}</h3>
-            <div class="meta"><span>📍 ${esc(p.address)}${esc(dist)}</span><span>🕒 ${esc(p.opening_hours)}</span></div>
+            ${tags ? `<div class="reasons">${tags}</div>` : ""}
+            <div class="meta">
+              ${where ? `<span>📍 ${esc(where)}</span>` : ""}
+              ${hours ? `<span>🕒 ${esc(hours)}</span>` : ""}
+              ${p.marine ? `<span>🌊 Waves up to ${esc(Number(p.marine.wave_height_m).toFixed(1))} m forecast</span>` : ""}
+              ${links ? `<span class="links">${links}</span>` : ""}
+            </div>
             <p class="card-desc clamp">${esc(p.description)}</p>
-            <div class="reasons">${reasons}</div>
+            ${reasons ? `<div class="reasons">${reasons}</div>` : ""}
+            ${p.safety_rated ? "" : `<p class="unrated" title="No safety rating is available for this place. This is not a judgement either way.">ⓘ Not safety-rated</p>`}
+            ${opts.stay ? "" : `<p class="stays-link"><a href="${esc(staysUrl)}" target="_blank" rel="noopener noreferrer">🛏️ Find stays near here</a></p>`}
             <div class="card-foot">
-              <span>${p.is_indoor ? "🏠 Indoor" : "🌳 Outdoor"}${p.has_generator ? " · 🔌 Generator" : ""}</span>
+              <span>${p.is_indoor ? "🏠 Indoor" : "🌳 Outdoor"}${p.has_generator ? " · 🔌 Generator" : ""}${p.price_tier ? ` · <span class="price-tag" title="Price level">${esc(p.price_tier)}</span>` : ""}</span>
               <span style="display:flex;gap:.4rem">
                 ${state.map ? `<button class="btn btn-dark btn-sm" data-focus="${p.id}" type="button">Map</button>` : ""}
+                <button class="btn btn-sm ${inTrip ? "btn-in" : "btn-dark"}" type="button" data-trip="${p.id}" aria-pressed="${inTrip}">${inTrip ? "✓ In trip" : "＋ Trip"}</button>
                 <a class="btn btn-dark btn-sm" target="_blank" rel="noopener"
                    href="https://www.google.com/maps/search/?api=1&query=${p.latitude},${p.longitude}">Directions</a>
               </span>
@@ -625,27 +951,95 @@
     const locText = (loc) => !loc ? "Showing picks around Durban"
         : loc.label ? `📍 Near the ${loc.label} clan's origin` : "📍 Using your location";
 
+    async function ensureFilters() {
+        if (!state.filters) {
+            try { state.filters = await api("/api/filters"); } catch { state.filters = { prices: {} }; }
+        }
+        return state.filters;
+    }
+
     async function ensureCategories() {
         if (!state.categories) state.categories = await api("/api/categories");
         return state.categories;
     }
 
+    /** The seven-day strip. Choosing a day ranks places for that day's forecast. */
+    async function drawDateStrip(token) {
+        const box = $("#date-strip");
+        if (!box) return;
+        const t = state.trip;
+        let data;
+        try { data = await api(`/api/forecast${t.loc ? `?lat=${t.loc.lat}&lon=${t.loc.lon}` : ""}`); } catch { data = { days: [] }; }
+        if (token !== state.token || !$("#date-strip")) return;
+        const days = data.days || [];
+        if (t.date && !days.some((d) => d.date === t.date)) t.date = "";          // e.g. the page was left open overnight
+        if (!days.length) {
+            t.date = "";
+            box.innerHTML = '<span class="count">The forecast is unavailable right now, so places are ranked for today.</span>';
+            return;
+        }
+        const chosen = t.date || days[0].date;
+        box.innerHTML = days.map((d, i) => `
+            <button class="day-chip" type="button" data-date="${i === 0 ? "" : esc(d.date)}" aria-pressed="${d.date === chosen}"
+                    title="${esc(d.condition)}, high ${esc(Math.round(d.temp_c))}°C${d.rain_chance_pct != null ? `, ${esc(d.rain_chance_pct)}% chance of rain` : ""}">
+              <span class="d-name">${i === 0 ? "Today" : esc(fmtDay(d.date))}</span>
+              <span class="d-ico" aria-hidden="true">${weatherEmoji[d.icon] || "🌤️"}</span>
+              <span class="d-temp">${esc(Math.round(d.temp_c))}°</span>
+              ${d.rain_chance_pct != null ? `<span class="d-rain">${esc(d.rain_chance_pct)}%</span>` : ""}
+            </button>`).join("");
+    }
+
+    /** How many planner filters differ from the defaults (shown on the "More filters" summary). */
+    function activeFilters() {
+        const t = state.trip;
+        return [t.subcategory, t.region, t.openNow, t.openLate, t.vibe, t.mix, t.at, t.date, t.indoor, t.price].filter(Boolean).length;
+    }
+
+    function drawSubcats() {
+        const t = state.trip, box = $("#subcats");
+        if (!box) return;
+        const subs = ((state.filters && state.filters.subcategories) || {})[t.category] || [];
+        if (!subs.length) { box.hidden = true; box.replaceChildren(); t.subcategory = ""; return; }
+        if (t.subcategory && !subs.some((s) => s.slug === t.subcategory)) t.subcategory = "";
+        const total = ((state.categories || []).find((c) => c.name === t.category) || {}).count || "";
+        box.hidden = false;
+        box.innerHTML = [{ slug: "", label: `All ${t.category}`, count: total }, ...subs].map((s) =>
+            `<button class="chip chip-sm" type="button" data-subcat="${esc(s.slug)}" aria-pressed="${s.slug === t.subcategory}">${esc(s.label)}<small>${esc(s.count)}</small></button>`).join("");
+    }
+
+    function syncFilterUi() {
+        const n = activeFilters();
+        const clear = $("#clear-filters"), count = $("#filter-count"), mix = $("#mix");
+        $$("[data-no-stay]").forEach((el) => { el.hidden = state.trip.category === "Stay"; });   // meaningless for places to sleep
+        if (clear) clear.hidden = n === 0;
+        if (count) count.textContent = n ? `(${n} active)` : "";
+        if (mix) {
+            mix.disabled = state.trip.category !== "All";
+            mix.closest(".switch").title = mix.disabled ? "Choose the All category to mix categories" : "No single category fills the top results";
+        }
+    }
+
     async function renderTrip(token) {
         setView(loading("Planning your trip…"));
         const cats = await ensureCategories();
+        const filters = await ensureFilters();
         if (token !== state.token) return;
         const t = state.trip;
-        t.limit = PAGE;
+        const priceCounts = filters.prices || {};
+        const anyPrices = Object.values(priceCounts).some((n) => n > 0);
+        const regionList = filters.regions || [];
+        if (t.price && !priceCounts[t.price]) t.price = "";
+        if (t.region && !regionList.some((r) => r.name === t.region)) t.region = "";
         if (t.category !== "All" && !cats.some((c) => c.name === t.category)) t.category = "All";
-        const total = cats.reduce((n, c) => n + c.count, 0);
-        document.title = "Plan a trip · iKhaya KZN";
+        t.limit = PAGE;
+        const total = cats.filter((c) => c.in_all !== false).reduce((n, c) => n + c.count, 0);
 
         setView(`
         <section class="trip-head">
           <div class="wrap">
             <p class="eyebrow hero-eyebrow">Trip planner</p>
             <h1 class="h-display">Where to, today?</h1>
-            <p>Places across KwaZulu-Natal ranked for the current weather, load-shedding and your location.</p>
+            <p>Places across KwaZulu-Natal ranked for the current weather, time of day, load-shedding and your location.</p>
             <div class="ctx-grid" id="ctx"><div class="ctx"><span class="ico">⏳</span><div><b>Checking conditions…</b></div></div></div>
           </div>
         </section>
@@ -653,19 +1047,55 @@
 
         <div class="wrap">
           <div class="controls">
+            <div class="date-row"><span class="count">📅 Pick a date</span><div class="date-strip" id="date-strip" role="group" aria-label="Pick a date"><span class="count">Loading the forecast…</span></div></div>
             <div class="chips" id="cats" role="group" aria-label="Category">
               ${[{ name: "All", count: total }, ...cats].map((c) => `
                 <button class="chip" type="button" data-cat="${esc(c.name)}" aria-pressed="${c.name === t.category}">
-                  ${esc(CATEGORY_EMOJI[c.name] || "📍")} ${esc(c.name)}<small>${c.count}</small></button>`).join("")}
+                  ${esc(CATEGORY_EMOJI[c.name] || "📍")} ${esc(c.name)}<small>${esc(c.count)}</small></button>`).join("")}
             </div>
+            <div class="chips" id="subcats" role="group" aria-label="Type of place" hidden></div>
             <div class="controls-row">
-              <label class="switch"><input type="checkbox" id="indoor" ${t.indoor ? "checked" : ""}><span class="track"></span> Indoor only</label>
+              <div class="filter-group">
+                <label class="switch" data-no-stay><input type="checkbox" id="indoor" ${t.indoor ? "checked" : ""}><span class="track"></span> Indoor only</label>
+                <label class="switch" data-no-stay title="Only places whose listed hours show they are open at this time"><input type="checkbox" id="open-now" ${t.openNow ? "checked" : ""}><span class="track"></span> Open now</label>
+                <label class="switch" data-no-stay title="Only places whose listed hours run past 23:00"><input type="checkbox" id="open-late" ${t.openLate ? "checked" : ""}><span class="track"></span> Open late</label>
+                <label class="switch" data-no-stay><input type="checkbox" id="mix" ${t.mix ? "checked" : ""}><span class="track"></span> Mix categories</label>
+                <div class="budget" role="group" aria-label="Budget, up to">
+                  <span class="count">Budget</span>
+                  ${anyPrices ? `<div class="seg">${["", "$", "$$", "$$$"].map((tier) => `
+                    <button type="button" data-price="${esc(tier)}" aria-pressed="${t.price === tier}"
+                      ${tier && !priceCounts[tier] ? 'disabled title="No places with this price yet"' : ""}>${tier ? esc(tier) : "Any"}</button>`).join("")}</div>`
+                    : `<span class="count" title="Prices are only shown where they are known">Price info not available yet</span>`}
+                </div>
+              </div>
               <div style="display:flex;gap:.7rem;align-items:center;flex-wrap:wrap">
                 <span class="count" id="loc-note">${esc(locText(t.loc))}</span>
                 <button class="btn btn-dark btn-sm" id="locate" type="button">${t.loc ? "Reset location" : "📍 Use my location"}</button>
               </div>
             </div>
+            <details class="more-filters" ${t.region || t.vibe || t.at ? "open" : ""}>
+              <summary>More filters <span id="filter-count"></span></summary>
+              <div class="more-grid">
+                <label class="field">Region
+                  <select id="region">
+                    <option value="">Any region</option>
+                    ${regionList.map((r) => `<option value="${esc(r.name)}" ${t.region === r.name ? "selected" : ""}>${esc(r.name)} (${esc(r.count)})</option>`).join("")}
+                  </select>
+                </label>
+                <div class="field">Vibe
+                  <div class="chips" role="group" aria-label="Vibe">
+                    ${VIBE_OPTIONS.map(([v, l]) => `<button class="chip chip-sm" type="button" data-vibe="${esc(v)}" aria-pressed="${t.vibe === v}">${esc(l)}</button>`).join("")}
+                  </div>
+                </div>
+                <label class="field">Time of day (South African time)
+                  <span class="time-row"><input type="time" id="at" value="${esc(t.at)}"><button class="link-btn" id="at-now" type="button">Now</button></span>
+                </label>
+              </div>
+            </details>
+            <button class="link-btn" id="clear-filters" type="button" hidden>Clear all filters</button>
           </div>
+
+          <div id="notices"></div>
 
           <div class="trip-layout">
             <div>
@@ -678,21 +1108,75 @@
         </div>`);
 
         initMap();
+        drawSubcats();
+        syncFilterUi();
+        drawDateStrip(token);
 
+        const reload = () => { t.limit = PAGE; state.stayLimits = {}; syncFilterUi(); loadTrip(token); };
+
+        $("#date-strip").addEventListener("click", (e) => {
+            const b = e.target.closest("[data-date]");
+            if (!b) return;
+            t.date = b.dataset.date;
+            $$("#date-strip .day-chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+            reload();
+        });
         $("#cats").addEventListener("click", (e) => {
             const b = e.target.closest("[data-cat]");
             if (!b) return;
-            t.category = b.dataset.cat; t.limit = PAGE;
+            t.category = b.dataset.cat; t.subcategory = "";
+            if (t.category === "Stay") {
+                Object.assign(t, { openNow: false, openLate: false, indoor: false, mix: false });
+                ["#open-now", "#open-late", "#indoor", "#mix"].forEach((sel) => { $(sel).checked = false; });
+            }
             $$("#cats .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
             history.replaceState(null, "", `#/trip${t.category === "All" ? "" : "?category=" + encodeURIComponent(t.category)}`);
-            loadTrip(token);
+            setMeta(...tripMeta(t.category));
+            drawSubcats();
+            reload();
         });
-        $("#indoor").addEventListener("change", (e) => { t.indoor = e.target.checked; t.limit = PAGE; loadTrip(token); });
+        $("#subcats").addEventListener("click", (e) => {
+            const b = e.target.closest("[data-subcat]");
+            if (!b) return;
+            t.subcategory = b.dataset.subcat;
+            $$("#subcats .chip").forEach((c) => c.setAttribute("aria-pressed", String(c === b)));
+            reload();
+        });
+        $$("#view [data-price]").forEach((b) => b.addEventListener("click", () => {
+            t.price = b.dataset.price;
+            $$("#view [data-price]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+            reload();
+        }));
+        $$("#view [data-vibe]").forEach((b) => b.addEventListener("click", () => {
+            t.vibe = b.dataset.vibe;
+            $$("#view [data-vibe]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+            reload();
+        }));
+        $("#indoor").addEventListener("change", (e) => { t.indoor = e.target.checked; reload(); });
+        $("#open-now").addEventListener("change", (e) => { t.openNow = e.target.checked; reload(); });
+        $("#open-late").addEventListener("change", (e) => { t.openLate = e.target.checked; reload(); });
+        $("#mix").addEventListener("change", (e) => { t.mix = e.target.checked; reload(); });
+        $("#region").addEventListener("change", (e) => { t.region = e.target.value; reload(); });
+        $("#at").addEventListener("change", (e) => { t.at = /^\d{2}:\d{2}$/.test(e.target.value) ? e.target.value : ""; reload(); });
+        $("#at-now").addEventListener("click", () => { t.at = ""; $("#at").value = ""; reload(); });
+        $("#clear-filters").addEventListener("click", clearFilters);
         $("#locate").addEventListener("click", () => toggleLocation(token));
         $("#trip-list").addEventListener("click", (e) => {
             const b = e.target.closest("[data-focus]");
             if (b) focusPlace(Number(b.dataset.focus));
+            if (e.target.closest("[data-clear]")) clearFilters();
+            const moreStay = e.target.closest("[data-more-stay]");
+            if (moreStay) {
+                const name = moreStay.dataset.moreStay;
+                state.stayLimits[name] = (state.stayLimits[name] || PAGE) + PAGE;
+                loadTrip(token);
+            }
         });
+
+        async function clearFilters() {
+            Object.assign(t, { subcategory: "", region: "", openNow: false, openLate: false, vibe: "", mix: false, at: "", date: "", indoor: false, price: "" });
+            await renderTrip(token);
+        }
 
         await loadTrip(token);
     }
@@ -704,6 +1188,7 @@
             t.loc = null;
             btn.textContent = "📍 Use my location";
             $("#loc-note").textContent = locText(null);
+            drawDateStrip(token);
             return loadTrip(token);
         }
         if (!navigator.geolocation) { $("#loc-note").textContent = "Location isn't supported by this browser"; return; }
@@ -713,6 +1198,7 @@
                 t.loc = { lat: pos.coords.latitude, lon: pos.coords.longitude };
                 btn.disabled = false; btn.textContent = "Reset location";
                 $("#loc-note").textContent = locText(t.loc);
+                drawDateStrip(token);
                 loadTrip(token);
             },
             () => {
@@ -722,14 +1208,93 @@
             { timeout: 8000 });
     }
 
+    /** Places to stay: one section per region (each fetched on its own, 12 at a time) so every region is represented. */
+    async function loadStays(token) {
+        const t = state.trip;
+        const list = $("#trip-list");
+        const regionNames = t.region ? [t.region] : ((state.filters && state.filters.regions) || []).map((r) => r.name);
+        const base = new URLSearchParams({ category: "Stay", loadshedding: t.loadshedding, points: "1" });
+        if (t.subcategory) base.set("subcategory", t.subcategory);
+        if (t.price) base.set("price", t.price);
+        if (t.vibe) base.set("vibe", t.vibe);
+        if (t.at) base.set("at", t.at);
+        if (t.date) base.set("date", t.date);
+        if (t.loc) { base.set("lat", t.loc.lat); base.set("lon", t.loc.lon); }
+        list.innerHTML = '<div class="skeleton"></div>'.repeat(3);
+
+        const sections = await Promise.all(regionNames.map(async (name) => {
+            const limit = state.stayLimits[name] || PAGE;
+            const params = new URLSearchParams(base);
+            params.set("region", name);
+            params.set("limit", limit);
+            try { return { name, data: await api(`/api/recommend?${params}`) }; } catch { return { name, data: null }; }
+        }));
+        if (token !== state.token) return;
+
+        const loaded = sections.filter((s) => s.data && s.data.total > 0);
+        const first = sections.find((s) => s.data);
+        if (first) renderContext(first.data.context, token);
+        renderNotices([]);
+        $("#more-wrap").innerHTML = "";
+
+        if (!loaded.length) {
+            list.innerHTML = `<div class="empty" style="grid-column:1/-1">${sections.some((s) => !s.data)
+                ? "We couldn't load places to stay. Please try again."
+                : "No places to stay match these filters."}${activeFilters() ? '<p style="margin-top:1rem"><button class="btn btn-dark btn-sm" type="button" data-clear="1">Clear all filters</button></p>' : ""}</div>`;
+            $("#result-count").textContent = "";
+            drawMarkers([], [], false);
+            return;
+        }
+        const shown = loaded.reduce((n, s) => n + s.data.results.length, 0);
+        const total = loaded.reduce((n, s) => n + s.data.total, 0);
+        $("#result-count").textContent = `Showing ${shown} of ${total} places to stay, grouped by region. Prices and availability are not listed: check with the place.`;
+        list.innerHTML = loaded.map(({ name, data }) => `
+            <section class="region-group" style="grid-column:1/-1">
+              <h3 class="region-head">${esc(name)} <small>${esc(data.total)}</small></h3>
+              <div class="trip-grid">${data.results.map((p, i) => tripCard(p, i, { stay: true })).join("")}</div>
+              ${data.results.length < data.total ? `<p style="text-align:center;margin-top:1rem"><button class="btn btn-dark btn-sm" type="button" data-more-stay="${esc(name)}">Show more in ${esc(name)}</button></p>` : ""}
+            </section>`).join("");
+        drawMarkers([], loaded.flatMap((s) => s.data.points || s.data.results), false);
+    }
+
+    /** General safety and age notices (tips only: they say nothing about any particular venue). */
+    function renderNotices(results) {
+        const box = $("#notices");
+        if (!box) return;
+        const nightlife = state.trip.category === "Nightlife" || results.some((p) => p.category === "Nightlife");
+        const adults = nightlife || results.some((p) => p.subcategory === "casino" || p.min_age >= 18);
+        box.innerHTML = (nightlife ? `
+            <aside class="notice" aria-label="Safety tips for going out at night">
+              <h3>🌙 Going out at night? General tips</h3>
+              <ul>
+                <li>Use a licensed e-hailing service or a pre-booked ride.</li>
+                <li>Never drink and drive.</li>
+                <li>Keep your valuables out of sight.</li>
+                <li>Go out in a group.</li>
+                <li>Check a venue's opening hours before you go.</li>
+              </ul>
+              <p class="muted">General advice only. It says nothing about any particular venue or area.</p>
+            </aside>` : "") + (adults ? `<p class="notice notice-age"><strong>Many venues are 18+. Bring ID.</strong></p>` : "");
+    }
+
     async function loadTrip(token) {
         const t = state.trip;
         const list = $("#trip-list");
         if (!list) return;
+        if (t.category === "Stay") return loadStays(token);
         if (t.limit === PAGE) list.innerHTML = '<div class="skeleton"></div>'.repeat(4);
 
-        const params = new URLSearchParams({ category: t.category, limit: t.limit, loadshedding: t.loadshedding });
+        const params = new URLSearchParams({ category: t.category, limit: t.limit, loadshedding: t.loadshedding, points: "1" });
+        if (t.subcategory) params.set("subcategory", t.subcategory);
+        if (t.region) params.set("region", t.region);
         if (t.indoor) params.set("indoor", "1");
+        if (t.openNow) params.set("open_now", "1");
+        if (t.openLate) params.set("open_late", "1");
+        if (t.price) params.set("price", t.price);
+        if (t.vibe) params.set("vibe", t.vibe);
+        if (t.mix && t.category === "All") params.set("tourist", "1");
+        if (t.at) params.set("at", t.at);
+        if (t.date) params.set("date", t.date);
         if (t.loc) { params.set("lat", t.loc.lat); params.set("lon", t.loc.lon); }
 
         let data;
@@ -742,36 +1307,44 @@
         if (token !== state.token) return;
 
         renderContext(data.context, token);
+        renderNotices(data.results);
+        const hoursFilter = t.openNow || t.openLate;
         list.innerHTML = data.results.length
             ? data.results.map((p, i) => tripCard(p, i)).join("")
-            : `<div class="empty" style="grid-column:1/-1">No places match these filters yet.</div>`;
-        $("#result-count").textContent = `Showing ${data.results.length} of ${data.total} places, best match first`;
+            : `<div class="empty" style="grid-column:1/-1">No places match these filters.
+                 ${hoursFilter ? "<br>Many places have no opening hours listed, so they can't appear under Open now or Open late." : ""}
+                 ${activeFilters() ? '<p style="margin-top:1rem"><button class="btn btn-dark btn-sm" type="button" data-clear="1">Clear all filters</button></p>' : ""}</div>`;
+        $("#result-count").textContent = `Showing ${data.results.length} of ${data.total} places, best match first`
+            + (hoursFilter ? ". Only places whose listed hours confirm it are shown" : "");
         $("#more-wrap").innerHTML = data.results.length < data.total
             ? `<button class="btn btn-dark" id="more" type="button">Show more</button>` : "";
         const more = $("#more");
         if (more) more.addEventListener("click", () => { t.limit += PAGE; loadTrip(token); });
-        drawMarkers(data.results);
+        drawMarkers(data.results, data.points);
     }
 
     function renderContext(ctx, token) {
-        const w = ctx.weather, mode = state.trip.loadshedding;
+        const w = ctx.weather, mode = state.trip.loadshedding, t = ctx.time;
         $("#ctx").innerHTML = `
           <div class="ctx"><span class="ico">${weatherEmoji[w.icon] || "🌤️"}</span>
             <div><b>${esc(w.condition)} · ${Math.round(w.temp_c)}°C</b>
-            <span>${esc(w.advice)}${w.source === "fallback" ? " (offline estimate)" : ""}</span></div></div>
+            <span>${w.date ? `Forecast for ${esc(fmtDay(w.date))}${w.temp_min_c != null ? `, low ${esc(Math.round(w.temp_min_c))}°C` : ""}. ` : ""}${esc(w.advice)}${w.rain_chance_pct != null ? ` ${esc(w.rain_chance_pct)}% chance of rain.` : ""}${w.source === "fallback" ? " (offline estimate)" : ""}</span></div></div>
           <div class="ctx"><span class="ico">${ctx.loadshedding ? "⚡" : "💡"}</span>
-            <div><b>${ctx.loadshedding ? "Load-shedding active" : "Power looks stable"}</b>
-            <span>Simulated, try what-if mode:</span>
+            <div><b>${ctx.loadshedding ? "Load-shedding active" : "Power looks stable"}<span class="sim-tag" title="No live Eskom feed: this follows a made-up evening schedule">Simulated</span></b>
+            <span>Not live data. Try what-if mode:</span>
             <div class="seg" role="group" aria-label="Load-shedding mode">
               ${[["auto", "Auto"], ["on", "On"], ["off", "Off"]].map(([v, l]) =>
                   `<button type="button" data-ls="${v}" aria-pressed="${mode === v}">${l}</button>`).join("")}
-            </div></div></div>`;
+            </div></div></div>
+          ${t ? `<div class="ctx"><span class="ico">${t.evening ? "🌙" : "☀️"}</span>
+            <div><b>${t.evening ? "Evening mode" : "Daytime"} · ${esc(t.time)}${t.date && t.what_if && w.date ? ` on ${esc(fmtDay(t.date))}` : t.what_if ? " (what-if)" : ""}</b>
+            <span>South African time. ${t.evening ? "Nightlife and evening venues rank higher; places closed now rank lower." : "Places that are open now rank higher."}</span></div></div>` : ""}`;
         $$("#ctx [data-ls]").forEach((b) => b.addEventListener("click", () => {
             state.trip.loadshedding = b.dataset.ls; state.trip.limit = PAGE; loadTrip(token);
         }));
     }
 
-    // ------------------------------------------------------------------ map (Leaflet, optional)
+    // ------------------------------------------------------------------ map (Leaflet + markercluster, both optional)
     function initMap() {
         const el = $("#map");
         if (!el) return;
@@ -786,37 +1359,59 @@
         if (state.clanMap) { state.clanMap.remove(); state.clanMap = null; }
         if (state.map) { state.map.remove(); state.map = null; }
         state.markers = [];
+        state.layer = null;
     }
 
-    function drawMarkers(places) {
+    /** Numbered pins for the places in the list; every other match as a small dot, clustered when it is crowded. */
+    function drawMarkers(places, points, numbered = true) {
         const map = state.map;
         if (!map) return;
-        state.markers.forEach((m) => m.marker.remove());
+        if (state.layer) { state.layer.remove(); state.layer = null; }
         state.markers = [];
-        const pts = [];
-        places.forEach((p, i) => {
-            const icon = L.divIcon({ className: "", html: `<div class="map-pin ${i < 3 ? "top" : ""}">${i + 1}</div>`, iconSize: [28, 28], iconAnchor: [14, 14] });
-            const marker = L.marker([p.latitude, p.longitude], { icon, title: p.name }).addTo(map)
+
+        const rankOf = new Map(numbered ? places.map((p, i) => [p.id, i]) : []);
+        const all = points && points.length ? points : places;
+        const layer = typeof L.markerClusterGroup === "function"
+            ? L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 45 })
+            : L.layerGroup();
+
+        const bounds = [];
+        all.forEach((p) => {
+            const rank = rankOf.get(p.id);
+            const icon = rank !== undefined
+                ? L.divIcon({ className: "", html: `<div class="map-pin ${rank < 3 ? "top" : ""}">${rank + 1}</div>`, iconSize: [28, 28], iconAnchor: [14, 14] })
+                : L.divIcon({ className: "", html: '<div class="map-dot"></div>', iconSize: [12, 12], iconAnchor: [6, 6] });
+            const marker = L.marker([p.latitude, p.longitude], { icon, title: p.name, zIndexOffset: rank !== undefined ? 500 : 0 })
                 .bindPopup(`<strong>${esc(p.name)}</strong><br>${esc(p.category)}`);
             marker.on("click", () => highlightCard(p.id));
+            layer.addLayer(marker);
             state.markers.push({ id: p.id, marker });
-            pts.push([p.latitude, p.longitude]);
+            bounds.push([p.latitude, p.longitude]);
         });
+        layer.addTo(map);
+        state.layer = layer;
+
         const loc = state.trip.loc;
         if (loc) {
             const me = L.divIcon({ className: "", html: loc.label ? '<div class="map-pin top">★</div>' : '<div class="map-pin me">You</div>', iconSize: [28, 28], iconAnchor: [14, 14] });
             const marker = L.marker([loc.lat, loc.lon], { icon: me }).addTo(map);
             state.markers.push({ id: -1, marker });
         }
-        if (pts.length) map.fitBounds(pts, { padding: [30, 30], maxZoom: 11 });
+        map.invalidateSize();                       // the container may have been laid out after the map was created
+        if (bounds.length) map.fitBounds(bounds, { padding: [30, 30], maxZoom: 11 });
         setTimeout(() => map.invalidateSize(), 50);
     }
 
     function focusPlace(id) {
         const m = state.markers.find((x) => x.id === id);
         if (!m || !state.map) return;
-        state.map.flyTo(m.marker.getLatLng(), 12, { duration: .8 });
-        m.marker.openPopup();
+        const open = () => m.marker.openPopup();
+        if (state.layer && typeof state.layer.zoomToShowLayer === "function") {
+            state.layer.zoomToShowLayer(m.marker, open);       // un-clusters first when the pin is inside a cluster
+        } else {
+            state.map.flyTo(m.marker.getLatLng(), 12, { duration: .8 });
+            open();
+        }
         $("#map").scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
@@ -828,5 +1423,8 @@
 
     // ------------------------------------------------------------------ boot
     window.addEventListener("hashchange", route);
+    $(".skip-link").addEventListener("click", (e) => { e.preventDefault(); view.focus(); });
+    tripLoad();
+    updateTripBadge();
     route();     // script is deferred, so the DOM is ready
 })();

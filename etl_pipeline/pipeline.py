@@ -1,170 +1,169 @@
-"""ETL: OpenStreetMap (Overpass API, no key needed) -> clean -> places table.
+"""ETL steps for OpenStreetMap places.
 
-    extract()   fetch tourism features around Durban
-    transform() drop accommodation / noise and map OSM tags onto our categories
-    load()      insert the new ones, skipping places we already have
+    extract   etl_pipeline/overpass.py  (polite, cached, one chunk per district)
+    transform this module               (elements -> clean rows; pure, no network)
+    load      etl_pipeline/loader.py    (idempotent upsert into the database)
 """
 import json
 import re
+from collections import defaultdict
+from datetime import date
 from pathlib import Path
 
-import requests
+from app.taxonomy import CATEGORIES, REGIONS
+from etl_pipeline import osm_mapping as om
+from ml_engine.recommender import haversine_km
 
-from app import db
-from app.models import Place
-
-OVERPASS_URLS = [
-    "https://overpass-api.de/api/interpreter",
-    "https://overpass.kumi.systems/api/interpreter",
-]
-# south, west, north, east
-DURBAN_BBOX = (-30.0, 30.8, -29.7, 31.1)
-USER_AGENT = "iKhayaKZN/1.0 (heritage + trip planner project)"
-
-# OSM tourism=* values we skip: places to sleep, plain signage, and unlabelled artwork.
-SKIP_TAGS = {
-    "hotel", "guest_house", "apartment", "hostel", "caravan_site", "motel", "chalet",
-    "camp_site", "information", "artwork", "yes", "alpine_hut", "wilderness_hut", "camp_pitch",
-}
-SKIP_NAME_WORDS = ("guest house", "backpackers", "bnb", "b&b", "lodge", "hotel", "chalet", "apartment")
-
-# tourism tag -> (category, is_indoor)
-TAG_MAP = {
-    "museum": ("Culture", True),
-    "gallery": ("Culture", True),
-    "theme_park": ("Entertainment", False),
-    "zoo": ("Nature", False),
-    "aquarium": ("Entertainment", True),
-    "viewpoint": ("Nature", False),
-    "picnic_site": ("Nature", False),
-    "attraction": ("Entertainment", False),
-}
+ATTRIBUTION = "Contains data from OpenStreetMap contributors, available under the Open Database Licence (ODbL)."
+DUPLICATE_RADIUS_M = 150
 
 
-def _key(name):
+def name_key(name):
     """Loose name key so "Kwa Muhle museum" and "KwaMuhle Museum" count as the same place."""
     return re.sub(r"\W+", "", str(name).lower())
 
-def extract(bbox=DURBAN_BBOX, timeout=60):
-    """Return raw candidate dicts from Overpass. Raises requests.RequestException on failure."""
-    s, w, n, e = bbox
-    query = f"""
-    [out:json][timeout:50];
-    (
-      node["tourism"]({s},{w},{n},{e});
-      way["tourism"]({s},{w},{n},{e});
-      relation["tourism"]({s},{w},{n},{e});
-    );
-    out center;
-    """
-    last_error = None
-    for url in OVERPASS_URLS:
-        try:
-            resp = requests.post(
-                url, data={"data": query}, headers={"User-Agent": USER_AGENT}, timeout=timeout
-            )
-            resp.raise_for_status()
-            elements = resp.json().get("elements", [])
-            break
-        except (requests.RequestException, ValueError) as exc:
-            last_error = exc
-            print(f"  ! {url} failed: {exc}")
-    else:
-        raise requests.RequestException(f"All Overpass endpoints failed: {last_error}")
 
-    candidates = []
-    for el in elements:
-        tags = el.get("tags", {})
-        name = tags.get("name")
-        lat = el.get("lat") or el.get("center", {}).get("lat")
-        lon = el.get("lon") or el.get("center", {}).get("lon")
-        if not name or lat is None or lon is None:
-            continue
-        candidates.append({
-            "name": name,
-            "tourism": tags.get("tourism", ""),
-            "latitude": lat,
-            "longitude": lon,
-            "address": tags.get("addr:street") or tags.get("addr:suburb") or "",
-            "opening_hours": tags.get("opening_hours", ""),
-            "website": tags.get("website", ""),
-        })
-    return candidates
+class ProximityIndex:
+    """Find an earlier place with the same (loose) name within DUPLICATE_RADIUS_M."""
+
+    CELL = 0.002          # degrees, about 220 m
+
+    def __init__(self):
+        self._cells = defaultdict(list)
+
+    def _cell(self, lat, lon):
+        return round(lat / self.CELL), round(lon / self.CELL)
+
+    def find(self, name, lat, lon, radius_m=DUPLICATE_RADIUS_M):
+        key, (cy, cx) = name_key(name), self._cell(lat, lon)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for other_key, olat, olon, payload in self._cells.get((cy + dy, cx + dx), ()):
+                    if other_key == key and haversine_km(lat, lon, olat, olon) * 1000 <= radius_m:
+                        return payload
+        return None
+
+    def add(self, name, lat, lon, payload=True):
+        self._cells[self._cell(lat, lon)].append((name_key(name), lat, lon, payload))
 
 
+# ---------------------------------------------------------------- legacy candidate files
 def load_candidates_file(path):
-    """Read candidates saved earlier (supports the older durban_candidates.json layout too)."""
-    with open(path, encoding="utf-8") as fh:
-        data = json.load(fh)
+    """Read elements from a saved file. Accepts a cache chunk ({"elements": [...]}) or the old
+    durban_candidates.json list ({name, tourism, latitude, longitude, ...})."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if isinstance(data, dict):
+        return [dict(el, _region=el.get("_region") or data.get("region")) for el in data.get("elements", [])]
+    elements = []
     for item in data:
-        if "tourism" not in item:                       # old format used "category"
-            item["tourism"] = str(item.get("category", "")).lower()
-    return data
+        tourism = str(item.get("tourism") or item.get("category") or "").lower()
+        tags = {"name": item.get("name"), "tourism": tourism,
+                "opening_hours": item.get("opening_hours"), "addr:street": item.get("address")}
+        elements.append({"type": "legacy", "id": None, "lat": item.get("latitude"), "lon": item.get("longitude"),
+                         "tags": {k: v for k, v in tags.items() if v}})
+    return elements
 
 
-def save_candidates_file(candidates, path):
-    Path(path).write_text(json.dumps(candidates, indent=2, ensure_ascii=False), encoding="utf-8")
+# ---------------------------------------------------------------- transform
+def _coords(el):
+    lat = el.get("lat", (el.get("center") or {}).get("lat"))
+    lon = el.get("lon", (el.get("center") or {}).get("lon"))
+    try:
+        lat, lon = float(lat), float(lon)
+    except (TypeError, ValueError):
+        return None
+    return (lat, lon) if -90 <= lat <= 90 and -180 <= lon <= 180 else None
 
 
-def transform(candidates):
-    """Clean + categorise. Returns a list of dicts matching Place columns."""
-    cleaned, seen = [], set()
-    for c in candidates:
-        name = " ".join(str(c.get("name", "")).split())
-        tag = str(c.get("tourism", "")).lower()
-        key = name.lower()
-        if not name or _key(name) in seen or tag in SKIP_TAGS:
+def transform(elements):
+    """Clean + categorise OSM elements into rows matching the Place columns."""
+    rows, seen = [], ProximityIndex()
+    # Richer elements first so, of two entries for one venue (node + building), we keep the better one.
+    ordered = sorted(elements, key=lambda e: (-len(e.get("tags") or {}), str(e.get("type")), e.get("id") or 0))
+    for el in ordered:
+        tags = el.get("tags") or {}
+        name = " ".join(str(tags.get("name", "")).split())[:150]
+        coords = _coords(el)
+        verdict = om.classify(tags) if name else None
+        if not name or coords is None or verdict is None:
             continue
-        if any(word in key for word in SKIP_NAME_WORDS):
+        lat, lon = coords
+        if seen.find(name, lat, lon):
             continue
-        try:
-            lat, lon = float(c["latitude"]), float(c["longitude"])
-        except (KeyError, TypeError, ValueError):
-            continue
-        seen.add(_key(name))
+        seen.add(name, lat, lon)
 
-        category, indoor = TAG_MAP.get(tag, ("Entertainment", False))
-        lowered = key
-        if any(w in lowered for w in ("beach", "bay", "pier", "lagoon")):
-            category, indoor = "Beach", False
-        elif any(w in lowered for w in ("park", "garden", "reserve", "forest", "trail")):
-            category, indoor = "Nature", False
-        elif any(w in lowered for w in ("museum", "gallery", "temple", "mosque", "memorial", "heritage")):
-            category, indoor = "Culture", True
-
-        address = str(c.get("address") or "").strip()
-        hours = str(c.get("opening_hours") or "").strip()[:100]
-        label = tag.replace("_", " ") or "attraction"
-        cleaned.append({
-            "name": name[:150],
-            "description": f"{label.capitalize()} in the Durban area, sourced from OpenStreetMap.",
+        category, subcategory, indoor, source_tag = verdict
+        region = el.get("_region")
+        raw_hours = " ".join(str(tags.get("opening_hours", "")).split())[:255] or None
+        evening, late = om.parse_opening_hours(raw_hours)
+        label = subcategory.replace("_", " ") if subcategory else source_tag.split("=")[1].replace("_", " ")
+        rows.append({
+            "osm_id": f"{el['type']}/{el['id']}" if el.get("id") is not None else None,
+            "name": name,
+            "description": f"{label.capitalize()}{' in the ' + region + ' region' if region else ''}, listed on OpenStreetMap.",
             "category": category,
-            "address": (address + ", Durban" if address else "Durban, KZN")[:200],
-            "opening_hours": hours or "Hours not listed",
+            "subcategory": subcategory,
+            "region": region if region in REGIONS else None,
+            "address": om.build_address(tags),
+            "opening_hours": raw_hours[:100] if raw_hours else None,
+            "opening_hours_raw": raw_hours,
+            "website": om.clean_website(tags),
+            "phone": om.clean_phone(tags),
+            "min_age": om.clean_min_age(tags),
+            "open_evening": evening,
+            "open_late": late,
+            "tags": om.build_tags(tags, source_tag),
             "latitude": lat,
             "longitude": lon,
             "is_indoor": indoor,
             "has_generator": False,
-            "safety_score": 3.0,
-            "price_tier": "$$",
+            "safety_score": None,          # OSM has no ratings: NULL = not rated
+            "price_tier": None,            # OSM has no prices: unknown
             "source": "osm",
         })
-    return cleaned
+    rows.sort(key=lambda r: (r["region"] or "~", r["category"], r["name"].lower()))
+    return rows
 
 
-def load(rows):
-    """Insert rows whose name isn't already in the table. Returns (inserted, skipped)."""
-    existing = {_key(name) for (name,) in db.session.query(Place.name).all()}
-    images = {}
-    for place in Place.query.filter(Place.image_url != "").all():
-        images.setdefault(place.category, place.image_url)    # reuse a known-good photo per category
+# ---------------------------------------------------------------- reporting + snapshot
+def summarize(rows):
+    """Text table of rows per region and category, plus the gaps worth looking at."""
+    focus = ("Nightlife", "Entertainment")
+    counts = defaultdict(int)
+    for r in rows:
+        counts[(r["region"] or "Unassigned", r["category"])] += 1
+    regions = [r for r in REGIONS if any(k[0] == r for k in counts)]
+    if any(k[0] == "Unassigned" for k in counts):
+        regions.append("Unassigned")
 
-    inserted = 0
-    for row in rows:
-        if _key(row["name"]) in existing:
-            continue
-        existing.add(_key(row["name"]))
-        db.session.add(Place(image_url=images.get(row["category"], ""), **row))
-        inserted += 1
-    db.session.commit()
-    return inserted, len(rows) - inserted
+    head = f"{'Region':<18}" + "".join(f"{c[:10]:>12}" for c in CATEGORIES) + f"{'Total':>8}"
+    lines = [head, "-" * len(head)]
+    for region in regions:
+        cells = [counts[(region, c)] for c in CATEGORIES]
+        lines.append(f"{region:<18}" + "".join(f"{n:>12}" for n in cells) + f"{sum(cells):>8}")
+    totals = [sum(counts[(r, c)] for r in regions) for c in CATEGORIES]
+    lines += ["-" * len(head), f"{'All KZN':<18}" + "".join(f"{n:>12}" for n in totals) + f"{sum(totals):>8}"]
+
+    subs = defaultdict(int)
+    for r in rows:
+        if r["subcategory"]:
+            subs[r["subcategory"]] += 1
+    if subs:
+        lines += ["", "By subcategory: " + ", ".join(f"{k} {v}" for k, v in sorted(subs.items(), key=lambda kv: (-kv[1], kv[0])))]
+
+    gaps = [f"{region}: no {cat}" for region in REGIONS if region != "Other KZN"
+            for cat in focus if counts[(region, cat)] == 0]
+    if gaps:
+        lines += ["", "Coverage gaps (0 places found): " + "; ".join(gaps)]
+    return "\n".join(lines)
+
+
+def write_snapshot(rows, path):
+    """Compact processed copy of the OSM places that the app can load at start-up (see app/osm_snapshot.py)."""
+    payload = {
+        "attribution": ATTRIBUTION,
+        "generated": date.today().isoformat(),
+        "count": len(rows),
+        "places": sorted(rows, key=lambda r: (r["osm_id"] or "~", r["name"])),
+    }
+    Path(path).write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

@@ -48,11 +48,15 @@ def write_data(directory, clans=FIXTURE_CLANS, enrichment=FIXTURE_ENRICHMENT):
     return directory
 
 
-def make_app(tmp_path, data_dir):
+def make_app(tmp_path, data_dir, **overrides):
     class TestConfig(Config):
         TESTING = True
+        LOAD_OSM_SNAPSHOT = False
         SQLALCHEMY_DATABASE_URI = f"sqlite:///{(tmp_path / 'test.db').as_posix()}"
         DATA_DIR = data_dir
+
+    for key, value in overrides.items():
+        setattr(TestConfig, key, value)
 
     import app.routes as routes
     routes._correction_hits.clear()          # fresh rate-limit state per test
@@ -86,3 +90,16 @@ def real_client(tmp_path):
     with application.app_context():
         db.session.remove()
         db.engine.dispose()
+
+
+@pytest.fixture(autouse=True)
+def no_network(monkeypatch):
+    """Tests never touch the network: outside calls fail like an outage and the app must fall back."""
+    import requests
+
+    def blocked(*args, **kwargs):
+        raise requests.ConnectionError("network is disabled in tests")
+
+    monkeypatch.setattr(requests, "get", blocked)
+    import app.routes as routes
+    routes._context.clear()                # a fresh ContextEngine (caches, marine cool-down) per test

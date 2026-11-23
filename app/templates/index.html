@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iKhaya KZN · Heritage &amp; Trip Planner</title>
-    <meta name="description" content="Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather and load-shedding.">
+    <title>iKhaya KZN · Zulu heritage &amp; KwaZulu-Natal trip planner</title>
+    <meta name="description" content="Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather, time of day and load-shedding.">
+    <link rel="canonical" href="{{ request.url_root }}">
+    <meta name="theme-color" content="#0f3d2e">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="iKhaya KZN">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:title" content="iKhaya KZN · Zulu heritage &amp; KwaZulu-Natal trip planner">
+    <meta property="og:description" content="Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather, time of day and load-shedding.">
+    <meta property="og:url" content="{{ request.url_root }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iKhaya KZN · Zulu heritage &amp; KwaZulu-Natal trip planner">
+    <meta name="twitter:description" content="Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather, time of day and load-shedding.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f3d2e'/%3E%3Cpath d='M50 18 82 78H18z' fill='%23e0a526'/%3E%3Cpath d='M50 38 66 68H34z' fill='%23c2562b'/%3E%3C/svg%3E">
 </head>
@@ -24,6 +37,8 @@
             <nav class="main-nav" aria-label="Main">
                 <a href="#/" data-nav="home">Home</a>
                 <a href="#/heritage/clans" data-nav="heritage">Heritage</a>
+                <a href="#/info" data-nav="info">Info</a>
+                <a href="#/itinerary" data-nav="itinerary">My trip <span class="badge" id="trip-badge" hidden>0</span></a>
                 <a href="#/trip" data-nav="trip" class="nav-cta">Plan a trip</a>
             </nav>
         </div>
@@ -34,18 +49,53 @@
         <nav class="subnav-inner" aria-label="Heritage sections" id="subnav-links"></nav>
     </div>
 
-    <main id="view" tabindex="-1" aria-live="polite"></main>
+    <main id="view" tabindex="-1" aria-live="polite">
+        <noscript>
+            <div class="wrap section">
+                <h1 class="h-display">iKhaya KZN: Zulu heritage and a KwaZulu-Natal trip planner</h1>
+                <p>Learn about Zulu clans and izithakazelo (praise names), traditional herbs, foods, ceremonies, dance, dress and beadwork, then plan a trip around KwaZulu-Natal with places ranked for the weather, the time of day and load-shedding.</p>
+                <p><strong>This site needs JavaScript for its interactive pages.</strong> Please turn it on to search clans, plan a trip and build an itinerary. This summary shows what is inside.</p>
+
+                <h2>Zulu heritage</h2>
+                <ul>
+                    {% for section in heritage %}<li><strong>{{ section.label }}</strong>: {{ section.blurb }}.</li>
+                    {% endfor %}
+                </ul>
+
+                {% if categories %}
+                <h2>Places in KwaZulu-Natal</h2>
+                <p>{{ place_total }} places to visit, from beaches and nature to culture, food, entertainment and nightlife, with data from OpenStreetMap contributors.</p>
+                <ul>
+                    {% for c in categories %}<li>{{ c.name }}: {{ c.count }}{% if c.is_stay %} (hotels, guest houses, hostels, chalets and camp sites){% endif %}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if emergency %}
+                <h2>Emergency numbers</h2>
+                <ul>
+                    {% for n in emergency %}<li><a href="tel:{{ n.number }}">{{ n.number }}</a>: {{ n.label }}</li>
+                    {% endfor %}
+                </ul>
+                {% if info_note %}<p>{{ info_note }}</p>{% endif %}
+                {% endif %}
+            </div>
+        </noscript>
+    </main>
 
     <footer class="footer">
         <div class="bead-strip" aria-hidden="true"></div>
         <div class="footer-inner">
             <strong>iKhaya KZN</strong>
             <p>Celebrating isiZulu heritage and helping you explore KwaZulu-Natal.</p>
-            <p class="muted">Weather by Open-Meteo. Places by OpenStreetMap contributors. Load-shedding status is simulated.</p>
+            <p class="muted">Weather by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>. Many places contain data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, available under the <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">Open Database Licence (ODbL)</a>. Load-shedding status is simulated.</p>
         </div>
     </footer>
 
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" defer></script>
     <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
 </body>
 </html>

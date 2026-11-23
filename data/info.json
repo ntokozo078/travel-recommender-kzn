@@ -1,0 +1,95 @@
+{
+  "title": "Travel info",
+  "subtitle": "Practical basics for visiting KwaZulu-Natal.",
+  "disclaimer": "General information only, not official advice. Details change. Where an item says \"check locally\", confirm it with your host, the venue or the local authority before you rely on it. This page lists no prices.",
+  "sections": [
+    {
+      "id": "emergency",
+      "icon": "🚨",
+      "title": "Emergency numbers",
+      "intro": "Save these in your phone before you travel. Tap a number to call it.",
+      "numbers": [
+        { "label": "Emergency services (from a mobile phone)", "number": "112", "note": "The general emergency number for mobile phones." },
+        { "label": "Police (SAPS)", "number": "10111", "note": "The national police emergency number." },
+        { "label": "Ambulance (public service)", "number": "10177", "note": "The national public ambulance number. Private ambulance services have their own numbers: check locally." }
+      ],
+      "items": [
+        { "title": "Know where you are", "text": "Keep the address of your accommodation handy so you can tell an emergency call-taker where you are.", "check": false },
+        { "title": "Nearest hospital or clinic", "text": "Ask your accommodation where the nearest hospital or clinic is, and which ones accept visitors.", "check": true },
+        { "title": "Travel insurance", "text": "Many visitors take out travel and medical insurance before they come. Check what yours covers.", "check": true }
+      ]
+    },
+    {
+      "id": "getting-around",
+      "icon": "🚗",
+      "title": "Getting around",
+      "items": [
+        { "title": "King Shaka International Airport", "text": "King Shaka International Airport (DUR) is Durban's main airport, on the coast north of the city near La Mercy, roughly 35 km from central Durban. Allow for the transfer when you plan your first and last day. Transfer times depend on traffic.", "check": true },
+        { "title": "From the airport", "text": "Common options are pre-booked shuttles, e-hailing, taxis and car hire. Ask your accommodation what they recommend and whether they offer pick-ups.", "check": true },
+        { "title": "E-hailing", "text": "E-hailing apps such as Uber and Bolt are widely used in Durban and other cities. Availability thins out in rural areas, so do not rely on it everywhere. Match the driver and vehicle shown in the app before you get in.", "check": true },
+        { "title": "Car hire", "text": "Major car hire companies operate at the airport and in main towns. South Africans drive on the left. Bring your driving licence and ask the hire company whether you also need an international driving permit. Insurance, deposits and fuel rules differ between companies.", "check": true },
+        { "title": "Minibus taxis", "text": "Minibus taxis carry most local commuters. They follow informal routes, hand signals and fares that are hard for visitors to read, so ask your host or accommodation before using one.", "check": true },
+        { "title": "Distances", "text": "KwaZulu-Natal is large and attractions can be far apart. Plan realistic travel times, and where you can, arrive at rural destinations before dark.", "check": true }
+      ]
+    },
+    {
+      "id": "money",
+      "icon": "💳",
+      "title": "Money, ATMs and tipping",
+      "items": [
+        { "title": "Currency", "text": "The currency is the South African rand (ZAR, written R).", "check": false },
+        { "title": "Cards and ATMs", "text": "Visa and Mastercard are widely accepted in towns, malls and larger venues, and ATMs are common in towns and shopping centres. Where you can, use ATMs inside banks or malls.", "check": true },
+        { "title": "Carry some cash", "text": "Markets, craft sellers, parking attendants and small venues may only take cash, and card machines can stop working during a power cut. Small change is useful.", "check": true },
+        { "title": "Tipping", "text": "Around 10% is customary in restaurants for good service (check whether a service charge is already on the bill). Car guards, petrol attendants and guides usually appreciate a small tip. The amount is up to you.", "check": true }
+      ]
+    },
+    {
+      "id": "sim-data",
+      "icon": "📶",
+      "title": "SIM cards and data",
+      "items": [
+        { "title": "Networks", "text": "The main mobile networks are Vodacom, MTN, Telkom and Cell C. Coverage differs by area, so check the coverage map for where you are going.", "check": true },
+        { "title": "Registering a SIM", "text": "SIM cards must be registered (this is called RICA), so carry your passport when you buy one.", "check": true },
+        { "title": "Where to buy", "text": "SIM cards and data bundles are sold at the airport, in malls and in many shops. Signal can be patchy in remote areas.", "check": true },
+        { "title": "Roaming and eSIM", "text": "Ask your home provider about roaming, or whether your phone is unlocked and supports an eSIM.", "check": true },
+        { "title": "Wi-Fi", "text": "Many hotels, guest houses and cafés offer Wi-Fi. Speed varies and it can drop out during power cuts.", "check": false }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "icon": "🤝",
+      "title": "Local etiquette and cultural respect",
+      "items": [
+        { "title": "Greet first", "text": "Greet people before you ask a question or start a conversation. In isiZulu, \"Sawubona\" is hello to one person, \"Sanibonani\" is hello to more than one person, \"Yebo\" means yes and \"Ngiyabonga\" means thank you.", "check": false },
+        { "title": "Ask before photographing people", "text": "Always ask before you photograph someone, and accept a no. In villages, at homesteads and at ceremonies ask permission first, and do not photograph rituals or ceremonies unless you have been clearly invited to.", "check": false },
+        { "title": "Village and homestead visits", "text": "Visit cultural villages and homesteads through a guide or a recognised cultural village, and follow your guide's instructions about where to go and what to photograph. Ask in advance about fees and customs.", "check": true },
+        { "title": "Dress", "text": "Dress modestly in rural communities and at cultural events. If you are unsure, ask your host.", "check": true },
+        { "title": "Elders", "text": "Show respect to elders: greet them first and listen.", "check": false },
+        { "title": "Drones", "text": "Drones are regulated in South Africa. Check the current rules before you fly one, and do not fly over people or homesteads without permission.", "check": true }
+      ],
+      "link": { "text": "Explore the Heritage section", "href": "#/heritage/clans" }
+    },
+    {
+      "id": "power-water",
+      "icon": "🔌",
+      "title": "Load-shedding and water outages",
+      "items": [
+        { "title": "Load-shedding", "text": "Scheduled power cuts (load-shedding) have been part of life in South Africa. Check the published schedule for the area you are in, from the local municipality or electricity supplier or a load-shedding schedule app. The status shown on this site is a simulation, not live data.", "check": true },
+        { "title": "Be ready", "text": "Charge your phone and power bank while the power is on, carry a torch, and keep some cash for when card machines are down.", "check": false },
+        { "title": "Ask your accommodation", "text": "Ask whether it has a generator, an inverter or gas for cooking and hot water, and how it handles outages.", "check": true },
+        { "title": "On the road", "text": "When traffic lights are out, treat the junction as a four-way stop and take turns.", "check": false },
+        { "title": "Water outages", "text": "Water outages and restrictions happen in some areas. Ask your accommodation whether supply is affected, and keep some drinking water with you.", "check": true },
+        { "title": "Drinking water", "text": "Ask locally whether the tap water is safe to drink where you are staying. Many visitors choose bottled or filtered water.", "check": true }
+      ]
+    },
+    {
+      "id": "stay",
+      "icon": "🛏️",
+      "title": "Where to stay",
+      "items": [
+        { "title": "Find a place to sleep", "text": "The trip planner lists hotels, guest houses, hostels, chalets and camp sites from OpenStreetMap, grouped by region. Prices, availability and facilities are not listed, so check them with the place directly. You can also open a map search for stays near any place in the planner.", "check": true }
+      ],
+      "link": { "text": "Browse places to stay", "href": "#/trip?category=Stay" }
+    }
+  ]
+}
