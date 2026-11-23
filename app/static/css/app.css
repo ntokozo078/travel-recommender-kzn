@@ -509,3 +509,7 @@ button { font: inherit; color: inherit; }
     .main-nav { gap: .1rem; }
     .main-nav a { padding: .45rem .55rem; font-size: .85rem; }
 }
+
+/* card buttons: never break "＋ Trip" over two lines; wrap the row instead of squeezing */
+.card-foot .btn { white-space: nowrap; }
+.card-foot > span:last-child { flex-wrap: wrap; justify-content: flex-end; }
