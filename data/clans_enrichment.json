@@ -1,0 +1,43 @@
+{
+  "_format": "Optional extra detail per clan, keyed by surname (must match data/surnames.json). Every field is optional: use null when unknown. Never fill a field without a source. confidence is one of: verified (needs sources) | oral-tradition | unverified. Keys starting with an underscore are ignored. The three entries below are FORMAT DEMOS with no data.",
+
+  "Ndlovu": {
+    "alt_spellings": null,
+    "izithakazelo_notes": null,
+    "meaning": null,
+    "ancestor": null,
+    "origin": { "summary": null, "region": null, "lat": null, "lng": null, "migration_note": null },
+    "related_clans": null,
+    "taboos_or_totem": null,
+    "notable_people": null,
+    "today_found_in": null,
+    "sources": null,
+    "confidence": null
+  },
+  "Ntombela": {
+    "alt_spellings": null,
+    "izithakazelo_notes": null,
+    "meaning": null,
+    "ancestor": null,
+    "origin": { "summary": null, "region": null, "lat": null, "lng": null, "migration_note": null },
+    "related_clans": null,
+    "taboos_or_totem": null,
+    "notable_people": null,
+    "today_found_in": null,
+    "sources": null,
+    "confidence": null
+  },
+  "Zulu": {
+    "alt_spellings": null,
+    "izithakazelo_notes": null,
+    "meaning": null,
+    "ancestor": null,
+    "origin": { "summary": null, "region": null, "lat": null, "lng": null, "migration_note": null },
+    "related_clans": null,
+    "taboos_or_totem": null,
+    "notable_people": null,
+    "today_found_in": null,
+    "sources": null,
+    "confidence": null
+  }
+}

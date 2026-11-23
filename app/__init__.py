@@ -1,19 +1,39 @@
-# app/__init__.py
+"""iKhaya KZN: Zulu heritage explorer + weather/power-aware KZN trip recommender."""
+import os
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 from config import Config
 
-# Initialize Database
 db = SQLAlchemy()
+
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
+    # Behind a reverse proxy (Render) the real client IP is in X-Forwarded-For; without this every
+    # visitor looks like the proxy and shares one rate-limit bucket. Opt-in so it can't be spoofed locally.
+    if os.environ.get("TRUST_PROXY") == "1":
+        app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+
     db.init_app(app)
 
-    # Import and register routes
+    # Clan records (base list + optional enrichment); problems are logged as warnings, never fatal.
+    from app.clan_data import ClanStore
+    data_dir = app.config["DATA_DIR"]
+    app.extensions["clan_store"] = ClanStore(
+        data_dir / "surnames.json", data_dir / "clans_enrichment.json"
+    )
+
     from app.routes import main
     app.register_blueprint(main)
+
+    with app.app_context():
+        from app.seed import seed_if_empty
+        seed_if_empty()
 
     return app

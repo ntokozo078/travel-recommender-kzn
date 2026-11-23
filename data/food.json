@@ -1,0 +1,348 @@
+{
+  "foods": {
+    "title": "Traditional Foods",
+    "subtitle": "Beloved dishes of the Zulu people (ukudla kwesiZulu)",
+    "items": [
+      {
+        "name": "Crumbly Maize Porridge",
+        "isizulu": "Phuthu",
+        "desc": "Dry, crumbly maize meal porridge. Often served with milk, amasi, beans, meat, or curry.",
+        "image": "https://foodiemag.co.za/wp-content/uploads/2024/03/FB_IMG_1710956836842.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE FOOD",
+        "infoBoxText": "A daily staple that provides the primary source of carbohydrates in the traditional diet.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Steamed Bread",
+        "isizulu": "Ujeqe",
+        "desc": "Traditional steamed bread usually served with meat stews.",
+        "image": "https://easysouthafricanrecipes.com/wp-content/uploads/2026/01/d5714f39-569f-43c8-a809-9f065811cb08.png",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE FOOD",
+        "infoBoxText": "Cooked by steaming rather than baking, making it soft, dense, and perfect for soaking up rich gravies.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Pumpkin Porridge",
+        "isizulu": "Isijingi",
+        "desc": "A sweet pumpkin and maize meal porridge.",
+        "image": "https://img-global.cpcdn.com/recipes/63be6f36379a4bf7/680x964cq70/isijingi-recipe-main-photo.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE FOOD",
+        "infoBoxText": "A naturally sweet, comforting dish that blends seasonal vegetables with maize.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Soft Maize Porridge",
+        "isizulu": "Iphalishi",
+        "desc": "Soft maize porridge eaten for breakfast or supper.",
+        "image": "https://th.bing.com/th/id/R.4e3a4619c6885fac4d7ff0fb038f1158?rik=rcrMv2SaL647dg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-RVvzYkv4V8w%2fVgTmNkO--oI%2fAAAAAAAAADY%2fUPhnD2eIlWU%2fs1600%2fIMG_20150925_081134.jpg&ehk=0TPUhOFEYxjyvyC2%2b3Ag9ROSBPbi7EvgASV0vpJZ4D0%3d&risl=&pid=ImgRaw&r=0",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE FOOD",
+        "infoBoxText": "A smooth, comforting porridge that starts or ends the day in many households.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Maize / Corn",
+        "isizulu": "Umbila",
+        "desc": "One of the most important traditional crops and food sources.",
+        "image": "https://th.bing.com/th/id/R.2e7c543ec18c6e0c4e5eb3977df490f6?rik=5q1ErZoh6IpJnQ&pid=ImgRaw&r=0",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE CROP",
+        "infoBoxText": "The foundational ingredient for many Zulu dishes, from phuthu to umqombothi.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Taro Root",
+        "isizulu": "Amadumbe",
+        "desc": "Root vegetable boiled, roasted, or mashed.",
+        "image": "https://tse1.explicit.bing.net/th/id/OIP.lYtJ9MziC-J0nMyUiX-E5AHaFW?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🌾 STAPLE FOOD",
+        "infoBoxText": "A highly nutritious indigenous root crop that thrives in the wet, humid climates of KZN.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Fermented Sour Milk",
+        "isizulu": "Amasi",
+        "desc": "Fermented sour milk. One of the most loved Zulu foods.",
+        "image": "https://tse1.mm.bing.net/th/id/OIP.xWNqPMSKCp7ttk1TpHw5zQHaF7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏺 FERMENTED FOOD",
+        "infoBoxText": "Rich in probiotics, amasi is traditionally prepared in a calabash (igula).",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Fermented Maize Beverage",
+        "isizulu": "Amahewu",
+        "desc": "A nutritious fermented maize beverage.",
+        "image": "https://foodiemag.co.za/wp-content/uploads/2024/03/03_Huletts_Recipes_RecipeHeader_Amahewu-1536x480.png",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏺 FERMENTED FOOD",
+        "infoBoxText": "A non-alcoholic, energy-boosting drink popular among workers and families.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Sorghum Beer",
+        "isizulu": "Umqombothi",
+        "desc": "Traditional beer used during ceremonies and celebrations.",
+        "image": "https://cdn.tasteatlas.com/images/ingredients/e9453ecec97542248c3ee26506bba08e.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏺 SACRED BEVERAGE",
+        "infoBoxText": "Brewed over several days, it is essential for communicating with ancestors during rituals.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Cooked Beans",
+        "isizulu": "Ubhontshisi",
+        "desc": "Cooked beans often eaten with phuthu.",
+        "image": "https://www.thepetitecook.com/wp-content/uploads/2022/02/Homemade-British-baked-beans-recipe.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌱 LEGUME",
+        "infoBoxText": "A primary source of plant-based protein in the traditional diet.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Bambara Groundnuts",
+        "isizulu": "Izindlubu",
+        "desc": "Traditional indigenous beans.",
+        "image": "https://i.cdn.newsbytesapp.com/images/l97020250912110432.jpeg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌱 LEGUME",
+        "infoBoxText": "Highly drought-resistant and incredibly nutritious, often boiled and eaten as a snack.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Bread and Beans",
+        "isizulu": "Ujeqe Nobhontshisi",
+        "desc": "Popular household meal consisting of steamed bread and hearty beans.",
+        "image": "https://img.freepik.com/premium-photo/there-is-bowl-beans-bread-with-piece-bread_1034574-84133.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌱 HEARTY MEAL",
+        "infoBoxText": "A beloved combination that is filling and affordable.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Beef Dishes",
+        "isizulu": "Inyama Yenkomo",
+        "desc": "Prepared in many traditional ways. Cattle hold immense wealth and spiritual value.",
+        "image": "https://tse3.mm.bing.net/th/id/OIP.AT0ZA35dPxQOb0yFKa3YpgHaEJ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 MEAT DISH",
+        "infoBoxText": "Cattle are slaughtered primarily for significant cultural rituals and celebrations.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Goat Meat",
+        "isizulu": "Inyama Yembuzi",
+        "desc": "Common during ceremonies and ancestral rituals.",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.g58j_igoJYwaJEDXWTtlXQHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "✨ CEREMONIAL",
+        "infoBoxText": "Goats are deeply tied to ancestral communication (ukubika).",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Chicken",
+        "isizulu": "Inyama Yenkukhu",
+        "desc": "Traditional free range chicken dishes, often boiled until tough meat is tender.",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.mD7eXPHZYYo7ifk39NRtRwHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 MEAT DISH",
+        "infoBoxText": "Zulu hard body chicken (umqhele) is prized for its rich, authentic flavor.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Cow's Head",
+        "isizulu": "Inhloko",
+        "desc": "A respected traditional delicacy, traditionally reserved for the men of the homestead.",
+        "image": "https://orangefarmnews.co.za/wp-content/uploads/2023/04/Screenshot_20230419-105118_Google.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 CULTURAL DELICACY",
+        "infoBoxText": "Boiled until tender, it is a prized cut shared among elders and men.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Tripe / Intestines",
+        "isizulu": "Amathumbu",
+        "desc": "Prepared with spices or traditional seasonings.",
+        "image": "https://i.ytimg.com/vi/lnAyZT2mCIQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBvn4_r8hG7qddbmv48iiHlrx2C2g",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 OFFAL DISH",
+        "infoBoxText": "Cleaned thoroughly and slow-cooked, it is a favorite communal dish.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Trotters",
+        "isizulu": "Izinyawo",
+        "desc": "Cow or sheep trotters, slow cooked until tender and gelatinous.",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.nZzGWm9QMR5OosUGE1oE_AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 MEAT DISH",
+        "infoBoxText": "Requires hours of simmering to extract the rich flavors and tenderize the meat.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Oxtail",
+        "isizulu": "Umsila",
+        "desc": "Popular festive dish made from the tail of cattle.",
+        "image": "https://www.thespruceeats.com/thmb/CRopwqm1LDwFKmb0EkxbvR-E0wE=/4043x0/filters:no_upscale():max_bytes(150000):strip_icc()/braised-oxtails-recipe-1805978-Step_6-5b9edcc846e0fb00505d15ef.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 FESTIVE DISH",
+        "infoBoxText": "A rich, hearty stew usually enjoyed during big family gatherings.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Liver",
+        "isizulu": "Isibindi",
+        "desc": "Often cooked with onions and spices.",
+        "image": "https://easysouthafricanrecipes.com/wp-content/uploads/2026/01/32b70d36-50e9-4420-aae6-f13dbc43df20.png",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 QUICK MEAL",
+        "infoBoxText": "One of the first parts of the animal to be cooked and eaten during a slaughter.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Braaied Meat / Shisanyama",
+        "isizulu": "Inyama Eyosiwe",
+        "desc": "Meat roasted over open coals, served at celebrations and gatherings.",
+        "image": "https://pakwathu.co.za/wp-content/uploads/2022/10/meat-1024x682.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥩 CELEBRATION",
+        "infoBoxText": "A cornerstone of modern and traditional social gatherings.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Traditional Wild Spinach",
+        "isizulu": "Imifino",
+        "desc": "General term for traditional leafy greens foraging in the wild.",
+        "image": "https://easysouthafricanrecipes.com/wp-content/uploads/2025/08/ozan-reds-Rts-saS2RgY-unsplash3-2-1920x1426.webp",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 WILD GREENS",
+        "infoBoxText": "Packed with vitamins and iron, typically cooked with a little maize meal.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Wild Amaranth",
+        "isizulu": "Uguqu",
+        "desc": "A nutritious indigenous vegetable gathered from the wild.",
+        "image": "https://www.gardenia.net/wp-content/uploads/2023/05/amaranthus-viridis-780x520.webp",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 WILD GREENS",
+        "infoBoxText": "Cooked like spinach, it provides essential nutrients to the traditional diet.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Pigweed",
+        "isizulu": "Imbuya",
+        "desc": "One of the most common traditional leafy vegetables.",
+        "image": "https://zenhealth.net/wp-content/uploads/spiny-pigweed-chori-bhagi-featured.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 WILD GREENS",
+        "infoBoxText": "Gathered in the summer months and cooked as a relish.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Maize and Greens Mash",
+        "isizulu": "Isijabane",
+        "desc": "Popular leafy vegetable cooked directly into maize meal to form a tasty mash.",
+        "image": "https://www.mynetdiary.com/foodpicture?foodId=51156879",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 VEGETABLE MASH",
+        "infoBoxText": "A very common and filling way to consume healthy imifino.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Groundnut Veggie",
+        "isizulu": "Udlubu",
+        "desc": "Cooked as a vegetable dish.",
+        "image": "https://cdn.wikifarmer.com/images/thumbnail/2023/07/Groundnut-Plant-Information-History-Uses-and-Nutrition-Value-1200x630.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 INDIGENOUS CROP",
+        "infoBoxText": "A robust traditional crop that is boiled and seasoned.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Natal Plum",
+        "isizulu": "Amatundulu",
+        "desc": "A sweet, tart, bright red indigenous fruit.",
+        "image": "https://fthmb.tqn.com/OfBM3hqaHf2OFk-TYV2l-Z-J4DA=/960x0/filters:no_upscale()/128080347-57bbc0853df78c8763662a81.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🍎 TRADITIONAL FRUIT",
+        "infoBoxText": "Gathered from thorny bushes, rich in Vitamin C.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Wild Berries",
+        "isizulu": "Amajikijolo",
+        "desc": "Wild berries gathered seasonally from the veld.",
+        "image": "https://static6.depositphotos.com/1000471/660/i/950/depositphotos_6603064-stock-photo-wild-berries.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🍎 TRADITIONAL FRUIT",
+        "infoBoxText": "A sweet summer treat commonly foraged by herd boys.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Marula Fruit",
+        "isizulu": "Umganu",
+        "desc": "Consumed fresh or fermented into a potent alcoholic beverage.",
+        "image": "https://c8.alamy.com/comp/2S66273/ripe-sclerocarya-birrea-marula-maroela-mufula-ukanyi-fruits-with-exposed-ivory-white-flesh-2S66273.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🍎 TRADITIONAL FRUIT",
+        "infoBoxText": "A highly valued fruit tree across Southern Africa.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Water Berry",
+        "isizulu": "Umdoni Fruit",
+        "desc": "Traditional wild fruit from the Umdoni tree, turning dark purple when ripe.",
+        "image": "https://th.bing.com/th/id/R.d80ff7039919d993e3cce191a0a5fcb9?rik=ghJ25WuauylVeQ&pid=ImgRaw&r=0",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🍎 TRADITIONAL FRUIT",
+        "infoBoxText": "Sweet and slightly astringent, heavily favored by both people and birds.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Boiled Maize Kernels",
+        "isizulu": "Amakhobe",
+        "desc": "Whole maize kernels boiled until soft, often mixed with beans.",
+        "image": "https://img-global.cpcdn.com/recipes/7e48c4171ed273a6/1200x630cq70/photo.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥜 TRADITIONAL SNACK",
+        "infoBoxText": "A hardy, filling snack often packed for long journeys or days in the fields.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Dried Maize Snack",
+        "isizulu": "Izinkobe",
+        "desc": "A traditional filling meal or snack made of dried mealies.",
+        "image": "https://images.squarespace-cdn.com/content/v1/66414f6d89dc02694af63ee3/a55ae9a9-83d6-41ca-9945-7a0f833059bf/IMG_0200.jpg?format=1000w",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥜 TRADITIONAL SNACK",
+        "infoBoxText": "Requires a strong jaw but is incredibly satisfying and long-lasting.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Thick Maize Bread",
+        "isizulu": "Umbhaqanga",
+        "desc": "A thick maize meal preparation cooked with milk or vegetables.",
+        "image": "https://breadcakesandale.com/wp-content/uploads/2013/06/crumb-cu.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥜 TRADITIONAL SNACK",
+        "infoBoxText": "A hearty, dense staple that provides lasting energy.",
+        "attribution": "Zulu culinary heritage"
+      },
+      {
+        "name": "Ceremonial Meat",
+        "isizulu": "Inyama Yomcimbi",
+        "desc": "Prepared during weddings, umemulo, and family gatherings.",
+        "image": "https://i.ytimg.com/vi/RzhUE8gMWwI/maxres2.jpg?sqp=-oaymwEoCIAKENAF8quKqQMcGADwAQH4AbYIgAKAD4oCDAgAEAEYZSBSKFYwDw==&rs=AOn4CLCNmVjHt4NCDnIU7l52daDIXeMuQA",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "✨ CEREMONIAL",
+        "infoBoxText": "Meats are often shared in a specific order according to status and gender.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  }
+}

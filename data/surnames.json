@@ -1,0 +1,1124 @@
+{
+  "clans": [
+    {
+      "surname": "Amajola",
+      "praise_poetry": "Mzizi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Amaqadi",
+      "praise_poetry": "Qadi, Dladla, Nomagaga",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Bhebhe",
+      "praise_poetry": "Makhedama, Soyengwase",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Bhengu",
+      "praise_poetry": "Jali, Ngcolosi, Dlabazane, Myeni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Biyela",
+      "praise_poetry": "Ntshangase, Menziwa, Phakathwayo, Ndabezitha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Blose",
+      "praise_poetry": "Ndelu, Shinga",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Buthelezi",
+      "praise_poetry": "Shenge, Sokwalisa, Phungashe, Mnyamana, Ngqengelele, Sondiya",
+      "origins": "Historically served as the traditional prime ministers and top advisors to the Zulu Monarchs."
+    },
+    {
+      "surname": "Cebekhulu",
+      "praise_poetry": "Shazi, Linda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Cele",
+      "praise_poetry": "Ndosi, Magaye, Khumbuza, Njeza, Dubandlela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Cengani",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Dlamini",
+      "praise_poetry": "Nkosi, Sibalukhulu, Mlangeni, Jama, Magongo, Zizi",
+      "origins": "A widespread royal clan, historically tied to the eSwatini monarchy and prominent in KZN."
+    },
+    {
+      "surname": "Dladla",
+      "praise_poetry": "Mgabadeli, Gadlela, Mhlophe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Dlomo",
+      "praise_poetry": "Mkhabela, Dinangwe, Bhelesi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Dube",
+      "praise_poetry": "Lwandle, Nqoboka",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Duma",
+      "praise_poetry": "Lwandle, Mthombeni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Dumisa",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Fihlela",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gabela",
+      "praise_poetry": "Lindamkhonto",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gama",
+      "praise_poetry": "Shabangu, Mbokane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gamede",
+      "praise_poetry": "Mkholwa, Magadlela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gasela",
+      "praise_poetry": "Gazu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gcaba",
+      "praise_poetry": "Thembela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gcabashe",
+      "praise_poetry": "Mkhize",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gcumisa",
+      "praise_poetry": "Ngwazi, Ndimande",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gedeza",
+      "praise_poetry": "Mnyandu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gina",
+      "praise_poetry": "Ndaba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gininda",
+      "praise_poetry": "Nyembezi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Goba",
+      "praise_poetry": "Mbambo, Magoza",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gobhozi",
+      "praise_poetry": "Ngcobo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gule",
+      "praise_poetry": "Malambule",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Guma",
+      "praise_poetry": "Siyaya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gumbi",
+      "praise_poetry": "Ndandali, Ndengezi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gumede",
+      "praise_poetry": "Qwabe, Phakathwayo, Mnguni, Ndwandwe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gwacela",
+      "praise_poetry": "Mbili",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gwagwa",
+      "praise_poetry": "Mlambo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gwala",
+      "praise_poetry": "Nkondlwane, Majola",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Gwamanda",
+      "praise_poetry": "Yenga, Sabela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hadebe",
+      "praise_poetry": "Mthimkhulu, Bhungane, Ndlebentle",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlabisa",
+      "praise_poetry": "Ngotsha, Songiya, Masuku",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlatshwayo",
+      "praise_poetry": "Mhayise, Mjoli",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlela",
+      "praise_poetry": "Madlula",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlengwa",
+      "praise_poetry": "Mashasha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlongwa",
+      "praise_poetry": "Gabhisa, Khawula",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlongwane",
+      "praise_poetry": "Ngwane, Sangweni, Zikhali, Matiwane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlophe",
+      "praise_poetry": "Thumbeza, Myeni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Hlubi",
+      "praise_poetry": "Nkosi, Ludonga",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jali",
+      "praise_poetry": "Bhengu, Ngcolosi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jama",
+      "praise_poetry": "Dlamini, Sjadu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jamile",
+      "praise_poetry": "Nkamzwayo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jele",
+      "praise_poetry": "Luvuno, Sokhwebula, Nonyane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jili",
+      "praise_poetry": "Vilakazi, Mphephethwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Jiyane",
+      "praise_poetry": "Mkhathini, Magugu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khaba",
+      "praise_poetry": "Ngobese",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khambule",
+      "praise_poetry": "Mlotshwa, Mncube, Nkomo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khanyeza",
+      "praise_poetry": "Ngwane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khanyile",
+      "praise_poetry": "Ngwane, Sokhulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khathi",
+      "praise_poetry": "Nandisa, Mbondwe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khawula",
+      "praise_poetry": "Gebhezi, Ntanzi, Dingiswayo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Kheswa",
+      "praise_poetry": "Nozulu, Mpangazitha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khomo",
+      "praise_poetry": "Sibiya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khoza",
+      "praise_poetry": "Masiya, Mahlangu, Mlotshwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khubisa",
+      "praise_poetry": "Nkomo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khuboni",
+      "praise_poetry": "Maseko, Nyawo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khulu",
+      "praise_poetry": "Mbulaze",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khuluse",
+      "praise_poetry": "Hlongwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khumalo",
+      "praise_poetry": "Mntungwa, Mbulaz'omnyama, Mabaso, Ndabezitha, Zikode",
+      "origins": "A powerful clan, famous for King Mzilikazi who led a faction to establish the Ndebele kingdom."
+    },
+    {
+      "surname": "Khumbuza",
+      "praise_poetry": "Cele",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khuzwayo",
+      "praise_poetry": "Gumede, Qwabe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khwela",
+      "praise_poetry": "Ndulini",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Khwane",
+      "praise_poetry": "Dlakela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Kubheka",
+      "praise_poetry": "Khathide, Sobote",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Kunene",
+      "praise_poetry": "Madonsela, Mtimande",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Kweyama",
+      "praise_poetry": "Vezi, Phahla",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Lamula",
+      "praise_poetry": "Zinyane, Mpangazitha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Langa",
+      "praise_poetry": "Sothole, Ngwane, Mcwayi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Lembede",
+      "praise_poetry": "Ndima",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Linda",
+      "praise_poetry": "Cebekhulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Lukhele",
+      "praise_poetry": "Mdluli, Nzimande",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Luthuli",
+      "praise_poetry": "Madlanduna, Mshibe, Nqaka",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Luvuno",
+      "praise_poetry": "Malembe, Jele",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabanga",
+      "praise_poetry": "Dlodlo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabaso",
+      "praise_poetry": "Mntungwa, Ndabezitha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabhena",
+      "praise_poetry": "Musi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabika",
+      "praise_poetry": "Dinane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabizela",
+      "praise_poetry": "Mshengu, Shabalala",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mabuya",
+      "praise_poetry": "Msibi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Madlala",
+      "praise_poetry": "Sishi, Bhengu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Madondo",
+      "praise_poetry": "Ndlovu, Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Madonsela",
+      "praise_poetry": "Kunene",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Magubane",
+      "praise_poetry": "Mntungwa, Sothole",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Makhanya",
+      "praise_poetry": "Ngwenya, Duze",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Makhathini",
+      "praise_poetry": "Mnguni, Xulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Makhoba",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Makhubu",
+      "praise_poetry": "Dlamini",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Maluleka",
+      "praise_poetry": "Ngwane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mangena",
+      "praise_poetry": "Guma",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Manqele",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Maphalala",
+      "praise_poetry": "Mzamela, Shelembe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Maphanga",
+      "praise_poetry": "Ngcobo, Gumede",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Masango",
+      "praise_poetry": "Mdluli",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mashinini",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Masuku",
+      "praise_poetry": "Hlabisa, Ndwandwe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mathebula",
+      "praise_poetry": "Mdluli",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mathe",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mathenjwa",
+      "praise_poetry": "Nzimase",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mathonsi",
+      "praise_poetry": "Mnguni, Shezi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mazibuko",
+      "praise_poetry": "Mwelase, Nzima",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mbambo",
+      "praise_poetry": "Magoza, Goba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mbatha",
+      "praise_poetry": "Shandu, Mthiya, Ndabezitha, Sonqishe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mbhele",
+      "praise_poetry": "Mthimkhulu, Bhungane, Godongwana",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mbongwa",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mbuyazi",
+      "praise_poetry": "Seme",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mchunu",
+      "praise_poetry": "Yeyeye, Mfeka, Ngqulunga",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mdakane",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mdlalose",
+      "praise_poetry": "Mnguni, Dikane, Nyanda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mdluli",
+      "praise_poetry": "Mntungwa, Lukhele, Masango",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mdlovu",
+      "praise_poetry": "Phungula",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mdletshe",
+      "praise_poetry": "Mnguni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mkhize",
+      "praise_poetry": "Khabazela, Gcwabe, Gubhela, Mumbo",
+      "origins": "A prominent clan heavily concentrated in the Nkandla and midlands regions."
+    },
+    {
+      "surname": "Mncube",
+      "praise_poetry": "Khambule, Mlotshwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mncwango",
+      "praise_poetry": "Phakathi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mngadi",
+      "praise_poetry": "Mnguni, Madlokovu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mngomezulu",
+      "praise_poetry": "Dlakadla",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mnguni",
+      "praise_poetry": "Yeyeye",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mnyandu",
+      "praise_poetry": "Nongalaza, Gedeza",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Motha",
+      "praise_poetry": "Thwala",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mpangazitha",
+      "praise_poetry": "Lamula, Kheswa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mpungose",
+      "praise_poetry": "Mnguni, Phahla",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mseleku",
+      "praise_poetry": "Mnguni, Duma",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Msibi",
+      "praise_poetry": "Ndlondlo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Msimango",
+      "praise_poetry": "Mnguni, Nonkosi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mthembu",
+      "praise_poetry": "Donga, Mvelase, Mabaso",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mthethwa",
+      "praise_poetry": "Nyambose, Jobe, Dingiswayo",
+      "origins": "An influential clan historically led by Dingiswayo, deeply tied to the rise of King Shaka."
+    },
+    {
+      "surname": "Mthiyane",
+      "praise_poetry": "Zondo, Sokhulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mtshali",
+      "praise_poetry": "Magalela, Ndwandwe, Hlabangane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Mvelase",
+      "praise_poetry": "Mthembu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ndaba",
+      "praise_poetry": "Sibiya, Mthiya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ndelu",
+      "praise_poetry": "Blose, Shinga",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ndima",
+      "praise_poetry": "Lembede",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ndimande",
+      "praise_poetry": "Gcumisa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ndlovu",
+      "praise_poetry": "Gatsheni, Boya benyathi, Demazane, Khumbul' amagwala, Zikode",
+      "origins": "Meaning 'Elephant', this clan is known for its deep historical ties to military leadership."
+    },
+    {
+      "surname": "Ndlela",
+      "praise_poetry": "Madida, Sompisi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nene",
+      "praise_poetry": "Mnguni, Ngema",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ngcobo",
+      "praise_poetry": "Fuze, Maphanga, Mashiya, Phakathi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ngema",
+      "praise_poetry": "Mnguni, Nene",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ngobese",
+      "praise_poetry": "Khaba, Mqungebe",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ngubane",
+      "praise_poetry": "Mbomvu, Nomafu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ngwenya",
+      "praise_poetry": "Makhanya, Mtimandze",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nhlapo",
+      "praise_poetry": "Sgegede, Mwelase",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nhleko",
+      "praise_poetry": "Mnguni, Mgiliji",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nkomo",
+      "praise_poetry": "Khubisa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nkosi",
+      "praise_poetry": "Dlamini, Sibalukhulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ntombela",
+      "praise_poetry": "Mahlobo, Mpangazitha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ntuli",
+      "praise_poetry": "Sompisi, Mphemba, Bhengu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nzuza",
+      "praise_poetry": "Mahlobo, Mshazi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nxumalo",
+      "praise_poetry": "Ndwandwe, Mkhatshwa, Zwide",
+      "origins": "A powerful clan led by Zwide, historically the main rivals to the early Zulu kingdom."
+    },
+    {
+      "surname": "Nyandeni",
+      "praise_poetry": "Mashobane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nyathi",
+      "praise_poetry": "Mnguni, Mphankomo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nzama",
+      "praise_poetry": "Mnguni, Wosiyane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Nzimande",
+      "praise_poetry": "Lukhele, Mdluli",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Phakathi",
+      "praise_poetry": "Mncwango",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Phewa",
+      "praise_poetry": "Mvelase",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Phoswa",
+      "praise_poetry": "Nyoni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Phungula",
+      "praise_poetry": "Mdlovu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Qadi",
+      "praise_poetry": "Dladla",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Qwabe",
+      "praise_poetry": "Gumede, Phakathwayo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sabela",
+      "praise_poetry": "Gwamanda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sangweni",
+      "praise_poetry": "Hlongwane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Seme",
+      "praise_poetry": "Mbuyazi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shabangu",
+      "praise_poetry": "Mbhele, Gama",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shabalala",
+      "praise_poetry": "Mshengu, Mabizela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shandu",
+      "praise_poetry": "Mbatha, Mthiya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shange",
+      "praise_poetry": "Dumakude, Sishange",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shangase",
+      "praise_poetry": "Shuku",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shazi",
+      "praise_poetry": "Zindela, Cebekhulu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shelembe",
+      "praise_poetry": "Maphalala",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shezi",
+      "praise_poetry": "Dlaba, Mathonsi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shinga",
+      "praise_poetry": "Ndelu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shoba",
+      "praise_poetry": "Mpikela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Shozi",
+      "praise_poetry": "Mthiya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sibaya",
+      "praise_poetry": "Thango",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sibeko",
+      "praise_poetry": "Maziya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sibisi",
+      "praise_poetry": "Mahlase, Gamede",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sibiya",
+      "praise_poetry": "Ndaba, Sotobe, Gumede",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sikhakhane",
+      "praise_poetry": "Mathula, Mbatha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sikhosana",
+      "praise_poetry": "Ncama",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Simelane",
+      "praise_poetry": "Magutshwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Sithole",
+      "praise_poetry": "Jobe, Mondise, Matshana",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Siyaya",
+      "praise_poetry": "Guma",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thabethe",
+      "praise_poetry": "Mangede",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thango",
+      "praise_poetry": "Sibaya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thembela",
+      "praise_poetry": "Nombela, Gcaba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thenjwayo",
+      "praise_poetry": "Nsibande",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thusi",
+      "praise_poetry": "Sishange, Donda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Thwala",
+      "praise_poetry": "Mnyamande, Motha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Vezi",
+      "praise_poetry": "Kweyama",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Vilakazi",
+      "praise_poetry": "Mphephethwa, Jili, Binda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Vundla",
+      "praise_poetry": "Gigaba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Vumase",
+      "praise_poetry": "Sikhumbane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Wanda",
+      "praise_poetry": "Mathetha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Wela",
+      "praise_poetry": "Yeye",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Xaba",
+      "praise_poetry": "Nonkosi, Mlotshwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Xhakaza",
+      "praise_poetry": "Bhengu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Ximba",
+      "praise_poetry": "Mlaba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Xolo",
+      "praise_poetry": "Msuthu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Xulu",
+      "praise_poetry": "Gxabhashe, Makhathini, Jiba",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Yengwa",
+      "praise_poetry": "Gwamanda",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Yeni",
+      "praise_poetry": "Shibase, Ndosi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zaca",
+      "praise_poetry": "Msenti",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zakwe",
+      "praise_poetry": "Cebisa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zama",
+      "praise_poetry": "Dingila",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zibani",
+      "praise_poetry": "Zikhonjwa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zikhali",
+      "praise_poetry": "Hlongwane, Sangweni",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zincume",
+      "praise_poetry": "Mhlongo",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zindela",
+      "praise_poetry": "Malinga, Shazi",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zimu",
+      "praise_poetry": "Mtuswa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zondi",
+      "praise_poetry": "Nondaba, Gagashe, Luqa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zondo",
+      "praise_poetry": "Mthiyane",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zubane",
+      "praise_poetry": "Mthiya",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zuke",
+      "praise_poetry": "Mbhedu, Bhengu",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zulu",
+      "praise_poetry": "Mageba, Ndabezitha, Phunga, Jama, Senzangakhona, Malandela",
+      "origins": "The royal clan from which the Zulu nation takes its name, descending from Zulu kaMalandela."
+    },
+    {
+      "surname": "Zuma",
+      "praise_poetry": "Nxamalala, Msholozi, Matomela, Mthabela, Gqwetha",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zungu",
+      "praise_poetry": "Manzini, Gcwensa",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    },
+    {
+      "surname": "Zwane",
+      "praise_poetry": "Mangethe, Ndlela",
+      "origins": "Historical origins tied to the KwaZulu-Natal region."
+    }
+  ]
+}

@@ -1,37 +1,62 @@
-# ml_engine/weather_rules.py
+"""Translate raw weather readings into the flags the recommender cares about."""
 
-def get_weather_impact(weather_condition_str):
-    """
-    Translates a weather condition string (from OpenWeatherMap)
-    into filtering rules for the database.
-    
-    Returns: dictionary with 'requires_indoor' (bool or None) and a 'message'.
-    """
-    condition = weather_condition_str.lower()
-    
-    # Bad Weather List
-    wet_conditions = ['rain', 'thunderstorm', 'drizzle', 'snow', 'storm']
-    
-    # Good/Neutral Weather List
-    clear_conditions = ['clear', 'sun', 'clouds', 'few clouds']
+# WMO weather interpretation codes used by Open-Meteo.
+_WMO = {
+    0: ("Clear sky", "sun"),
+    1: ("Mostly clear", "sun"),
+    2: ("Partly cloudy", "cloud-sun"),
+    3: ("Overcast", "cloud"),
+    45: ("Fog", "fog"),
+    48: ("Fog", "fog"),
+    51: ("Light drizzle", "rain"),
+    53: ("Drizzle", "rain"),
+    55: ("Heavy drizzle", "rain"),
+    56: ("Freezing drizzle", "rain"),
+    57: ("Freezing drizzle", "rain"),
+    61: ("Light rain", "rain"),
+    63: ("Rain", "rain"),
+    65: ("Heavy rain", "rain"),
+    66: ("Freezing rain", "rain"),
+    67: ("Freezing rain", "rain"),
+    71: ("Light snow", "snow"),
+    73: ("Snow", "snow"),
+    75: ("Heavy snow", "snow"),
+    77: ("Snow grains", "snow"),
+    80: ("Rain showers", "rain"),
+    81: ("Rain showers", "rain"),
+    82: ("Violent showers", "storm"),
+    85: ("Snow showers", "snow"),
+    86: ("Snow showers", "snow"),
+    95: ("Thunderstorm", "storm"),
+    96: ("Thunderstorm with hail", "storm"),
+    99: ("Thunderstorm with hail", "storm"),
+}
+_WET_ICONS = {"rain", "storm", "snow"}
+HOT_C = 31
+COLD_C = 10
 
-    if any(x in condition for x in wet_conditions):
-        return {
-            'requires_indoor': True,
-            'message': f"It is currently {weather_condition_str}. We recommend indoor activities."
-        }
-    
-    elif any(x in condition for x in clear_conditions):
-        return {
-            'requires_indoor': False, # None means "Don't restrict, show everything"
-            # However, for an MVP, we might PREFER outdoor activities if sunny:
-            'preference': 'outdoor', 
-            'message': "Great weather! Outdoor activities are recommended."
-        }
-        
+
+def describe_weather(code, temp_c):
+    """Return a dict describing the weather and what it means for outdoor plans."""
+    label, icon = _WMO.get(code, ("Clear sky", "sun"))
+    wet = icon in _WET_ICONS
+    hot = temp_c is not None and temp_c >= HOT_C
+    cold = temp_c is not None and temp_c <= COLD_C
+    if wet:
+        advice = "Wet weather: indoor spots are the safest bet."
+    elif hot:
+        advice = "Very hot: favour beaches, shade and air-conditioning."
+    elif cold:
+        advice = "Chilly: dress warm for outdoor plans."
     else:
-        # Fallback for "Mist", "Haze", etc.
-        return {
-            'requires_indoor': None,
-            'message': f"Weather is {weather_condition_str}."
-        }
+        advice = "Great weather for getting outside."
+    return {
+        "code": code,
+        "condition": label,
+        "icon": icon,
+        "temp_c": temp_c,
+        "is_wet": wet,
+        "is_hot": hot,
+        "is_cold": cold,
+        "advice": advice,
+    }

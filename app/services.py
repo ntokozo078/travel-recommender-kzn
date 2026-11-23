@@ -1,58 +1,60 @@
-import requests
+"""Live context for the recommender: weather (Open-Meteo, no API key) and power status."""
+import time
 from datetime import datetime
 
+import requests
+
+from ml_engine import describe_weather
+
+FALLBACK_CODE, FALLBACK_TEMP = 1, 24.0
+
+
 class ContextEngine:
+    def __init__(self, timeout=4, cache_seconds=600):
+        self.timeout = timeout
+        self.cache_seconds = cache_seconds
+        self._cache = {}
+
     def get_current_weather(self, lat, lon):
-        """
-        Fetches weather from Open-Meteo (No API Key required).
-        """
+        """Current weather for a point. Always returns a dict; `source` says if it was live."""
+        key = (round(lat, 1), round(lon, 1))
+        cached = self._cache.get(key)
+        if cached and time.time() - cached[0] < self.cache_seconds:
+            return cached[1]
+
         try:
-            # Open-Meteo Free API Endpoint
-            url = "https://api.open-meteo.com/v1/forecast"
-            params = {
-                "latitude": lat,
-                "longitude": lon,
-                "current_weather": "true"
-            }
-            
-            response = requests.get(url, params=params)
-            data = response.json()
-            
-            # Extract weather code
-            if 'current_weather' in data:
-                weather_code = data['current_weather']['weathercode']
-                temp = data['current_weather']['temperature']
-                
-                # Convert numeric code to text
-                condition = self._interpret_weather_code(weather_code)
-                return f"{condition} ({temp}°C)"
-            
-            return "Clear (25°C)" # Fallback
+            resp = requests.get(
+                "https://api.open-meteo.com/v1/forecast",
+                params={"latitude": lat, "longitude": lon, "current_weather": "true"},
+                timeout=self.timeout,
+            )
+            resp.raise_for_status()
+            current = resp.json()["current_weather"]
+            weather = describe_weather(int(current["weathercode"]), float(current["temperature"]))
+            weather["source"] = "live"
+            self._cache[key] = (time.time(), weather)
+            return weather
+        except (requests.RequestException, KeyError, ValueError, TypeError) as exc:
+            print(f"[weather] falling back to default: {exc}")
+            weather = describe_weather(FALLBACK_CODE, FALLBACK_TEMP)
+            weather["source"] = "fallback"
+            return weather  # not cached, so we retry on the next request
 
-        except Exception as e:
-            print(f"Weather API Error: {e}")
-            return "Clear (25°C)" # Default if internet fails
+    def check_loadshedding(self, mode="auto"):
+        """Power status. Eskom's API is paid, so `auto` uses a simulated evening schedule.
 
-    def _interpret_weather_code(self, code):
+        mode: "on" / "off" force a state (handy for demos), "auto" uses the simulated schedule.
         """
-        Translates Open-Meteo codes to human text.
-        """
-        if code == 0: return "Clear Sky"
-        if code in [1, 2, 3]: return "Partly Cloudy"
-        if code in [45, 48]: return "Foggy"
-        if code in [51, 53, 55]: return "Drizzle"
-        if code in [61, 63, 65]: return "Rainy"
-        if code in [80, 81, 82]: return "Heavy Rain"
-        if code >= 95: return "Thunderstorm"
-        return "Clear"
-
-    def check_loadshedding(self, area_id):
-        """
-        Simulates Loadshedding status (ESKOM API is paid/complex).
-        For MVP, we base this on the current hour.
-        """
-        current_hour = datetime.now().hour
-        # Simulate loadshedding between 6PM and 8PM
-        if 18 <= current_hour <= 20:
+        if mode == "on":
             return True
-        return False
+        if mode == "off":
+            return False
+        return 18 <= datetime.now().hour <= 20
+
+    def get_context(self, lat, lon, loadshedding="auto"):
+        return {
+            "weather": self.get_current_weather(lat, lon),
+            "loadshedding": self.check_loadshedding(loadshedding),
+            "loadshedding_mode": loadshedding,
+            "loadshedding_simulated": True,   # no live Eskom feed is wired up
+        }

@@ -1,7 +1,8 @@
-flask==3.0.0
-flask-sqlalchemy==3.1.1
-psycopg2-binary>=2.9.9
-requests==2.31.0
-python-dotenv==1.0.0
-pandas>=2.2.0
-beautifulsoup4==4.12.2
+flask>=3.0
+flask-sqlalchemy>=3.1
+requests>=2.31
+python-dotenv>=1.0
+# Only needed if DATABASE_URL points at PostgreSQL:
+# psycopg2-binary>=2.9
+# Production server (Render, Heroku-style hosts):
+gunicorn>=22.0

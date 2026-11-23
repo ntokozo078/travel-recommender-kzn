@@ -1,51 +1,51 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iKhaya KZN · Heritage &amp; Trip Planner</title>
+    <meta name="description" content="Explore Zulu clans, herbs, foods and ceremonies, then plan a KwaZulu-Natal trip that adapts to today's weather and load-shedding.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f3d2e'/%3E%3Cpath d='M50 18 82 78H18z' fill='%23e0a526'/%3E%3Cpath d='M50 38 66 68H34z' fill='%23c2562b'/%3E%3C/svg%3E">
+</head>
+<body>
+    <a class="skip-link" href="#view">Skip to content</a>
 
-{% block content %}
-<div class="hero">
-    <div class="hero-content">
-        <h1>Experience KZN Like a Local</h1>
-        <p>Smart recommendations based on weather, power status, and your vibe.</p>
-        
-        <form action="/view_results" method="GET" class="search-box-container">
-            <input type="hidden" name="lat" value="-29.8587">
-            <input type="hidden" name="lon" value="31.0218">
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#/" aria-label="iKhaya KZN home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span class="brand-text">iKhaya<small>KZN</small></span>
+            </a>
+            <nav class="main-nav" aria-label="Main">
+                <a href="#/" data-nav="home">Home</a>
+                <a href="#/heritage/clans" data-nav="heritage">Heritage</a>
+                <a href="#/trip" data-nav="trip" class="nav-cta">Plan a trip</a>
+            </nav>
+        </div>
+        <div class="bead-strip" aria-hidden="true"></div>
+    </header>
 
-            <select name="category" class="search-dropdown" required>
-                <option value="" disabled selected>What are you in the mood for?</option>
-                <option value="Beach">🏖️ Beaches & Water</option>
-                <option value="Nature">🌿 Nature & Safari</option>
-                <option value="Adventure">🧗 Adventure & Sports</option>
-                <option value="Culture">🏛️ History & Culture</option>
-                <option value="Food">🥘 Food & Dining</option>
-                <option value="Shopping">🛍️ Shopping & Markets</option>
-                <option value="Entertainment">🎉 Fun & Festivals</option>
-            </select>
-            
-            <button type="submit" class="search-btn">
-                <i class="fas fa-search"></i> Find Places
-            </button>
-        </form>
+    <div class="subnav" id="subnav" hidden>
+        <nav class="subnav-inner" aria-label="Heritage sections" id="subnav-links"></nav>
     </div>
-</div>
 
-<div class="container" style="margin-top: 3rem; text-align: center;">
-    <h2 style="margin-bottom: 2rem; color: #333;">Why use TravelKZN?</h2>
-    <div class="results-grid">
-        <div class="place-card" style="text-align: center; padding: 2rem;">
-            <i class="fas fa-cloud-sun" style="font-size: 3rem; color: #ffc107; margin-bottom: 1rem;"></i>
-            <h3>Weather Smart</h3>
-            <p style="color: #666;">We hide outdoor activities when it rains.</p>
+    <main id="view" tabindex="-1" aria-live="polite"></main>
+
+    <footer class="footer">
+        <div class="bead-strip" aria-hidden="true"></div>
+        <div class="footer-inner">
+            <strong>iKhaya KZN</strong>
+            <p>Celebrating isiZulu heritage and helping you explore KwaZulu-Natal.</p>
+            <p class="muted">Weather by Open-Meteo. Places by OpenStreetMap contributors. Load-shedding status is simulated.</p>
         </div>
-        <div class="place-card" style="text-align: center; padding: 2rem;">
-            <i class="fas fa-bolt" style="font-size: 3rem; color: #dc3545; margin-bottom: 1rem;"></i>
-            <h3>Loadshedding Aware</h3>
-            <p style="color: #666;">We prioritize places with generators when the power is out.</p>
-        </div>
-        <div class="place-card" style="text-align: center; padding: 2rem;">
-            <i class="fas fa-shield-alt" style="font-size: 3rem; color: #28a745; margin-bottom: 1rem;"></i>
-            <h3>Safety First</h3>
-            <p style="color: #666;">Curated list of safe, verified destinations.</p>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>

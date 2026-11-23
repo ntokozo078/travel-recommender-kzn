@@ -1,0 +1,138 @@
+{
+  "herbs": {
+    "title": "Traditional Herbs",
+    "subtitle": "Medicinal plants used in Zulu traditional healing (amakhambi)",
+    "items": [
+      {
+        "name": "African Potato (Hypoxis hemerocallidea)",
+        "isizulu": "Inkomfe / Ilabatheka",
+        "desc": "A well-known medicinal plant with a bright yellow star-shaped flower and a tuberous rootstock.",
+        "image": "https://www.inteleziherbs.co.za/wp-content/uploads/2020/09/Family-Cannabaceae-herb-Cannabis-sativa-marijuana-dagga-Umya-Matekwane-Patse-iNsangu-orde1-buy-600x600.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used for immune support, urinary problems, and general wellness.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Aloe (Aloe ferox / Aloe marlothii)",
+        "isizulu": "Ikhala / Umhlaba",
+        "desc": "A robust, single-stemmed succulent with heavily thorned leaves and bright orange-red flowers.",
+        "image": "https://tse1.mm.bing.net/th/id/OIP.vttuKCfZkd4wBcMP95QY2AHaFi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used to treat wounds, burns, constipation, and skin conditions.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Buffalo Thorn (Ziziphus mucronata)",
+        "isizulu": "Umphafa",
+        "desc": "A deciduous tree known for its distinctive zigzag branches and pairs of thorns—one hooked, one straight.",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.JiqDNkWTLCpWSY3JMyFKIgHaJ2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "✨ CULTURAL SIGNIFICANCE",
+        "infoBoxText": "Deeply spiritual. Used in cleansing rituals, spiritual purification, and to carry the spirit of the deceased. Also treats stomach ailments.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Cancer Bush (Lessertia frutescens)",
+        "isizulu": "Insiswa",
+        "desc": "A much-respected medicinal shrub with silvery leaves and bright red, butterfly-like flowers.",
+        "image": "https://c8.alamy.com/comp/2YDK604/flowering-plant-of-the-cancer-bush-lessertia-frutescens-western-cape-south-africa-2YDK604.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used for general health support, stress relief, and appetite stimulation.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Devil's Claw (Harpagophytum procumbens)",
+        "isizulu": "Various local names",
+        "desc": "A creeping plant that produces a peculiar fruit covered in miniature hooks, hence its name.",
+        "image": "https://www.inteleziherbs.co.za/wp-content/uploads/2020/09/Harpagophytum-procumbens-Devils-Claw2.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Widely used to alleviate arthritis, joint pain, and inflammation.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Elephant Root (Elephantorrhiza elephantina)",
+        "isizulu": "Intolwane",
+        "desc": "A small shrub that produces massive, underground rhizomes which contain potent medicinal properties.",
+        "image": "https://th.bing.com/th/id/R.e5ba11666f4f0733d00c7cfa173c879c?rik=%2bB2FRIafAyPPNw&riu=http%3a%2f%2fwaterberg-bioquest.co.za%2fimages%2fFlowers%2fFLO-Elephantorrhiza-elephantina-Elephants-Foot-Modimolle-Nov-2014-D10437.jpg&ehk=c8p5jYwMRQ4vdvn1Cn7ADC%2bZYSH2rdAGpk66DbtvK2c%3d&risl=&pid=ImgRaw&r=0",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used to treat diarrhea, stomach disorders, and as a wound treatment.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Fever Tea / Lemon Bush (Lippia javanica)",
+        "isizulu": "Umsuzwane",
+        "desc": "A fragrant, woody shrub whose leaves emit a strong lemon scent when crushed.",
+        "image": "https://happybynature.com/wp-content/uploads/2020/04/Lippia-javanica.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Excellent for fever, colds, coughs, respiratory infections, and managing malaria symptoms.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "African Wormwood (Artemisia afra)",
+        "isizulu": "Umhlonyane",
+        "desc": "One of the most widely used traditional medicines in South Africa, possessing a highly aromatic scent.",
+        "image": "https://agric4profits.com/wp-content/uploads/2023/09/image-284.png",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Boiled as a tea or inhaled as steam for colds, flu, fever, coughs, and digestive complaints.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Helichrysum (Helichrysum odoratissimum)",
+        "isizulu": "Imphepho",
+        "desc": "A strongly aromatic, silvery-grey plant central to indigenous spiritual practices.",
+        "image": "https://seedsandall.co.za/wp-content/uploads/2023/06/Helichrysum-odoratissimum1.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "⚠️ SACRED KNOWLEDGE",
+        "infoBoxText": "Smudged (burned) to communicate with the ancestors. Also used for respiratory complaints and wound care.",
+        "attribution": "Traditional healers (Izangoma) of KZN"
+      },
+      {
+        "name": "Pepper Bark Tree (Warburgia salutaris)",
+        "isizulu": "Isibhaha",
+        "desc": "A highly valued medicinal tree whose bark has a strong, peppery taste. Currently heavily protected due to over-harvesting.",
+        "image": "https://www.randomharvest.co.za/Portals/0/OptimisedImg/PlantfinderImages/Warburgia-salutaris-fleshy-fruit-and-leathery-leaves.jpg?height=720&quality=90",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used for coughs, colds, flu, chest infections, and malaria symptoms.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Thorn Pear (Datura stramonium)",
+        "isizulu": "Uqadolo",
+        "desc": "A bushy weed with large white trumpet flowers and thorny seed capsules.",
+        "image": "https://d2seqvvyy3b8p2.cloudfront.net/1251df9dd2717c825e2115961cf3731d.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "⚠️ TOXICITY WARNING",
+        "infoBoxText": "Used strictly for traditional external remedies. The plant is highly toxic if ingested.",
+        "attribution": "Botanical knowledge base"
+      },
+      {
+        "name": "Wild Ginger (Siphonochilus aethiopicus)",
+        "isizulu": "Isiphephetho",
+        "desc": "A forest floor plant with beautiful pink flowers, highly sought after for its aromatic rhizomes.",
+        "image": "https://happybynature.com/wp-content/uploads/2020/04/Siphonochilus-aethiopicus.jpg.webp",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌿 TRADITIONAL USES",
+        "infoBoxText": "Used for asthma, colds, influenza, and sinus problems.",
+        "attribution": "Community knowledge"
+      },
+      {
+        "name": "Snake Bean Tree (Erythrina lysistemon)",
+        "isizulu": "Umsinsi",
+        "desc": "Also known as the Coral Tree, notable for its striking bright red tubular flowers.",
+        "image": "https://i.pinimg.com/originals/32/dc/c6/32dcc61ba0e4e04ad87bca5bb680eb46.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "✨ MULTI-USE",
+        "infoBoxText": "Medicinally used for wounds and swelling. Also heavily utilized in spiritual and protective uses.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  }
+}

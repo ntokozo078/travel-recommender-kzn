@@ -1,0 +1,766 @@
+{
+  "rituals": {
+    "title": "Zulu Ceremonies",
+    "subtitle": "Sacred rituals that mark life's milestones",
+    "items": [
+      {
+        "name": "Introduction to Ancestors",
+        "isizulu": "Imbeleko",
+        "desc": "A ceremony introducing a newborn child to the ancestors. A goat is often slaughtered and the child is formally welcomed into the family lineage.",
+        "image": "https://tse4.mm.bing.net/th/id/OIP.noe5_4VtVjZdGWHkiCV-iwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👶 BIRTH & CHILDHOOD",
+        "infoBoxText": "Ensures the child is recognized and protected by the family's ancestors.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Community Presentation",
+        "isizulu": "Ukuphuma Komntwana",
+        "desc": "The first formal presentation of a baby to the community and extended family.",
+        "image": "https://chi-nese.com/wp-content/uploads/2023/10/Ukuphupha-umntwana-womfana.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👶 BIRTH & CHILDHOOD",
+        "infoBoxText": "Marks the end of the seclusion period for the mother and newborn.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Naming Ceremony",
+        "isizulu": "Ukuqanjwa Kwegama",
+        "desc": "Naming ceremony for a child.",
+        "image": "https://images.unsplash.com/photo-1529158062015-d6484a0d9229?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👶 BIRTH & CHILDHOOD",
+        "infoBoxText": "Names often carry deep meaning, reflecting family circumstances or hopes for the child.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "First Haircut",
+        "isizulu": "Ukugunda",
+        "desc": "Traditional first haircut ceremony performed in some families.",
+        "image": "https://images.unsplash.com/photo-1529158062015-d6484a0d9229?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👶 BIRTH & CHILDHOOD",
+        "infoBoxText": "A rite of passage symbolizing the shedding of infancy.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Coming of Age Ceremony",
+        "isizulu": "Umemulo",
+        "desc": "A coming of age ceremony for a young woman, usually held before marriage. It celebrates maturity and readiness for adult responsibilities.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "✨ COMING OF AGE",
+        "infoBoxText": "Involves dancing in traditional regalia, the slaughtering of a cow, and gifting.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Virginity Testing",
+        "isizulu": "Ukuhlolwa Kobuntombi",
+        "desc": "Traditional virginity testing practiced by some communities.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "✨ COMING OF AGE",
+        "infoBoxText": "Intended to promote purity, self-respect, and prevent early pregnancies.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Adulthood Transition",
+        "isizulu": "Umkhehlo",
+        "desc": "A ceremony recognizing a young woman's transition into adulthood.",
+        "image": "https://images.unsplash.com/photo-1605417855361-9c3f4ceb5d3d?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "✨ COMING OF AGE",
+        "infoBoxText": "Often involves pinning money onto the young woman's garments by guests.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Youth Instruction",
+        "isizulu": "Umhlonyane Wentsha",
+        "desc": "Youth development and cultural instruction ceremonies.",
+        "image": "https://images.unsplash.com/photo-1529158062015-d6484a0d9229?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "✨ COMING OF AGE",
+        "infoBoxText": "Elders impart wisdom, cultural values, and life skills to the youth.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Courtship",
+        "isizulu": "Ukuqoma",
+        "desc": "Traditional courtship process.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "The formal acceptance of a suitor by a young woman, historically indicated by beadwork.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Formal Negotiations",
+        "isizulu": "Ukucela",
+        "desc": "Formal negotiations between families before marriage discussions begin.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "The prospective groom's family officially approaches the bride's family.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Bride Wealth Negotiations",
+        "isizulu": "Ilobolo",
+        "desc": "Marriage negotiations involving the transfer of bride wealth.",
+        "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "Historically involving cattle, it builds mutual respect and unites the two families.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Gifts to the Bride's Family",
+        "isizulu": "Umembeso",
+        "desc": "The groom's family presents gifts and clothing to the bride's family.",
+        "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "A celebratory event acknowledging the bride's parents for raising her.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Gifts to the Groom's Family",
+        "isizulu": "Umabo",
+        "desc": "The bride's family presents gifts to the groom's family.",
+        "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "The culmination of a Zulu wedding, integrating the bride into her new home.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Wedding",
+        "isizulu": "Umshado Wesintu",
+        "desc": "Traditional Zulu wedding ceremony.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "Filled with traditional song, dance (ukugida), and feasting.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Bride's Introduction",
+        "isizulu": "Ukuyiswa Komakoti",
+        "desc": "The bride's formal introduction to her husband's ancestral home.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "She is formally presented to the ancestors of her new family.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Levirate Marriage",
+        "isizulu": "Ukungena",
+        "desc": "Traditional levirate marriage custom practiced in some families.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "💍 MARRIAGE CUSTOM",
+        "infoBoxText": "A widow is inherited by the deceased husband's brother to provide and protect her and her children.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Bringing Back the Spirit",
+        "isizulu": "Ukubuyisa",
+        "desc": "A ceremony performed to welcome the spirit of a deceased family member back among the ancestors.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Usually performed a year or more after the burial.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Appeasing Ancestors",
+        "isizulu": "Ukuthethela Amadlozi",
+        "desc": "Appeasing or communicating with ancestors.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Done through offerings, such as meat and umqombothi (traditional beer).",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Asking Forgiveness",
+        "isizulu": "Ukushweleza",
+        "desc": "Asking ancestors for forgiveness and blessings.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Conducted to clear bad luck or disharmony within the family.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Family Cleansing",
+        "isizulu": "Ukuhlambulula",
+        "desc": "Family cleansing ceremony after misfortune, death, or conflict.",
+        "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Restores balance and purity to the household.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Ancestral Prayers",
+        "isizulu": "Ukuphahla",
+        "desc": "Offering prayers and communication to ancestors.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Often involves burning impepho (sage) in a sacred spot of the home (emsamo).",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Reporting to Ancestors",
+        "isizulu": "Ukubika",
+        "desc": "Reporting important family events to the ancestors.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ SPIRITUAL PRACTICE",
+        "infoBoxText": "Ancestors must be informed of births, marriages, graduations, or travel.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Healer Initiation",
+        "isizulu": "Ukwethwasa",
+        "desc": "Initiation process of a future traditional healer.",
+        "image": "https://images.unsplash.com/photo-1596547609652-9cb5d8d736bb?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🌿 TRADITIONAL HEALING",
+        "infoBoxText": "A spiritual journey undertaken by an initiate (ithwasa) under a senior healer.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Incisions",
+        "isizulu": "Ukugcaba",
+        "desc": "Traditional healing and protection ritual.",
+        "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🌿 TRADITIONAL HEALING",
+        "infoBoxText": "Small incisions are made on the skin where medicinal ash (muthi) is rubbed in.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Calling of a Sangoma",
+        "isizulu": "Ukwethwasa Kwedlozi",
+        "desc": "Calling and training of a future sangoma.",
+        "image": "https://images.unsplash.com/photo-1581404176465-950c410be2d6?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🌿 TRADITIONAL HEALING",
+        "infoBoxText": "Initiated by a spiritual calling (ubizo) from the ancestors.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Healer Graduation",
+        "isizulu": "Ukuphothula Ukwethwasa",
+        "desc": "Graduation ceremony of a traditional healer.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🌿 TRADITIONAL HEALING",
+        "infoBoxText": "The new sangoma is formally recognized by the community.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Healer Celebration",
+        "isizulu": "Umbhidlango Wethwasa",
+        "desc": "Celebration marking completion of healer training.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🌿 TRADITIONAL HEALING",
+        "infoBoxText": "Accompanied by drumming, singing, and ancestral dances.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Family Thanksgiving",
+        "isizulu": "Umkhiqizo",
+        "desc": "Family thanksgiving ceremony.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👨‍👩‍👧‍👦 FAMILY & COMMUNITY",
+        "infoBoxText": "Gathering to show gratitude for protection, wealth, or good fortune.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Family Gathering",
+        "isizulu": "Imbizo Yomndeni",
+        "desc": "Formal family gathering for major decisions.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👨‍👩‍👧‍👦 FAMILY & COMMUNITY",
+        "infoBoxText": "Elders meet to discuss disputes, plans, or marriages.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Family Reconciliation",
+        "isizulu": "Isivumelwano Somndeni",
+        "desc": "Family reconciliation ceremony.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👨‍👩‍👧‍👦 FAMILY & COMMUNITY",
+        "infoBoxText": "Restoring peace and harmony between feuding family members.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Celebration Feast",
+        "isizulu": "Umgidi",
+        "desc": "A celebration feast for major achievements.",
+        "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "👨‍👩‍👧‍👦 FAMILY & COMMUNITY",
+        "infoBoxText": "Communal joy expressed through eating, drinking, and dancing.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Installation of a Chief",
+        "isizulu": "Ukugcotshwa Kwenkosi",
+        "desc": "Installation of a chief.",
+        "image": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "Formal recognition of a local leader by the King and government.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Coronation",
+        "isizulu": "Ukubekwa Kwenkosi",
+        "desc": "Coronation of traditional leadership.",
+        "image": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "The official seating of a Monarch or High Chief on the throne.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "First Fruits Ceremony",
+        "isizulu": "Umkhosi Wokweshwama",
+        "desc": "First fruits ceremony traditionally associated with the Zulu monarchy.",
+        "image": "https://images.unsplash.com/photo-1575444758702-4a6b9222336e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "The King partakes in the new harvest first, accompanied by prayers for national prosperity.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Reed Dance",
+        "isizulu": "Umkhosi WoMhlanga",
+        "desc": "Annual Reed Dance celebration.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "Young maidens carry reeds to the royal palace to promote purity and respect.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Marula Festival",
+        "isizulu": "Umkhosi Wamaganu",
+        "desc": "Marula harvest festival.",
+        "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "A joyful gathering to present the first Marula brew to the King.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "King Shaka Day",
+        "isizulu": "Umkhosi WeLembe",
+        "desc": "Celebration honoring King Shaka kaSenzangakhona.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "👑 ROYAL CEREMONY",
+        "infoBoxText": "Held annually to commemorate the founding father of the Zulu Kingdom.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Funeral",
+        "isizulu": "Umngcwabo Wesintu",
+        "desc": "Traditional funeral ceremony.",
+        "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Strict protocols are followed to ensure a peaceful transition to the ancestral realm.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Period of Mourning",
+        "isizulu": "Ukuzila",
+        "desc": "Period of mourning observed after a death.",
+        "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Includes wearing specific clothing (inzilo) and abstaining from certain activities.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Post-Funeral Cleansing",
+        "isizulu": "Ukugeza Emva Komngcwabo",
+        "desc": "Cleansing ceremony after a funeral.",
+        "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Washing with special herbs to remove the dark cloud (umnyama) of death.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Ending Mourning",
+        "isizulu": "Ukuvala Ukuzila",
+        "desc": "Formal ending of the mourning period.",
+        "image": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Mourning clothes are burned or cleansed, and the person returns to normal life.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Bringing Home the Spirit",
+        "isizulu": "Ukubuyisa Idlozi",
+        "desc": "Bringing home the spirit of the deceased to join the ancestors.",
+        "image": "https://images.unsplash.com/photo-1608985160877-621eeb6b48ba?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Ensures the deceased takes their rightful place as a protective ancestor.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Purification of Homestead",
+        "isizulu": "Ukuhlanjululwa Komuzi",
+        "desc": "Purification of the homestead after death.",
+        "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🕊️ MOURNING & SPIRITUALITY",
+        "infoBoxText": "Clears the physical space of grief and bad energy.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "First Harvest Celebration",
+        "isizulu": "Umkhosi Wokuqala",
+        "desc": "First harvest celebration.",
+        "image": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌾 SEASONAL HARVEST",
+        "infoBoxText": "Giving thanks for the first crops before the main harvest begins.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Harvest Festival",
+        "isizulu": "Umkhosi Wokuvuna",
+        "desc": "Harvest festival.",
+        "image": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌾 SEASONAL HARVEST",
+        "infoBoxText": "A communal celebration marking the end of the agricultural cycle.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Rain Seeking Ceremony",
+        "isizulu": "Imicimbi Yemvula",
+        "desc": "Rain seeking ceremonies during drought periods.",
+        "image": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌾 SEASONAL HARVEST",
+        "infoBoxText": "Led by the Queen or spiritual leaders to implore the heavens for rain (nomkhubulwane).",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Marula Season Celebration",
+        "isizulu": "Umkhosi Wamaganu",
+        "desc": "Marula season celebration.",
+        "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌾 SEASONAL HARVEST",
+        "infoBoxText": "Also tied to royal ceremonies, marking the brewing of Marula beer.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  },
+  "dance": {
+    "title": "Dance, Music & Instruments",
+    "subtitle": "The heartbeat and rhythm of the Zulu nation",
+    "items": [
+      {
+        "name": "High-Kicking Warrior Dance",
+        "isizulu": "Indlamu",
+        "desc": "The most famous and recognizable Zulu dance. Performed by men in full regalia with high kicks and powerful foot stomping.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "One of the three most recognizable symbols of Zulu culture. Displays strength, discipline, and unity.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Song and Dance",
+        "isizulu": "Ingoma",
+        "desc": "A broad term for traditional Zulu song and dance performances, often accompanied by clapping and chanting.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "A foundational expression of community joy and storytelling.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Social Ceremonial Dance",
+        "isizulu": "Isizingili",
+        "desc": "A highly popular social and ceremonial dance performed at various gatherings.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "Encourages participation and celebrates community bonds.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Women's Celebration Dance",
+        "isizulu": "Umghubho",
+        "desc": "A graceful and rhythmic dance performed specifically by women during celebrations and cultural ceremonies.",
+        "image": "https://images.unsplash.com/photo-1605417855361-9c3f4ceb5d3d?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "Celebrates womanhood, milestones, and family pride.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Acapella & Gentle Step",
+        "isizulu": "Isicathamiya",
+        "desc": "A gentle, synchronized footwork dance accompanied by beautifully harmonized acapella singing.",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🎵 MUSIC & DANCE",
+        "infoBoxText": "Made globally famous by groups like Ladysmith Black Mambazo. Rooted in the experiences of migrant workers.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Festive Wedding Dance",
+        "isizulu": "Umbholoho",
+        "desc": "A joyous and energetic dance performed during weddings and large festive gatherings.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "Often involves friendly competition between the bride and groom's families.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Community Celebration Dance",
+        "isizulu": "Umsindo",
+        "desc": "A vibrant community celebration dance marked by loud, joyful noise and rhythmic movement.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "Brings the entire community together in shared celebration.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Youth Courtship Dance",
+        "isizulu": "Ingcekeza",
+        "desc": "A dance traditionally associated with the youth, often used as a form of expression during courtship.",
+        "image": "https://images.unsplash.com/photo-1605417855361-9c3f4ceb5d3d?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "Allows young men and women to showcase their agility and attract suitors.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Coming of Age Dance",
+        "isizulu": "Umdanso Womemulo",
+        "desc": "A specific, deeply respected dance performed during Umemulo (coming of age) ceremonies.",
+        "image": "https://images.unsplash.com/photo-1605417855361-9c3f4ceb5d3d?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🥁 DANCE STYLE",
+        "infoBoxText": "The young woman dances with a spear and is showered with gifts and money by guests.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Ancient Clan Songs",
+        "isizulu": "Amahubo / Ihubo",
+        "desc": "Ancient, solemn songs serving as musical archives, preserving history, clan traditions, and spiritual connections.",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🎵 MUSIC STYLE",
+        "infoBoxText": "Considered the most sacred form of Zulu music, sung during major transitions like weddings and funerals.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Praise Poetry",
+        "isizulu": "Izibongo",
+        "desc": "Spoken-word praise poetry performed for kings, chiefs, warriors, and clans to honor their deeds and lineage.",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🎵 MUSIC STYLE",
+        "infoBoxText": "Performed by an Imbongi (praise singer) at high speeds with intense vocal inflection.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Modern Traditional Acoustic",
+        "isizulu": "Maskandi",
+        "desc": "The modern evolution of traditional Zulu storytelling music, heavily featuring the acoustic guitar.",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🎵 MUSIC STYLE",
+        "infoBoxText": "Known for intricate finger-picking styles and the 'ukubonga' (rapid-fire poetic intro).",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Ceremonial Songs",
+        "isizulu": "Amaculo Emicimbi",
+        "desc": "Specific songs tied to ceremonies: Amaculo Omshado (Weddings), Embeleko (Birth), and Okubuyisa (Bringing back spirits).",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🎵 MUSIC STYLE",
+        "infoBoxText": "Music is the vehicle through which all major Zulu life events are observed.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Instruments",
+        "isizulu": "Izinsimbi Zomculo",
+        "desc": "Traditional instruments include the Isigubhu (double-headed drum), Ugubhu (musical bow with calabash resonator), Umakhweyana (braced musical bow), and Imfolozi Horn.",
+        "image": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🪘 INSTRUMENTS",
+        "infoBoxText": "These instruments provide the rhythmic and melodic foundation for ancient Zulu songs.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  },
+  "dress": {
+    "title": "Zulu Dress Code",
+    "subtitle": "Imvunulo YamaZulu — Traditional attire and cultural identity",
+    "items": [
+      {
+        "name": "Men's Hide Apron",
+        "isizulu": "Ibheshu",
+        "desc": "A traditional garment made from calf or animal hide worn around the waist by men.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🛡️ MEN's ATTIRE",
+        "infoBoxText": "Historically signifies adult manhood. Worn with the Isinene (front apron) to complete the lower garment.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Warrior's Headband",
+        "isizulu": "Umqhele",
+        "desc": "A circular headband made of animal skin, predominantly leopard or cow hide.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🛡️ MEN's ATTIRE",
+        "infoBoxText": "Traditionally worn by married men and warriors as a symbol of status and bravery.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Ceremonial Tufts",
+        "isizulu": "Ishoba / Amambatha",
+        "desc": "Cow tail tufts attached to the arms or legs during ceremonies (Ishoba), and shoulder coverings made of hide (Amambatha).",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🛡️ MEN's ATTIRE",
+        "infoBoxText": "Used to accentuate the movements of the body during the Indlamu dance.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Traditional Shield",
+        "isizulu": "Izihlangu",
+        "desc": "Large, oval-shaped shields crafted from cowhide.",
+        "image": "https://images.unsplash.com/photo-1533558315185-1d449339e38e?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "🛡️ MEN's ATTIRE",
+        "infoBoxText": "A symbol of protection and military history. The colour of the hide historically indicated the warrior's regiment.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Pleated Leather Skirt",
+        "isizulu": "Isidwaba",
+        "desc": "A thick, pleated leather or cowhide skirt worn by married women.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "👗 WOMEN's ATTIRE",
+        "infoBoxText": "A key symbol of marriage and respect. It is softened over time through a traditional rubbing process.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Flared Headdress",
+        "isizulu": "Isicholo",
+        "desc": "A wide, circular, flat-topped hat historically woven from grass and cotton.",
+        "image": "https://images.unsplash.com/photo-1589312674315-1888b5d3ce54?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "👗 WOMEN's ATTIRE",
+        "infoBoxText": "One of the most recognizable symbols of Zulu culture. Historically woven directly into the hair of married women to signify respect and marital status.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Young Woman's Beaded Top",
+        "isizulu": "Ingcikiva",
+        "desc": "A beautifully beaded top or bodice worn by young women.",
+        "image": "https://images.unsplash.com/photo-1605417855361-9c3f4ceb5d3d?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "👗 WOMEN's ATTIRE",
+        "infoBoxText": "Signifies cultural identity, youth, and celebration during events like Umemulo and the Reed Dance.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  },
+  "beads": {
+    "title": "Beadwork & Symbols",
+    "subtitle": "Ubuhlalu — The visual language of the Zulu people",
+    "items": [
+      {
+        "name": "Traditional Beadwork",
+        "isizulu": "Ubuhlalu",
+        "desc": "The general term for Zulu beadwork. It is one of the three most recognizable symbols of Zulu culture.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "📿 VISUAL LANGUAGE",
+        "infoBoxText": "Beadwork serves as a visual language communicating complex messages about love, status, family, age, fertility, and protection.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "The Love Letter",
+        "isizulu": "Ucu",
+        "desc": "A beaded necklace or small beaded panel traditionally made by unmarried women.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "📿 COURTSHIP",
+        "infoBoxText": "Young women used these specific bead patterns to communicate affection, interest, acceptance, or rejection to potential partners.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Colour Meanings (Positive)",
+        "isizulu": "Imibala Enhle",
+        "desc": "The specific arrangement and colour of beads convey direct messages.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "📿 COLOUR CODES",
+        "infoBoxText": "White: Purity, peace. Red: Love, strong emotions. Blue: Faithfulness. Green: Contentment, fertility. Yellow: Wealth, prosperity. Pink: Affection.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Colour Meanings (Warnings)",
+        "isizulu": "Imibala Eyisixwayiso",
+        "desc": "Some colours represent warnings or solemn milestones in the visual language.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "📿 COLOUR CODES",
+        "infoBoxText": "Black: Marriage, maturity, or grief. Brown: Earth, stability. Orange: Endurance and warmth.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Beaded Adornments",
+        "isizulu": "Umgexo / Umgcobo",
+        "desc": "Various beaded necklaces (Umgexo) and general beaded adornments (Umgcobo) worn across the body.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "green",
+        "infoBoxTitle": "📿 STATUS & PROTECTION",
+        "infoBoxText": "Specific patterns indicate age group, social standing, or family role. Certain designs are also believed to provide spiritual protection.",
+        "attribution": "Zulu cultural tradition"
+      },
+      {
+        "name": "Animal Skin Wristbands",
+        "isizulu": "Iziphandla",
+        "desc": "Wristbands traditionally made from the hide of a ritually slaughtered animal.",
+        "image": "https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?auto=format&fit=crop&w=600&q=80",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "📿 SPIRITUAL CONNECTION",
+        "infoBoxText": "While not made of glass beads, they are a vital adornment symbolizing a direct connection to the ancestors after a ceremony.",
+        "attribution": "Zulu cultural tradition"
+      }
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "places": {
+    "title": "Stories & Places",
+    "subtitle": "Real places in KZN preserving indigenous knowledge and heritage",
+    "items": [
+      {
+        "name": "KwaZulu Cultural Museum",
+        "isizulu": "Ondini",
+        "desc": "Located in Ulundi, this museum preserves Zulu material culture, traditional artifacts, royal history, and indigenous knowledge systems.",
+        "image": "https://www.goodthingsguy.com/wp-content/uploads/2024/10/museum-3-1536x1024.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏛️ ROYAL HISTORY",
+        "infoBoxText": "Includes the Ondini site associated with the Zulu monarchy and King Cetshwayo's royal residence.",
+        "attribution": "KwaZulu Cultural Museum"
+      },
+      {
+        "name": "Umgungundlovu",
+        "isizulu": "Dingane's Kraal",
+        "desc": "The reconstructed royal capital of King Dingane. Visitors can learn about governance, military organization, and traditional leadership.",
+        "image": "https://farm6.staticflickr.com/5617/21078546422_e831e12a25_b.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "👑 ROYAL CAPITAL",
+        "infoBoxText": "This is where many pivotal events in early Zulu kingdom history and colonial encounters took place.",
+        "attribution": "Amafa Heritage KZN"
+      },
+      {
+        "name": "eMakhosini Ophathe Heritage Park",
+        "isizulu": "eMakhosini",
+        "desc": "Known as the Valley of the Zulu Kings. It contains the graves and settlements of several early Zulu kings and ancestors of the royal family.",
+        "image": "https://i.pinimg.com/originals/af/4a/3d/af4a3d4511597bc61541b3cff58d200a.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "👑 VALLEY OF THE KINGS",
+        "infoBoxText": "The spiritual heartland preserving deep clan histories, creation traditions, and ancestral origins.",
+        "attribution": "Amafa Heritage KZN"
+      },
+      {
+        "name": "Indlondlo Cultural Village",
+        "isizulu": "Indlondlo",
+        "desc": "An interactive village where visitors learn traditional food preparation, music, dance, beadwork, family structures, and cultural practices.",
+        "image": "https://lh5.googleusercontent.com/p/AF1QipPOXRqIkZX9djAf0eLl3hgIZeFXR-Yv3pO3FjkI=w1080-k-no",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🛖 LIVING VILLAGE",
+        "infoBoxText": "Learn directly from community members who are actively preserving these indigenous ways of life.",
+        "attribution": "Indlondlo Community"
+      },
+      {
+        "name": "Veyane Cultural Village",
+        "isizulu": "Veyane",
+        "desc": "A community-based cultural center where visitors can experience local traditions, storytelling, crafts, and indigenous knowledge.",
+        "image": "https://tse3.mm.bing.net/th/id/OIP.J2dvgIPfCM1TYdApURe1EwHaFi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🛖 LIVING VILLAGE",
+        "infoBoxText": "A hub for oral traditions, helping keep ancestral stories alive for the next generation.",
+        "attribution": "Veyane Community"
+      },
+      {
+        "name": "DumaZulu Traditional Village",
+        "isizulu": "DumaZulu",
+        "desc": "One of the best-known cultural villages in South Africa, offering demonstrations of beadwork, basket weaving, shield making, and pottery.",
+        "image": "https://www.alamy.com/aggregator-api/download?url=https://c8.alamy.com/comp/2R5H19X/dumazulu-duma-zulu-traditional-village-museum-village-kwazulu-natal-south-africa-2R5H19X.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🛖 LIVING VILLAGE",
+        "infoBoxText": "Features extensive traditional healing (sangoma) demonstrations, alongside music and dance.",
+        "attribution": "DumaZulu Heritage"
+      },
+      {
+        "name": "Isandlwana Battlefield",
+        "isizulu": "Isandlwana",
+        "desc": "One of the most important battlefields in African history, where the Zulu regiments outmaneuvered British forces in 1879.",
+        "image": "https://www.sahistory.org.za/sites/default/files/place%20images/isandlwana%20battlefield%20site_0.png",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "⚔️ ORAL HISTORY",
+        "infoBoxText": "Indigenous oral traditions and military knowledge (amabutho formations) remain central to understanding the battle.",
+        "attribution": "Amafa Heritage KZN"
+      },
+      {
+        "name": "Rorke's Drift",
+        "isizulu": "KwaJimu",
+        "desc": "Closely connected to the Anglo-Zulu War, preserving the stories of the Zulu kingdom’s military encounters.",
+        "image": "https://i0.wp.com/the-past.com/wp-content/uploads/2021/09/post-1_image0-52.jpg?ssl=1",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "⚔️ BATTLEFIELD",
+        "infoBoxText": "A site of intense historical significance directly tied to the aftermath of Isandlwana.",
+        "attribution": "Amafa Heritage KZN"
+      },
+      {
+        "name": "Spioenkop Battlefield",
+        "isizulu": "Ntabamnyama",
+        "desc": "A historic battlefield where guides often discuss indigenous perspectives on conflict, leadership, and survival in the region.",
+        "image": "https://d3e1m60ptf1oym.cloudfront.net/a8e2f252-5e3d-11e2-89de-c7488f9d30de/SA-LA-Spioenkop-0001_uxga.jpg",
+        "infoBoxType": "orange",
+        "infoBoxTitle": "⚔️ BATTLEFIELD",
+        "infoBoxText": "Overlooks vast landscapes carrying deep histories of intersecting cultures and warfare.",
+        "attribution": "KZN Tourism"
+      },
+      {
+        "name": "Talana Museum",
+        "isizulu": "Talana",
+        "desc": "Contains exhibits on Zulu history, archaeology, traditional lifestyles, and regional heritage in the Dundee area.",
+        "image": "https://www.talana.co.za/wp/wp-content/uploads/2022/11/7-Thembani-display.jpg",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏛️ MUSEUM",
+        "infoBoxText": "A comprehensive look at the coal mining history and indigenous populations of northern KZN.",
+        "attribution": "Talana Museum"
+      },
+      {
+        "name": "Maloti-Drakensberg Park",
+        "isizulu": "uKhahlamba",
+        "desc": "Home to ancient San rock art and centuries of indigenous knowledge about plants, animals, weather, and mountain survival.",
+        "image": "https://alexaitkenhead.co.za/wp-content/uploads/2025/03/Giants-Castle-Drakensberg-Park-60.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "⛰️ SACRED NATURE",
+        "infoBoxText": "A UNESCO World Heritage site preserving deep ancestral connections and indigenous astronomy.",
+        "attribution": "Ezemvelo KZN Wildlife"
+      },
+      {
+        "name": "Ngoye Forest",
+        "isizulu": "oNgoye",
+        "desc": "One of South Africa's oldest indigenous forests. Local communities associate it with traditional stories and medicinal plants.",
+        "image": "https://th.bing.com/th/id/R.1c642b7a3e6a8177961fcc2a286f4164?rik=VTvSODRLyku2dg&pid=ImgRaw&r=0",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌳 SACRED FOREST",
+        "infoBoxText": "A vital ecosystem for harvesting traditional medicines (amakhambi) and observing sacred natural sites.",
+        "attribution": "Community ecological knowledge"
+      },
+      {
+        "name": "iSimangaliso Wetland Park",
+        "isizulu": "iSimangaliso",
+        "desc": "Local communities have long used traditional ecological knowledge to understand fishing, harvesting, wildlife, and conservation here.",
+        "image": "https://th.bing.com/th/id/R.6a0e3fae18ad21fb26b91f7c10cbe34f?rik=jG5rJPzfQjXR7A&riu=http%3a%2f%2fwww.stluciasouthafrica.com%2fwp-content%2fuploads%2f2015%2f05%2fwpid-isimangaliso_media_1255833598.jpg&ehk=UBXmg%2bTXhcm0adUgg6yPFkmgp%2fc3vmuV4aQvceROu2U%3d&risl=&pid=ImgRaw&r=0",
+        "infoBoxType": "green",
+        "infoBoxTitle": "🌊 ECOLOGICAL KNOWLEDGE",
+        "infoBoxText": "Demonstrates centuries of sustainable living and indigenous interaction with marine environments.",
+        "attribution": "iSimangaliso Wetland Park Authority"
+      },
+      {
+        "name": "mNweni Cultural & Hiking Centre",
+        "isizulu": "eMnweni",
+        "desc": "Offers community-guided experiences where visitors learn about mountain traditions, indigenous plant knowledge, and local history.",
+        "image": "https://www.trekkingafrica.co.za/wp-content/uploads/2022/08/7.jpg",
+        "infoBoxType": "green",
+        "infoBoxTitle": "⛰️ MOUNTAIN TRADITIONS",
+        "infoBoxText": "A powerful example of community-led tourism celebrating traditional farming and livestock practices.",
+        "attribution": "mNweni Community"
+      },
+      {
+        "name": "Kwa Muhle Museum",
+        "isizulu": "KwaMuhle",
+        "desc": "Provides insight into the modern social history of KwaZulu-Natal and the experiences of local communities.",
+        "image": "https://th.bing.com/th/id/R.a245d0fac8ba9e3d777d0b512cda97df?rik=iaSpDJp0qzy4Ww&pid=ImgRaw&r=0",
+        "infoBoxType": "blue",
+        "infoBoxTitle": "🏛️ SOCIAL HISTORY",
+        "infoBoxText": "Explores the cultural interactions between indigenous African communities and urban development.",
+        "attribution": "eThekwini Museums"
+      }
+    ]
+  }
+}
